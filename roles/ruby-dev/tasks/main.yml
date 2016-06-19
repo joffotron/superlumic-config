@@ -1,0 +1,7 @@
+---
+- name: install ruby brew applications
+  homebrew: name={{item}} state=latest
+  with_items:
+    - rbenv
+    - rbenv-binstubs
+    - ruby-build

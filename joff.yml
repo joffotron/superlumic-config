@@ -8,17 +8,39 @@
       homebrew_cask: name={{item}} state=present
       with_items:
         - spotify
-        #- istat-menus
+        - istat-menus
         - dropbox
-        #- kaleidoscope
-        - hazel
+        - kaleidoscope
         - sonos
-        #- tower
-        - superduper
-        - google-chrome
-        #- keepingyouawake
-        - microsoft-office
-        #- atom
+        - gitkraken
+        - monodraw
+        - moom
+        - libreoffice
+        - datagrip
+        - intellij-idea
+        - rubymine
+        - xee
+        - bartender
+        - chicken
+        - alfred
+        - bettertouchtool
+        - tresorit
+
+    - name: install personal brew applications
+      homebrew: name={{item}} state=latest
+      with_items:
+        - certbot
+        - z
+        - ipcalc
+        - jq
+        - moreutils
+        - ntfs-3g
+        - packer
+        - pidof
+        - s3cmd
+        - spread
+        - thefuck
+
     - name: create ssh directory
       become: yes
       file:
@@ -29,26 +51,12 @@
         mode: 0777
       with_items:
         - /etc/ssh
+
     - name: personal ssh config
       become: yes
       copy:
         src: files/ssh_config
         dest: /etc/ssh_config
-    - name: personal ssh config in another location
-      become: yes
-      copy:
-        src: files/ssh_config
-        dest: /etc/ssh/ssh_config
-    - name: add to sudoers without password
-      become: yes
-      lineinfile: >
-        dest=/etc/sudoers
-        regexp="{{ item.regexp }}"
-        line="{{ item.line }}"
-        state=present
-        create=true
-      with_items:
-        - { regexp: '^roderik', line: 'roderik ALL=(ALL) NOPASSWD: ALL' }
 
   roles:
     - profile-all

@@ -1,0 +1,62 @@
+[user]
+  name = Joseph Miller
+  email = joff@joff.codes
+  editor = vim
+  signingkey=198C913B
+
+[core]
+  excludesfile = /Users/joff/.gitignore_global
+  autocrlf = input
+
+[push]
+  default = current
+
+[github]
+  user = joffotron
+  token = a078727cece7f535c6958bb7c654b67c
+
+[alias]
+  up = !git fetch && git rebase -p origin/`git symbolic-ref HEAD | sed 's|.*/||'`
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --oneline --graph
+  type = cat-file -t
+  dump = cat-file -p
+  unstage = reset HEAD
+  abortabort = reset --hard HEAD
+  publish= "!f() { git push -u ${1:-origin} `git symbolic-ref HEAD`; }; f"
+  get= "!f() { git branch --track $1 origin/$1; }; f"
+
+[color]
+  diff = auto
+  status = auto
+  interactive = auto
+  ui = auto
+
+[rebase]
+  autoStash = true
+
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustexitcode = true
+
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+
+[merge]
+  tool = Kaleidoscope
+
+[diff]
+  tool = Kaleidoscope
+
+[commit]
+  gpgsign = true

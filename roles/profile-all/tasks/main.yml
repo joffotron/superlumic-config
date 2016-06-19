@@ -4,6 +4,19 @@
   homebrew_cask: name={{item}} state=present
   with_items:
     - google-drive
+    - google-chrome
     - vlc
-    #- keepingyouawake
+    - dash
+    - iterm2
+    - lastpass
 
+- name: install general brew applications
+  homebrew: name={{item}} state=latest
+  with_items:
+    - bash-completion
+    - lastpass-cli
+    - the_silver_searcher
+    - ack
+    - gnu-tar
+    - git
+    - git-extras
