@@ -21,3 +21,10 @@
     - java
     - gpgtools
 
+- name: Copy dotfiles
+  copy: src=files/{{ user_name }}/{{ item }} dest={{ home_dir }}/.{{ item }}
+  with_items:
+    - bashrc
+    - bash_profile
+    - npmrc
+    - vimrc
