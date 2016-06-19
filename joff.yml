@@ -72,8 +72,8 @@
         src: files/ssh_config
         dest: "{{ home_dir }}/.ssh/ssh_config"
 
-    - sublime_packages:
-        - dest: "SideBarEnhancements"
+#    - sublime_packages:
+#        - dest: "SideBarEnhancements"
 #  vars:
 #          repo: "https://github.com/titoBouzout/SideBarEnhancements"
 #          version: "st3"
