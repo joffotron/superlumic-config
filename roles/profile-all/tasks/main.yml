@@ -9,6 +9,7 @@
     - dash
     - iterm2
     - lastpass
+    - slack
 
 - name: install general brew applications
   homebrew: name={{item}} state=latest

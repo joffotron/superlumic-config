@@ -1,19 +1,21 @@
 [user]
-  name = Joseph Miller
-  email = joff@joff.codes
+  name = {{ git_user_name }}
+  email = {{ git_user_email }}
   editor = vim
-  signingkey=198C913B
+{% if git_signing_key is defined %}
+  signingkey={{ git_signing_key }}
+{% endif %}
 
 [core]
-  excludesfile = /Users/joff/.gitignore_global
+  excludesfile = /Users/{{ user_name }}/.gitignore_global
   autocrlf = input
 
 [push]
   default = current
 
 [github]
-  user = joffotron
-  token = a078727cece7f535c6958bb7c654b67c
+  user = {{ github_user_name }}
+  token = {{ github_token }}
 
 [alias]
   up = !git fetch && git rebase -p origin/`git symbolic-ref HEAD | sed 's|.*/||'`
