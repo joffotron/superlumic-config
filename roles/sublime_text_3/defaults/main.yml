@@ -1,8 +1,5 @@
 ---
 sublime_packages:
-  - dest: "Package Control"
-    repo: "https://github.com/wbond/package_control.git"
-    version: "master"
   - dest: "SideBarEnhancements"
     repo: "https://github.com/titoBouzout/SideBarEnhancements"
     version: "st3"
