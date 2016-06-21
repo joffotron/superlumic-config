@@ -1,5 +1,5 @@
 ---
-- sublime_packages:
+sublime_packages:
   - dest: "Package Control"
     repo: "https://github.com/wbond/package_control.git"
     version: "master"
@@ -42,14 +42,14 @@
   - dest: "SublimeLinter-contrib-elixirc"
     repo: "https://github.com/smanolloff/SublimeLinter-contrib-elixirc.git"
     version: "master"
-- sublime_text_color_scheme: "Packages/Theme - Cobalt2.cobalt2.tmTheme"
-- sublime_text_theme: "Cobalt2.sublime-theme"
-- sublime_translate_tabs_to_spaces: "true"
-- sublime_trim_automatic_white_space: "true"
-- sublime_trim_trailing_white_space_on_save: "true"
-- sublime_ensure_newline_at_eof_on_save: "true"
-- sublime_detect_indentation: "true"
-- sublime_tab_size: "2"
-- sublime_font_size: "12"
-- sublime_ignored_packages:
-  - "Vintage"
+sublime_text_color_scheme: "Packages/Theme - Cobalt2.cobalt2.tmTheme"
+sublime_text_theme: "Cobalt2.sublime-theme"
+sublime_translate_tabs_to_spaces: "true"
+sublime_trim_automatic_white_space: "true"
+sublime_trim_trailing_white_space_on_save: "true"
+sublime_ensure_newline_at_eof_on_save: "true"
+sublime_detect_indentation: "true"
+sublime_tab_size: "2"
+sublime_font_size: "12"
+sublime_ignored_packages:
+- "Vintage"
