@@ -1,16 +1,5 @@
-source ~/.git-completion.bash
-parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'; }
-
 #coloured less
 export LESS="-erX"
-
-export BLUE="\[\033[0;34m\]"
-export RESET="\[\033[0m\]"
-export YELLOW="\[\033[0;32m\]"
-#export PS1="\u@\h:${BLUE}\W ${YELLOW}\$(parse_git_branch)${RESET}\$ "
-export PS2='> '
-export PS4='+ '
-
 
 alias gs='git status '
 alias gu='git up '
@@ -29,11 +18,9 @@ alias lla='ls -la '
 alias z='zeus'
 alias sc='rails console'
 alias be='bundle exec'
-alias stage='cap staging current_branch deploy'
-alias demo='cap demo current_branch deploy'
 alias psp='nice -n 20 ;rake ci:setup:rspec parallel:spec[9]'
-alias dm='docker-machine'
 alias d='docker'
+alias dcom='docker-compose'
 alias ls='ls -G'
 
 alias ffs="sudo !!"
