@@ -15,7 +15,6 @@
 
 [github]
   user = {{ github_user_name }}
-  token = {{ github_token }}
 
 [alias]
   up = !git fetch && git rebase -p origin/`git symbolic-ref HEAD | sed 's|.*/||'`

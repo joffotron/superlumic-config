@@ -5,11 +5,10 @@
 
   vars:
     - user_name: joff
-    - computername: gene
+    - computername: cernan
     - home_dir: "/Users/{{ user_name }}/"
     - user_email: joff@joff.codes
     - github_user_name: joffotron
-    - github_token: a078727cece7f535c6958bb7c654b67c
     - git_user_name: Joseph Miller
     - git_user_email: "{{ user_email }}"
     - git_signing_key: 198C913B
@@ -17,6 +16,10 @@
   roles:
     - profile-all
     - profile-developer
+    - ruby
+    - python
+    - sublime_text_3
+#    - other-languages
 
   tasks:
     - name: install personal cask applications
@@ -45,6 +48,14 @@
 #        Missing AppStore apps: Wunderlist, LSwitch, WSwitch, Affinity Photo+Designer, Sunrise, 3Hub,
 #                               Tweetbot,
 
+    - name: Local bin dir
+      file: path="{{ home_dir }}/bin" state=directory
+
+    - name: Powerline Shell Prompt
+      git: repo=https://github.com/milkbikis/powerline-shell
+           dest="{{ home_dir }}/bin/powerline-shell"
+           version="master"
+
     - name: install personal brew applications
       homebrew: name={{item}} state=latest
       with_items:
@@ -58,7 +69,6 @@
         - pidof
         - s3cmd
         - spread
-        - thefuck
 
     - name: create .ssh directory
       file:
@@ -72,57 +82,48 @@
         src: files/ssh_config
         dest: "{{ home_dir }}/.ssh/ssh_config"
 
-#    - sublime_packages:
-#        - dest: "SideBarEnhancements"
-#  vars:
-#          repo: "https://github.com/titoBouzout/SideBarEnhancements"
-#          version: "st3"
-#        - dest: "GitGutter"
-#          repo: "https://github.com/jisaacks/GitGutter.git"
-#          version: "master"
-#        - dest: "BracketHighlighter"
-#          repo: "https://github.com/facelessuser/BracketHighlighter.git"
-#          version: "master"
-#        - dest: "Theme - Soda"
-#          repo: "https://github.com/buymeasoda/soda-theme.git"
-#          version: "master"
-#        - dest: "Base16"
-#          repo: "https://github.com/chriskempson/base16-textmate.git"
-#          version: "master"
-#        - dest: "ApplySyntax"
-#          repo: "https://github.com/facelessuser/ApplySyntax.git"
-#          version: "master"
-#        - dest: "SublimeAllAutocomplete"
-#          repo: "https://github.com/alienhard/SublimeAllAutocomplete"
-#          version: "master"
-#        - dest: "Ansible"
-#          repo: "https://github.com/clifford-github/sublime-ansible.git"
-#          version: "master"
-#    - sublime_text_color_scheme: "Packages/Base16/base16-eighties.dark.tmTheme"
-#    - sublime_text_theme: "Soda Dark 3.sublime-theme"
-#
-#
-#    - osx_defaults:
-#      - domain: 'com.apple.dock'
-#        key: 'autohide'
-#        type: boolean
-#        value: true
+    - name: Copy Jetbrains Settings Files
+      copy: src="{{ user_name }}/{{ item }}-settings.jar" dest="{{ home_dir }}/Desktop/{{ item }}-settings.jar"
+      with_items:
+        - RubyMine
+        - IntelliJ
+        - DataGrip
+
+    - name: Install Python pip packages
+      pip: state=present name="{{ item }}"
+      with_items:
+        - awslogs
+        - wharfee
+
+    - osx_defaults:
+      - domain: 'com.apple.dock'
+        key: 'autohide'
+        type: boolean
+        value: true
+      - domain: 'com.apple.dock'
+        key: 'autohide-time-modifier'
+        type: int
+        value: 0
+      - domain: 'com.apple.dock'
+        key: 'autohide-delay'
+        type: int
+        value: 0
+      - domain: 'com.apple.screencapture'
+        key: 'type'
+        type: string
+        value: png
+      - domain: 'com.apple.dock'
+        key: 'show-process-indicators'
+        type: boolean
+        value: true
 #      - domain: 'com.apple.dock'
 #        key: 'minimize-to-application'
 #        type: integer
 #        value: 1
-#      - domain: 'com.apple.dock'
-#        key: 'show-process-indicators'
-#        type: boolean
-#        value: true
 #      - domain: 'NSGlobalDomain'
 #        key: 'NSTableViewDefaultSizeMode'
 #        type: integer
 #        value: 1
-#      - domain: 'com.apple.screencapture'
-#        key: 'type'
-#        type: string
-#        value: png
 #      - domain: 'NSGlobalDomain'
 #        key: 'KeyRepeat'
 #        type: integer
@@ -135,10 +136,6 @@
 #        key: 'DateFormat'
 #        type: string
 #        value: EEE MMM d  HH:mm
-#      - domain: 'com.apple.menuextra.battery'
-#        key: 'ShowPercent'
-#        type: string
-#        value: 'YES'
 #      - domain: 'com.apple.finder'
 #        key: 'FXPreferredViewStyle'
 #        type: string
@@ -155,43 +152,3 @@
 #        key: 'tilesize'
 #        type: float
 #        value: 32
-#      - domain: 'com.apple.dock'
-#        key: 'autohide-time-modifier'
-#        type: int
-#        value: 0
-#      - domain: 'com.apple.dock'
-#        key: 'autohide-delay'
-#        type: int
-#        value: 0
-#      - domain: 'NSGlobalDomain'
-#        key: 'NSQuitAlwaysKeepsWindows'
-#        type: boolean
-#        value: false
-#      - domain: 'com.apple.desktopservices'
-#        key: 'DSDontWriteNetworkStores'
-#        type: boolean
-#        value: true
-#      - domain: 'com.apple.print.PrintingPrefs'
-#        key: 'Quit When Finished'
-#        type: boolean
-#        value: true
-#      - domain: 'com.apple.Safari'
-#        key: 'IncludeInternalDebugMenu'
-#        type: boolean
-#        value: true
-#      - domain: 'com.apple.Safari'
-#        key: 'IncludeDevelopMenu'
-#        type: boolean
-#        value: true
-#      - domain: 'com.apple.Safari'
-#        key: 'WebKitDeveloperExtrasEnabledPreferenceKey'
-#        type: boolean
-#        value: true
-#      - domain: 'com.apple.Safari'
-#        key: 'com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled'
-#        type: boolean
-#        value: true
-#      - domain: 'NSGlobalDomain'
-#        key: 'WebKitDeveloperExtras'
-#        type: boolean
-#        value: true
