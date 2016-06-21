@@ -15,13 +15,14 @@
 
   vars_files:
     - vars/osx_defaults.yml
+    - vars/sublime_text_3.yml
 
   roles:
     - profile-all
     - profile-developer
+    - roderik.superlumic-sublimetext
     - ruby
     - python
-    - sublime_text_3
 #    - other-languages
 
   tasks:
@@ -69,11 +70,10 @@
         - ipcalc
         - jq
         - moreutils
-        - ntfs-3g
+        - homebrew/fuse/ntfs-3g
         - packer
         - pidof
         - s3cmd
-        - spread
 
     - name: create .ssh directory
       file:
