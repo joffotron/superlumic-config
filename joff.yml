@@ -62,6 +62,9 @@
            dest="{{ home_dir }}/bin/powerline-shell"
            version="master"
 
+    - name: tap homebrew/fuse
+      homebrew_tap: tap=homebrew/fuse state=present
+
     - name: install personal brew applications
       homebrew: name={{item}} state=latest
       with_items:
@@ -70,7 +73,7 @@
         - ipcalc
         - jq
         - moreutils
-        - homebrew/fuse/ntfs-3g
+        - ntfs-3g
         - packer
         - pidof
         - s3cmd
