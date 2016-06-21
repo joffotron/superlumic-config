@@ -22,7 +22,7 @@ sublime_packages:
     repo: "https://github.com/clifford-github/sublime-ansible.git"
     version: "master"
   - dest: "Dictionaries"
-    repo: "https://github.com/titoBouzout/Dictionaties.git"
+    repo: "https://github.com/titoBouzout/Dictionaries.git"
     version: "master"
   - dest: "ElixirSublime"
     repo: "https://github.com/vishnevskiy/ElixirSublime.git"
