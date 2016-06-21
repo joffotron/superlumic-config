@@ -63,9 +63,9 @@
            version="master"
 
     - name: Run install for powerline shell prompt
-      command: "install.py"
+      command: "python install.py"
       args:
-        chdir: "{{ home_dir }}/bin/powerline-shell"
+        chdir: "{{ home_dir }}/bin/powerline-shell/"
 
     - name: tap homebrew/fuse
       homebrew_tap: tap=homebrew/fuse state=present
