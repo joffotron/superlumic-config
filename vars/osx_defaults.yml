@@ -1,0 +1,83 @@
+---
+osx_defaults:
+  - domain: 'com.apple.dock'
+    key: 'autohide'
+    type: boolean
+    value: true
+  - domain: 'com.apple.dock'
+    key: 'autohide-time-modifier'
+    type: int
+    value: 0
+  - domain: 'com.apple.dock'
+    key: 'autohide-delay'
+    type: int
+    value: 0
+  - domain: 'com.apple.screencapture'
+    key: 'type'
+    type: string
+    value: png
+  - domain: 'com.apple.dock'
+    key: 'show-process-indicators'
+    type: boolean
+    value: true
+  - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: 'Clicking'
+    type: boolean
+    value: true
+  - domain: 'NSGlobalDomain'
+    key: 'com.apple.mouse.tapBehavior'
+    type: integer
+    value: 1
+  - domain: 'NSGlobalDomain'
+    key: 'ApplePressAndHoldEnabled'
+    type: boolean
+    value: false
+  - domain: 'NSGlobalDomain'
+    key: 'InitialKeyRepeat'
+    type: integer
+    value: 15
+  - domain: 'NSGlobalDomain'
+    key: 'AppleShowScrollBars'
+    type: string
+    value: always
+  - domain: 'NSGlobalDomain'
+    key: 'NSNavPanelExpandedStateForSaveMode'
+    type: boolean
+    value: true
+  - domain: 'NSGlobalDomain'
+    key: 'NSNavPanelExpandedStateForSaveMode2'
+    type: boolean
+    value: true
+
+#      - domain: 'com.apple.dock'
+#        key: 'minimize-to-application'
+#        type: integer
+#        value: 1
+#      - domain: 'NSGlobalDomain'
+#        key: 'NSTableViewDefaultSizeMode'
+#        type: integer
+#        value: 1
+#      - domain: 'NSGlobalDomain'
+#        key: 'KeyRepeat'
+#        type: integer
+#        value: 2
+#      - domain: 'com.apple.menuextra.clock'
+#        key: 'DateFormat'
+#        type: string
+#        value: EEE MMM d  HH:mm
+#      - domain: 'com.apple.finder'
+#        key: 'FXPreferredViewStyle'
+#        type: string
+#        value: "clmv"
+#      - domain: 'NSGlobalDomain'
+#        key: 'NSNavPanelExpandedStateForSaveMode'
+#        type: boolean
+#        value: true
+#      - domain: 'NSGlobalDomain'
+#        key: 'PMPrintingExpandedStateForPrint'
+#        type: boolean
+#        value: true
+#      - domain: 'com.apple.dock'
+#        key: 'tilesize'
+#        type: float
+#        value: 32
