@@ -21,3 +21,6 @@
     - gnu-tar
     - git
     - git-extras
+
+- name: Generate SSH keypair
+  user: name={{ user_name }} generate_ssh_key=yes ssh_key_bits=2048 ssh_key_file=.ssh/id_rsa

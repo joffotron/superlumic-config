@@ -12,6 +12,7 @@
     - wget
     - pwgen
     - htop
+    - httpie
     - watch
     - rsync
     - awscli

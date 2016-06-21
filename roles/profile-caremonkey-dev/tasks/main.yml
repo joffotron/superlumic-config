@@ -1,0 +1,9 @@
+---
+- name: Set src_dir var
+  vars:
+    src_dir: "{{ home_dir }}/src"
+
+- name: Make src directory
+  file: file: path="{{ src_dir }}" state=directory
+
+- include: upload-github-pubkey.yml

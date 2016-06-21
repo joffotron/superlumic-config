@@ -1,0 +1,24 @@
+---
+- name: Check for existing SSH communication with Github
+  command: ssh -T git@github.com -o StrictHostKeyChecking=no
+  register: has_github_ssh
+  ignore_errors: true
+
+- name: Gather Github Credentials
+  vars_prompt:
+    - name: "github_password"
+      prompt: "Enter your Github Account Password:"
+    - name: "github_totp"
+      prompt: "Enter your Github 2FA code (blank if you don't use it):"
+
+- name: Add your key to Github (with 2FA)
+  when:
+    - has_github_ssh | failed
+    - github_totp is defined
+  command: http --auth {{ github_user_name }} POST https://api.github.com/user/keys X-GitHub-OTP:{{ github_topt }} title="{{ computername }}" key="`cat ~/.ssh/id_rsa.pub`"
+
+- name: Add your key to Github
+  when:
+      - has_github_ssh | failed
+      - github_totp is not defined
+  command: http --auth {{ github_user_name }} POST https://api.github.com/user/keys title="{{ computername }}" key="`cat ~/.ssh/id_rsa.pub`"
