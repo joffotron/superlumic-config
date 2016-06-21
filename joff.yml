@@ -67,8 +67,11 @@
       args:
         chdir: "{{ home_dir }}/bin/powerline-shell/"
 
-    - name: tap homebrew/fuse
-      homebrew_tap: tap=homebrew/fuse state=present
+    - name: homebrew taps
+      homebrew_tap: tap={{ item }} state=present
+      with_items:
+        - homebrew/fuse
+        - Caskroom/cask
 
     - name: install personal brew applications
       homebrew: name={{item}} state=latest
@@ -78,6 +81,7 @@
         - ipcalc
         - jq
         - moreutils
+        - osxfuse
         - ntfs-3g
         - packer
         - pidof
