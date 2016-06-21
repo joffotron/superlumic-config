@@ -15,7 +15,7 @@
 #- src: https://github.com/superlumic/ansible-role-mysql.git
 #  name: roderik.superlumic-mysql
 
-- src: https://github.com/superlumic/ansible-role-sublimetext.git
+- src: https://github.com/joffotron/ansible-role-sublimetext.git
   name: roderik.superlumic-sublimetext
 
 - src: https://github.com/superlumic/ansible-role-node.git
