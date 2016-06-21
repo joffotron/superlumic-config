@@ -12,3 +12,4 @@ galaxy_info:
     - system
 dependencies:
   - roderik.superlumic-computername
+  - roderik.superlumic-homebrew
