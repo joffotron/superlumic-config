@@ -25,18 +25,9 @@
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
-        - spotify
         - istat-menus
         - dropbox
         - kaleidoscope
-        - sonos
-        - gitkraken
-        - monodraw
-        - moom
-        - libreoffice
-        - datagrip
-        - intellij-idea
-        - rubymine
         - xee
         - bartender
         - chicken
@@ -45,8 +36,19 @@
         - tresorit
         - evernote
         - skitch
+        - gitkraken
+        - monodraw
+        - moom
+        - flux
+        - datagrip
+        - intellij-idea
+        - rubymine
+        - sonos
+        - spotify
+        - libreoffice
+
 #        Missing AppStore apps: Wunderlist, LSwitch, WSwitch, Affinity Photo+Designer, Sunrise, 3Hub,
-#                               Tweetbot,
+#                               Tweetbot, Docker Beta
 
     - name: Local bin dir
       file: path="{{ home_dir }}/bin" state=directory
