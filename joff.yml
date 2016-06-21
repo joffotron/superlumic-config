@@ -81,8 +81,8 @@
         - ipcalc
         - jq
         - moreutils
-        - osxfuse
-        - ntfs-3g
+#        - osxfuse
+#        - ntfs-3g
         - packer
         - pidof
         - s3cmd
