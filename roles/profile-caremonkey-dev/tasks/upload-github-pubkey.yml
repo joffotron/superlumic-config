@@ -8,6 +8,7 @@
   vars_prompt:
     - name: "github_password"
       prompt: "Enter your Github Account Password:"
+      private: yes
     - name: "github_totp"
       prompt: "Enter your Github 2FA code (blank if you don't use it):"
 
