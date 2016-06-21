@@ -1,6 +1,6 @@
 ---
 - name: Set src_dir var
-  vars:
+  set_fact:
     src_dir: "{{ home_dir }}/src"
 
 - name: Make src directory
