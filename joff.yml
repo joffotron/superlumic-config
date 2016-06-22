@@ -12,6 +12,8 @@
     - git_user_name: Joseph Miller
     - git_user_email: "{{ user_email }}"
     - git_signing_key: 198C913B
+    # Override source dir
+    - src_dir: "{{ home_dir }}/src/CareMonkey"
 
   vars_files:
     - vars/osx_defaults.yml

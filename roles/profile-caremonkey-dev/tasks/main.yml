@@ -7,3 +7,14 @@
   file: path="{{ src_dir }}" state=directory
 
 - include: upload-github-pubkey.yml
+
+- name: Checkout repositories
+  git: repo=https://github.com/{{ item.account }}/{{ item.repo }}
+       dest="{{ src_dir }}/{{ item.repo }}
+       version="master"
+  with_items:
+    - { account: 'mph', repo: 'cm' }
+    - { account: 'mph', repo: 'cm_app' }
+    - { account: 'mph', repo: 'cm_opsworks_recipies' }
+    - { account: 'mph', repo: 'synergy_sync' }
+
