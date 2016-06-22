@@ -17,3 +17,4 @@
     body_format: json
     user: "{{ github_user_name }}"
     password: "{{ github_auth_token }}"
+    force_basic_auth: yes
