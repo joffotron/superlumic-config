@@ -7,7 +7,7 @@
 
 - name: Abort if Disk not encrypted
   fail: msg="Sorry, Please turn on FileVault Full Disk Encryption before proceeding"
-  when: fde_status != "FileVault is On."
+  when: fde_status.stdout.find("FileVault is On.") != -1
 
 - name: install cask applications for all users
   homebrew_cask: name={{item}} state=present
