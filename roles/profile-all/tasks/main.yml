@@ -1,5 +1,14 @@
 ---
 
+- name: Check for FileVault Full Disk Encryption
+  command: fdesetup status
+  become: yes
+  register: fde_status
+
+- name: Abort if Disk not encrypted
+  fail: msg="Sorry, Please turn on FileVault Full Disk Encryption before proceeding"
+  when: fde_status != "FileVault is On."
+
 - name: install cask applications for all users
   homebrew_cask: name={{item}} state=present
   with_items:

@@ -1,4 +1,8 @@
 ---
+- name: Read Public SSH key
+  slurp: src={{ home_dir }}/.ssh/id_rsa.pub
+  register: public_ssh_key
+
 - name: Check for existing SSH communication with Github
   command: ssh -T git@github.com -o StrictHostKeyChecking=no
   register: has_github_ssh
@@ -6,4 +10,10 @@
 
 - name: Add your key to Github (with 2FA)
   when: has_github_ssh | failed
-  command: "http -b --auth {{ github_user_name }}:{{ github_auth_token }} POST https://api.github.com/user/keys title=\"{{ computername }}\" key=\"`cat ~/.ssh/id_rsa.pub`\""
+  uri:
+    url: https://api.github.com/user/keys
+    method: POST
+    body: { title: {{ computername }}, key: {{ public_ssh_key | base64decode }} }
+    body_format: json
+    user: "{{ github_user_name }}"
+    password: "{{ github_auth_token }}"

@@ -98,7 +98,6 @@
         mode: 0700
 
     - name: personal ssh config
-      become: yes
       copy:
         src: files/ssh_config
         dest: "{{ home_dir }}/.ssh/ssh_config"
