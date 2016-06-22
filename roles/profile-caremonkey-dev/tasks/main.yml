@@ -9,9 +9,8 @@
 - include: upload-github-pubkey.yml
 
 - name: Checkout repositories
-  git: repo=https://github.com/{{ item.account }}/{{ item.repo }}
-       dest="{{ src_dir }}/{{ item.repo }}
-       version="master"
+  git: repo="git@github.com/{{ item.account }}/{{ item.repo }}"
+       dest="{{ src_dir }}/{{ item.repo }}"
   with_items:
     - { account: 'mph', repo: 'cm' }
     - { account: 'mph', repo: 'cm_app' }
