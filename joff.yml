@@ -21,12 +21,12 @@
     - vars/{{ user_name }}-secrets.yml
 
   roles:
-    - profile-all
-    - profile-developer
-    - roderik.superlumic-sublimetext
-    - ruby
-    - python
-    - profile-caremonkey-dev
+    - { role: profile-all, tags: base }
+    - { role: profile-developer, tags: base-dev }
+    - { role: roderik.superlumic-sublimetext, tags: sublime }
+    - { role: ruby, tags: ruby }
+    - { role: python, tags: python }
+    - { role: profile-caremonkey-dev, tags: caremonkey }
 #    - other-languages
 
   tasks:

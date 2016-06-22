@@ -6,4 +6,4 @@
 
 - name: Add your key to Github (with 2FA)
   when: has_github_ssh | failed
-  command: http -b --auth {{ github_user_name }}:{{ github_auth_token }} POST https://api.github.com/user/keys title="{{ computername }}" key=\"`cat ~/.ssh/id_rsa.pub`\"
+  command: "http -b --auth {{ github_user_name }}:{{ github_auth_token }} POST https://api.github.com/user/keys title=\"{{ computername }}\" key=\"`cat ~/.ssh/id_rsa.pub`\""
