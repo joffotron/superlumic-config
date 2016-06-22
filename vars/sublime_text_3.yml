@@ -39,7 +39,7 @@ sublime_packages:
   - dest: "SublimeLinter-contrib-elixirc"
     repo: "https://github.com/smanolloff/SublimeLinter-contrib-elixirc.git"
     version: "master"
-sublime_text_color_scheme: "Packages/Theme - Cobalt2.cobalt2.tmTheme"
+sublime_text_color_scheme: "Packages/Theme - Cobalt2/cobalt2.tmTheme"
 sublime_text_theme: "Cobalt2.sublime-theme"
 sublime_translate_tabs_to_spaces: "true"
 sublime_trim_automatic_white_space: "true"
