@@ -14,6 +14,6 @@
   with_items:
     - { account: 'mph', repo: 'cm' }
     - { account: 'mph', repo: 'cm_app' }
-    - { account: 'mph', repo: 'cm_opsworks_recipies' }
+    - { account: 'mph', repo: 'cm_opsworks_recipes' }
     - { account: 'mph', repo: 'synergy_sync' }
 
