@@ -8,8 +8,8 @@
   register: has_github_ssh
   ignore_errors: true
 
-- name: Add your key to Github (with 2FA)
-  when: has_github_ssh | failed
+- name: Add your key to Github (using API auth token)
+  when: has_github_ssh.stderr | match("Permission denied")
   uri:
     url: https://api.github.com/user/keys
     method: POST
