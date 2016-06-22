@@ -9,7 +9,7 @@
 - include: upload-github-pubkey.yml
 
 - name: Checkout repositories
-  git: repo="git@github.com/{{ item.account }}/{{ item.repo }}"
+  git: repo="ssh://git@github.com/{{ item.account }}/{{ item.repo }}.git"
        dest="{{ src_dir }}/{{ item.repo }}"
   with_items:
     - { account: 'mph', repo: 'cm' }
