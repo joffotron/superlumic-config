@@ -16,6 +16,7 @@
   vars_files:
     - vars/osx_defaults.yml
     - vars/sublime_text_3.yml
+    - vars/{{ user_name }}-secrets.yml
 
   roles:
     - profile-all
