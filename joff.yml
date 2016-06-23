@@ -13,9 +13,14 @@
     - git_user_name: Joseph Miller
     - git_user_email: "{{ user_email }}"
     - git_signing_key: 198C913B
+    - apple_id_email: joff@googlehax.com
     # Override source dir
     - src_dir: "{{ home_dir }}/src/CareMonkey"
     - settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
+
+    # Set these in secrets file:
+    # github_auth_token
+    # apple_id_password
 
   vars_files:
     - vars/osx_defaults.yml
@@ -47,7 +52,6 @@
         - skitch
         - gitkraken
         - monodraw
-        - moom
         - flux
         - datagrip
         - intellij-idea
@@ -55,9 +59,6 @@
         - sonos
         - spotify
         - libreoffice
-
-#        Missing AppStore apps: Wunderlist, LSwitch, WSwitch, Affinity Photo+Designer, Sunrise, 3Hub,
-#                               Tweetbot, Docker Beta, kaleidoscope (purchased)
 
     - name: Local bin dir
       file: path="{{ home_dir }}/bin" state=directory
@@ -81,6 +82,7 @@
     - name: install personal brew applications
       homebrew: name={{item}} state=latest
       with_items:
+        - mas
         - certbot
         - z
         - ipcalc
@@ -91,6 +93,21 @@
         - packer
         - pidof
         - s3cmd
+
+    - name: Signin to the Mac App Store
+      command: mas signin {{ apple_id_email }} "{{ apple_id_password }}"
+
+    - name: Install Mac App Store applications
+      command: mas install {{ item.id }}
+      with_items:
+        - { 587512244 Kaleidoscope }
+        - { 427515976 3Hub }
+        - { 419330170 Moom }
+        - { 410628904 Wunderlist }
+        - { 824183456 Affinity Photo }
+        - { 824171161 Affinity Designer }
+        - { 557168941 Tweetbot }
+
 
     - name: Install Python pip packages
       pip: state=present name="{{ item }}"
@@ -122,6 +139,14 @@
         - BetterTouchTool.settings
         - com.manytricks.Moom.plist  #for safekeeping
 
+    - name: Kill Moom
+      command: kill `pidof Moom`
+
+    - name: killall cfprefsd so we can copy the Moom prefs
+      command: killall cfprefsd
+
     - name: Copy moom config
       copy: src=joff/com.manytricks.Moom.plist dest="{{ home_dir }}/Library/Preferences/com.manytricks.Moom.plist"
 
+    - name: Start Moom again
+      command: open /Applications/Moom.app
