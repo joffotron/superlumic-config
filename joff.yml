@@ -15,7 +15,7 @@
     - git_signing_key: 198C913B
     # Override source dir
     - src_dir: "{{ home_dir }}/src/CareMonkey"
-    - settings_exports_dir: "{{ home_dir }}/tmp/SettingsExports"
+    - settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
 
   vars_files:
     - vars/osx_defaults.yml
@@ -110,7 +110,7 @@
         dest: "{{ home_dir }}/.ssh/ssh_config"
 
     - name: Create SettingsExports dir
-      file: path={{ settings_exports_dir}} state=directory
+      file: path={{ settings_export_dir }} state=directory
 
     - name: Copy Jetbrains Settings Files
       copy: src="{{ user_name }}/{{ item }}" dest="{{ settings_export_dir }}/{{ item }}"
