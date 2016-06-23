@@ -4,6 +4,7 @@
   connection: local
 
   vars:
+    - superlimic_config_repo: https://github.com/joffotron/superlumic-config.git
     - user_name: joff
     - computername: cernan
     - home_dir: "/Users/{{ user_name }}/"
@@ -14,6 +15,7 @@
     - git_signing_key: 198C913B
     # Override source dir
     - src_dir: "{{ home_dir }}/src/CareMonkey"
+    - settings_exports_dir: "{{ home_dir }}/tmp/SettingsExports"
 
   vars_files:
     - vars/osx_defaults.yml
@@ -35,7 +37,6 @@
       with_items:
         - istat-menus
         - dropbox
-        - kaleidoscope
         - xee
         - bartender
         - chicken
@@ -56,7 +57,7 @@
         - libreoffice
 
 #        Missing AppStore apps: Wunderlist, LSwitch, WSwitch, Affinity Photo+Designer, Sunrise, 3Hub,
-#                               Tweetbot, Docker Beta
+#                               Tweetbot, Docker Beta, kaleidoscope (purchased)
 
     - name: Local bin dir
       file: path="{{ home_dir }}/bin" state=directory
@@ -91,6 +92,12 @@
         - pidof
         - s3cmd
 
+    - name: Install Python pip packages
+      pip: state=present name="{{ item }}"
+      with_items:
+        - awslogs
+        - wharfee
+
     - name: create .ssh directory
       file:
         path: "{{ home_dir }}/.ssh/"
@@ -102,16 +109,18 @@
         src: files/ssh_config
         dest: "{{ home_dir }}/.ssh/ssh_config"
 
-    - name: Copy Jetbrains Settings Files
-      copy: src="{{ user_name }}/{{ item }}-settings.jar" dest="{{ home_dir }}/Desktop/{{ item }}-settings.jar"
-      with_items:
-        - RubyMine
-        - IntelliJ
-        - DataGrip
+    - name: Create SettingsExports dir
+      file: path={{ settings_exports_dir}} state=directory
 
-    - name: Install Python pip packages
-      pip: state=present name="{{ item }}"
+    - name: Copy Jetbrains Settings Files
+      copy: src="{{ user_name }}/{{ item }}" dest="{{ settings_export_dir }}/{{ item }}"
       with_items:
-        - awslogs
-        - wharfee
+        - RubyMine-settings.jar
+        - IntelliJ-settings.jar
+        - DataGrip-settings.jar
+        - iStatMenusSettings.ismp
+        - BetterTouchTool.settings
+
+    - name: Copy moom config
+      copy: src=joff/com.manytricks.Moom.plist dest="{{ home_dir }}"/Library/Preferences/com.manytricks.Moom.plist
 

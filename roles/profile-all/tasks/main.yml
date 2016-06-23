@@ -9,6 +9,11 @@
   fail: msg="Sorry, Please turn on FileVault Full Disk Encryption before proceeding"
   when: fde_status.stdout != "FileVault is On."
 
+- name: Copy superlumic script into /usr/local/bin
+  template: src=superlumic.sh
+            dest=/usr/local/bin/superlumic
+            mode=0775
+
 - name: install cask applications for all users
   homebrew_cask: name={{item}} state=present
   with_items:
