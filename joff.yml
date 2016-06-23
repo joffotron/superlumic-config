@@ -123,5 +123,5 @@
         - com.manytricks.Moom.plist  #for safekeeping
 
     - name: Copy moom config
-      copy: src=joff/com.manytricks.Moom.plist dest="{{ home_dir }}"/Library/Preferences/com.manytricks.Moom.plist
+      copy: src=joff/com.manytricks.Moom.plist dest="{{ home_dir }}/Library/Preferences/com.manytricks.Moom.plist"
 
