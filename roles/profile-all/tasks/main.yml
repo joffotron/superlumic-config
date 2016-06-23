@@ -10,7 +10,7 @@
   when: fde_status.stdout != "FileVault is On."
 
 - name: Copy superlumic script into /usr/local/bin
-  template: src=superlumic.sh
+  template: src=superlumic.sh.j2
             dest=/usr/local/bin/superlumic
             mode=0775
 
