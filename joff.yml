@@ -17,7 +17,6 @@
     # Override source dir
     - src_dir: "{{ home_dir }}/src/CareMonkey"
     - settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
-
     # Set these in secrets file:
     # github_auth_token
     # apple_id_password
@@ -33,6 +32,7 @@
     - { role: roderik.superlumic-sublimetext, tags: sublime }
     - { role: ruby, tags: ruby }
     - { role: python, tags: python }
+    - { role: golang, tags: golang }
     - { role: profile-caremonkey-dev, tags: caremonkey }
 #    - other-languages
 
@@ -88,25 +88,23 @@
         - ipcalc
         - jq
         - moreutils
-#        - osxfuse
-#        - ntfs-3g
         - packer
         - pidof
         - s3cmd
 
-    - name: Signin to the Mac App Store
-      command: mas signin {{ apple_id_email }} "{{ apple_id_password }}"
+#    - name: Signin to the Mac App Store
+#      command: mas signin {{ apple_id_email }} "{{ apple_id_password }}"
 
-    - name: Install Mac App Store applications
-      command: mas install {{ item.id }}
-      with_items:
-        - { 587512244 Kaleidoscope }
-        - { 427515976 3Hub }
-        - { 419330170 Moom }
-        - { 410628904 Wunderlist }
-        - { 824183456 Affinity Photo }
-        - { 824171161 Affinity Designer }
-        - { 557168941 Tweetbot }
+#    - name: Install Mac App Store applications
+#      command: mas install {{ item.id }}
+#      with_items:
+#        - { 587512244 Kaleidoscope }
+#        - { 427515976 3Hub }
+#        - { 419330170 Moom }
+#        - { 410628904 Wunderlist }
+#        - { 824183456 Affinity Photo }
+#        - { 824171161 Affinity Designer }
+#        - { 557168941 Tweetbot }
 
 
     - name: Install Python pip packages
@@ -138,77 +136,20 @@
         - iStatMenusSettings.ismp
         - BetterTouchTool.settings
         - com.manytricks.Moom.plist  #for safekeeping
+        - osx-keybindings.plist
+
+    - name: killall cfprefsd so we can copy prefs
+      command: killall cfprefsd
+
+    - name: OSX Keyboard shortcuts
+      command: defaults import com.apple.symbolichotkeys {{ settings_export_dir }}/osx-keybindings.plist
+      tags: osxshortcuts
 
     - name: Kill Moom
       command: kill `pidof Moom`
-
-    - name: killall cfprefsd so we can copy the Moom prefs
-      command: killall cfprefsd
 
     - name: Copy moom config
       copy: src=joff/com.manytricks.Moom.plist dest="{{ home_dir }}/Library/Preferences/com.manytricks.Moom.plist"
 
     - name: Start Moom again
       command: open /Applications/Moom.app
-
-    - name: OSX Keyboard shortcuts
-      tags: osxshortcuts
-      command: defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys {{ item.keyid }} "{enabled = {{ item.enabled }} ; value = { parameters = ({{ item.params }}); type = 'standard'; }; }"
-      with_items:
-        - { keyid: 0, enabled: 1, params: '65535, 6, 4' }
-        - { keyid: 1, enabled: 1, params: '65535, 7, 4' }
-        - { keyid: 8, enabled: 0, params: '65535, 8, 4' }
-        - { keyid: 9, enabled: 0, params: '65535, 9, 4' }
-        - { keyid: 2, enabled: 1, params: '65535, 2, 4' }
-        - { keyid: 0, enabled: 0, params: '65535, 0, 4' }
-        - { keyid: 1, enabled: 0, params: '65535, 1, 4' }
-        - { keyid: 2, enabled: 0, params: '65535, 3, 4' }
-        - { keyid: 3, enabled: 1, params: '65535, 8, 4' }
-        - { keyid: 5, enabled: 1, params: '56, 8, 4' }
-        - { keyid: 0, enabled: 0, params: '65535, 5, 0' }
-        - { keyid: 2, enabled: 1, params: '65535, 6, 4' }
-        - { keyid: 3, enabled: 0, params: '65535, 5, 0' }
-        - { keyid: 7, enabled: 1, params: '61, 4, 4' }
-        - { keyid: 5, enabled: 1, params: '65535, 5, 0' }
-        - { keyid: 9, enabled: 1, params: '65535, 5, 0' }
-        - { keyid: 9, enabled: 1, params: '45, 7, 4' }
-        - { keyid: 1, enabled: 0, params: '56, 8, 8' }
-        - { keyid: 3, enabled: 1, params: '92, 2, 4' }
-        - { keyid: 5, enabled: 0, params: '46, 7, 8' }
-        - { keyid: 6, enabled: 0, params: '44, 3, 8' }
-        - { keyid: 7, enabled: 1, params: '96, 0, 6' }
-        - { keyid: 8, enabled: 1, params: '51, 0, 8' }
-        - { keyid: 9, enabled: 1, params: '51, 0, 2' }
-        - { keyid: 0, enabled: 1, params: '52, 1, 8' }
-        - { keyid: 1, enabled: 1, params: '52, 1, 2' }
-        - { keyid: 2, enabled: 0, params: '65535, 1, 0' }
-        - { keyid: 3, enabled: 0, params: '65535, 5, 4' }
-        - { keyid: 4, enabled: 0, params: '65535, 1, 2' }
-        - { keyid: 5, enabled: 0, params: '65535, 5, 6' }
-        - { keyid: 6, enabled: 1, params: '65535, 3, 0' }
-        - { keyid: 7, enabled: 1, params: '65535, 3, 2' }
-        - { keyid: 1, enabled: 1, params: '39, 0, 4' }
-        - { keyid: 2, enabled: 0, params: '100, 2, 4' }
-        - { keyid: 3, enabled: 1, params: '65535, 7, 0' }
-        - { keyid: 4, enabled: 1, params: '65535, 3, 0' }
-        - { keyid: 5, enabled: 1, params: '65535, 7, 8' }
-        - { keyid: 6, enabled: 1, params: '65535, 3, 8' }
-        - { keyid: 7, enabled: 1, params: '65535, 0, 4' }
-        - { keyid: 9, enabled: 1, params: '65535, 6, 6' }
-        - { keyid: 0, enabled: 1, params: '32, 9, 6' }
-        - { keyid: 1, enabled: 1, params: '32, 9, 4' }
-        - { keyid: 2, enabled: 0, params: '65535, 1, 0' }
-        - { keyid: 3, enabled: 0, params: '65535, 1, 2' }
-        - { keyid: 4, enabled: 0, params: '65535, 9, 6' }
-        - { keyid: 5, enabled: 0, params: '65535, 9, 4' }
-        - { keyid: 7, enabled: 1, params: '65535, 0, 4' }
-        - { keyid: 9, enabled: 1, params: '65535, 3, 4' }
-        - { keyid: 8, enabled: 1, params: '65535, 9, 4' }
-        - { keyid: 0, enabled: 1, params: '65535, 3, 6' }
-        - { keyid: 1, enabled: 1, params: '65535, 4, 4' }
-        - { keyid: 2, enabled: 1, params: '65535, 4, 6' }
-        - { keyid: 9, enabled: 1, params: '65535, 8, 4' }
-        - { keyid: 8, enabled: 1, params: '47, 4, 8' }
-
-
-
