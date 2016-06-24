@@ -3,7 +3,8 @@
   file: path={{ home_dir }}/src/go state=directory
 
 - name: Set GOPATH
-  lineinfile: dest={{ home_dir }}/.bash_profile line=export PATH=$PATH:{{ home_dir}}/src/go
+  lineinfile: dest={{ home_dir }}/.bash_profile
+              line="export PATH=$PATH:{{ home_dir}}/src/go"
 
 - name: Install golang
   homebrew: name={{item}} state=latest
