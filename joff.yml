@@ -150,3 +150,65 @@
 
     - name: Start Moom again
       command: open /Applications/Moom.app
+
+    - name: OSX Keyboard shortcuts
+      tags: osxshortcuts
+      command: defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys {{ item.keyid }} "{enabled = {{ item.enabled }} ; value = { parameters = ({{ item.params }}); type = ‘standard’; }; }"
+      with_items:
+        - { keyid: 0, enabled: 1, params: '65535, 6, 4' }
+        - { keyid: 1, enabled: 1, params: '65535, 7, 4' }
+        - { keyid: 8, enabled: 0, params: '65535, 8, 4' }
+        - { keyid: 9, enabled: 0, params: '65535, 9, 4' }
+        - { keyid: 2, enabled: 1, params: '65535, 2, 4' }
+        - { keyid: 0, enabled: 0, params: '65535, 0, 4' }
+        - { keyid: 1, enabled: 0, params: '65535, 1, 4' }
+        - { keyid: 2, enabled: 0, params: '65535, 3, 4' }
+        - { keyid: 3, enabled: 1, params: '65535, 8, 4' }
+        - { keyid: 5, enabled: 1, params: '56, 8, 4' }
+        - { keyid: 0, enabled: 0, params: '65535, 5, 0' }
+        - { keyid: 2, enabled: 1, params: '65535, 6, 4' }
+        - { keyid: 3, enabled: 0, params: '65535, 5, 0' }
+        - { keyid: 7, enabled: 1, params: '61, 4, 4' }
+        - { keyid: 5, enabled: 1, params: '65535, 5, 0' }
+        - { keyid: 9, enabled: 1, params: '65535, 5, 0' }
+        - { keyid: 9, enabled: 1, params: '45, 7, 4' }
+        - { keyid: 1, enabled: 0, params: '56, 8, 8' }
+        - { keyid: 3, enabled: 1, params: '92, 2, 4' }
+        - { keyid: 5, enabled: 0, params: '46, 7, 8' }
+        - { keyid: 6, enabled: 0, params: '44, 3, 8' }
+        - { keyid: 7, enabled: 1, params: '96, 0, 6' }
+        - { keyid: 8, enabled: 1, params: '51, 0, 8' }
+        - { keyid: 9, enabled: 1, params: '51, 0, 2' }
+        - { keyid: 0, enabled: 1, params: '52, 1, 8' }
+        - { keyid: 1, enabled: 1, params: '52, 1, 2' }
+        - { keyid: 2, enabled: 0, params: '65535, 1, 0' }
+        - { keyid: 3, enabled: 0, params: '65535, 5, 4' }
+        - { keyid: 4, enabled: 0, params: '65535, 1, 2' }
+        - { keyid: 5, enabled: 0, params: '65535, 5, 6' }
+        - { keyid: 6, enabled: 1, params: '65535, 3, 0' }
+        - { keyid: 7, enabled: 1, params: '65535, 3, 2' }
+        - { keyid: 1, enabled: 1, params: '39, 0, 4' }
+        - { keyid: 2, enabled: 0, params: '100, 2, 4' }
+        - { keyid: 3, enabled: 1, params: '65535, 7, 0' }
+        - { keyid: 4, enabled: 1, params: '65535, 3, 0' }
+        - { keyid: 5, enabled: 1, params: '65535, 7, 8' }
+        - { keyid: 6, enabled: 1, params: '65535, 3, 8' }
+        - { keyid: 7, enabled: 1, params: '65535, 0, 4' }
+        - { keyid: 9, enabled: 1, params: '65535, 6, 6' }
+        - { keyid: 0, enabled: 1, params: '32, 9, 6' }
+        - { keyid: 1, enabled: 1, params: '32, 9, 4' }
+        - { keyid: 2, enabled: 0, params: '65535, 1, 0' }
+        - { keyid: 3, enabled: 0, params: '65535, 1, 2' }
+        - { keyid: 4, enabled: 0, params: '65535, 9, 6' }
+        - { keyid: 5, enabled: 0, params: '65535, 9, 4' }
+        - { keyid: 7, enabled: 1, params: '65535, 0, 4' }
+        - { keyid: 9, enabled: 1, params: '65535, 3, 4' }
+        - { keyid: 8, enabled: 1, params: '65535, 9, 4' }
+        - { keyid: 0, enabled: 1, params: '65535, 3, 6' }
+        - { keyid: 1, enabled: 1, params: '65535, 4, 4' }
+        - { keyid: 2, enabled: 1, params: '65535, 4, 6' }
+        - { keyid: 9, enabled: 1, params: '65535, 8, 4' }
+        - { keyid: 8, enabled: 1, params: '47, 4, 8' }
+
+
+
