@@ -153,7 +153,7 @@
 
     - name: OSX Keyboard shortcuts
       tags: osxshortcuts
-      command: defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys {{ item.keyid }} "{enabled = {{ item.enabled }} ; value = { parameters = ({{ item.params }}); type = ‘standard’; }; }"
+      command: defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys {{ item.keyid }} "{enabled = {{ item.enabled }} ; value = { parameters = ({{ item.params }}); type = 'standard'; }; }"
       with_items:
         - { keyid: 0, enabled: 1, params: '65535, 6, 4' }
         - { keyid: 1, enabled: 1, params: '65535, 7, 4' }
