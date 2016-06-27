@@ -154,3 +154,8 @@
 
     - name: Start Moom again
       command: open /Applications/Moom.app
+
+    - name: Link GPG directory from Tresors
+      file: path={{ home_dir }}/.gnupg
+            src={{ home_dir }}/Tresors/TheCrypt/GPG/gnupg
+            state=link
