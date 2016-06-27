@@ -155,7 +155,17 @@
     - name: Start Moom again
       command: open /Applications/Moom.app
 
+    - name: Check stat of .gnupg dir
+      stat: path={{ home_dir }}/.gnupg
+      register: gnupg_dir_stat
+
+    - name: Remove .gnupg dir if it exists
+      file: path={{ home_dir }}/.gnupg
+            state=absent
+      when: gnupg_dir_stat.exists == True and gnupg_dir_stat.islnk == False
+
     - name: Link GPG directory from Tresors
       file: path={{ home_dir }}/.gnupg
             src={{ home_dir }}/Tresors/TheCrypt/GPG/gnupg
+            mode=0600
             state=link
