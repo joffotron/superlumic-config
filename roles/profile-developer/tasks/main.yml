@@ -32,3 +32,6 @@
     - bash_profile
     - npmrc
     - vimrc
+
+- name: Write out gitconfig
+  template: src=gitconfig.j2 dest={{ home_dir }}/.gitconfig
