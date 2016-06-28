@@ -30,11 +30,11 @@
     - { role: profile-all, tags: base }
     - { role: profile-developer, tags: base-dev }
     - { role: roderik.superlumic-sublimetext, tags: sublime }
+    - { role: roderik.superlumic-postgresql, tags: postgres }
     - { role: ruby, tags: ruby }
     - { role: python, tags: python }
     - { role: golang, tags: golang }
     - { role: profile-caremonkey-dev, tags: caremonkey }
-#    - other-languages
 
   tasks:
     - name: install personal cask applications
