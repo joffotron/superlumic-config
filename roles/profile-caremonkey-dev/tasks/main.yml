@@ -9,6 +9,11 @@
 
 - include: upload-github-pubkey.yml
 
+- name: install App Build Depedencies
+  homebrew: name={{item}} state=latest
+  with_items:
+    - imagemagick
+
 - name: Checkout repositories
   git: repo="ssh://git@github.com/{{ item.account }}/{{ item.repo }}.git"
        dest="{{ src_dir }}/{{ item.repo }}"
@@ -18,3 +23,8 @@
     - { account: 'mph', repo: 'cm_opsworks_recipes' }
     - { account: 'mph', repo: 'synergy_sync' }
 
+- name: Ensure global .bundle dir
+  file: path={{ home_dir }}/.bundle state=directory
+
+- name: Set bundle config for broken on OSX things
+  copy: src=files/bundle_config.yml dest={{ home_dir }}/.bundle/config
