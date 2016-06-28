@@ -15,8 +15,8 @@
   gem: name=rubygems-update state=present
 
 - name: Upgrade rubygems
-  command: {{ item }}
   become: yes
+  command: "{{ item }}"
   with_items:
     - "upgrade_rubygems"
     - "gem update --system"
