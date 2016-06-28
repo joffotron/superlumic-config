@@ -5,3 +5,18 @@
     - rbenv
     - rbenv-binstubs
     - ruby-build
+
+- name: install ruby versions
+  command: rbenv install {{ item }}
+  with_items:
+    - 2.3.0
+
+- name: Install update-rubygems gem
+  gem: name=rubygems-update state=present
+
+- name: Upgrade rubygems
+  command: {{ item }}
+  become: yes
+  with_items:
+    - "upgrade_rubygems"
+    - "gem update --system"

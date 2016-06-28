@@ -23,6 +23,8 @@ alias d='docker'
 alias dcom='docker-compose'
 alias ls='ls -G'
 
+alias bundlestubs="bundle install --binstubs .bundle/bin"
+
 alias ffs="sudo !!"
 
 alias ne="PATH=$(npm bin):$PATH "
