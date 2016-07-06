@@ -59,6 +59,8 @@
         - sonos
         - spotify
         - libreoffice
+        - viscosity
+        - hosts
 
     - name: Local bin dir
       file: path="{{ home_dir }}/bin" state=directory
