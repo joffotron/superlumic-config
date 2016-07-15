@@ -4,9 +4,17 @@
   with_items:
     - rbenv
     - rbenv-binstubs
+    - rbenv-default-gems
     - ruby-build
+
+- name: Get rbenv root
+  command: rbenv root
+  register: rbenv_root
+
+- name: Set default gems for rbenv
+  copy: src=files/rbenv-default-gems dest="{{ rbenv_root.stdout }}"/default-gems
 
 - name: install ruby versions
   command: rbenv install -s {{ item }}
   with_items:
-    - 2.3.0
+    - 2.3.1
