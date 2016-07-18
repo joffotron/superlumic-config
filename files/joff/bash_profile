@@ -15,7 +15,7 @@ alias ll='ls -l '
 alias la='ls -a '
 alias lla='ls -la '
 
-alias z='zeus'
+alias zx='zeus'
 alias sc='rails console'
 alias be='bundle exec'
 alias psp='nice -n 20 ;rake ci:setup:rspec parallel:spec[9]'

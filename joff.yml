@@ -63,8 +63,12 @@
         - viscosity
         - hosts
 
-    - name: Local bin dir
+    - name: Create local bin dir
       file: path="{{ home_dir }}/bin" state=directory
+
+    - name: Copy local 'binaries'
+      copy: src=files/joff/bin/
+            dest="{{ home_dir }}/bin/"
 
     - name: Powerline Shell Prompt
       git: repo=https://github.com/milkbikis/powerline-shell
@@ -172,3 +176,11 @@
             src={{ home_dir }}/Tresors/TheCrypt/GPG/gnupg
             mode=0600
             state=link
+
+    - name: Download custom fonts
+      get_url: url=https://github.com/tonsky/FiraCode/releases/download/1.102/FiraCode_1.102.zip
+               dest="{{ home_dir }}/tmp"
+
+    - name: Install fonts
+      unarchive: src="{{ home_dir }}/tmp/FiraCode_1.102.zip"
+                 dest="{{ home_dir }}/Library/Fonts/"
