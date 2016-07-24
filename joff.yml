@@ -35,6 +35,7 @@
     - { role: python, tags: python }
     - { role: php, tags: php }
     - { role: golang, tags: golang }
+    - { role: elixir, tags: elixir }
     - { role: profile-caremonkey-dev, tags: caremonkey }
 
   tasks:
@@ -101,6 +102,7 @@
 
 #    - name: Signin to the Mac App Store
 #      command: mas signin {{ apple_id_email }} "{{ apple_id_password }}"
+
 #    - name: Install Mac App Store applications
 #      command: mas install {{ item.id }}
 #      with_items:
