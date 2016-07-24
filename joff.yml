@@ -101,7 +101,6 @@
 
 #    - name: Signin to the Mac App Store
 #      command: mas signin {{ apple_id_email }} "{{ apple_id_password }}"
-
 #    - name: Install Mac App Store applications
 #      command: mas install {{ item.id }}
 #      with_items:
@@ -112,7 +111,6 @@
 #        - { 824183456 Affinity Photo }
 #        - { 824171161 Affinity Designer }
 #        - { 557168941 Tweetbot }
-
 
     - name: Install Python pip packages
       pip: state=present name="{{ item }}"
