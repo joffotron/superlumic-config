@@ -1,12 +1,12 @@
 ---
-- name: Make go src directory
+- name: "[Golang] Make go src directory"
   file: path={{ home_dir }}/src/go state=directory
 
-- name: Set GOPATH
+- name: "[Golang] Set GOPATH"
   lineinfile: dest={{ home_dir }}/.bash_profile
               line="export PATH=$PATH:{{ home_dir}}/src/go"
 
-- name: Install golang
+- name: "[Golang] Install golang"
   homebrew: name={{item}} state=latest
   with_items:
     - go

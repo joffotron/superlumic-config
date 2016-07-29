@@ -1,13 +1,13 @@
 ---
-- name: tap homebrew/homebrew-php
+- name: "[PHP] tap homebrew/homebrew-php"
   homebrew_tap: tap=homebrew/homebrew-php state=present
 
-- name: install PHP brew applications
+- name: "[PHP] Install PHP brew applications"
   homebrew: name={{item}} state=latest
   with_items:
     - homebrew/php/composer
 
-- name: Put PHP 7.1 on the PATH
+- name: "[PHP] Put PHP 7.1 on the PATH"
   lineinfile: dest={{ home_dir }}/.bash_profile
               line="export PATH=\"$(brew --prefix homebrew/php/php71)/bin:$PATH\""
 

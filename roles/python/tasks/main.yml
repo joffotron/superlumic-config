@@ -1,5 +1,5 @@
 ---
-- name: install python brew applications
+- name: "[Python] Install python brew applications"
   homebrew: name={{item}} state=latest
   with_items:
     - python
