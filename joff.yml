@@ -113,6 +113,7 @@
 #        - { 824183456 Affinity Photo }
 #        - { 824171161 Affinity Designer }
 #        - { 557168941 Tweetbot }
+#        - { 957734279 Toggl Desktop }
 
     - name: Install Python pip packages
       pip: state=present name="{{ item }}"
@@ -144,6 +145,11 @@
         - BetterTouchTool.settings
         - com.manytricks.Moom.plist  #for safekeeping
         - osx-keybindings.plist
+        - alfred-toggl.alfredworkflow
+
+    - name: Activate the Toggl Alfred workflow
+      command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
+               creates "{{ home_dir }}/.toggl-workflow-created"
 
     - name: killall cfprefsd so we can copy prefs
       command: killall cfprefsd
