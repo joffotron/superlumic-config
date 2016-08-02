@@ -190,3 +190,10 @@
     - name: Install fonts
       unarchive: src="{{ home_dir }}/tmp/FiraCode_1.102.zip"
                  dest="{{ home_dir }}/Library/Fonts/"
+
+    - name: Create vim plugin dir
+      file: path="{{ home_dir }}/.vim/plugin" state=directory
+
+    - name: Install GPGVim plugin
+      get_url: url=https://raw.githubusercontent.com/jamessan/vim-gnupg/master/plugin/gnupg.vim
+               dest="{{ home_dir }}/.vim/plugin/gnupg.vim"
