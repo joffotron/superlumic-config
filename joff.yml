@@ -149,7 +149,7 @@
 
     - name: Activate the Toggl Alfred workflow
       command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
-               creates "{{ home_dir }}/.toggl-workflow-created"
+               creates="{{ home_dir }}/.toggl-workflow-created"
 
     - name: killall cfprefsd so we can copy prefs
       command: killall cfprefsd
