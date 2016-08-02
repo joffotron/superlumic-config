@@ -17,6 +17,7 @@
 - name: Checkout repositories
   git: repo="ssh://git@github.com/{{ item.account }}/{{ item.repo }}.git"
        dest="{{ src_dir }}/{{ item.repo }}"
+       update=no
   with_items:
     - { account: 'mph', repo: 'cm' }
     - { account: 'mph', repo: 'cm_app' }
