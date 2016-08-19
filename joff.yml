@@ -6,7 +6,7 @@
   vars:
     - superlimic_config_repo: https://github.com/joffotron/superlumic-config.git
     - user_name: joff
-    - computername: cernan
+    - computername: jeb
     - home_dir: "/Users/{{ user_name }}/"
     - user_email: joff@joff.codes
     - github_user_name: joffotron
@@ -15,7 +15,7 @@
     - git_signing_key: 198C913B
     - apple_id_email: joff@googlehax.com
     # Override source dir
-    - src_dir: "{{ home_dir }}/src/CareMonkey"
+    # - src_dir: "{{ home_dir }}/src/CareMonkey"
     - settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
     # Set these in secrets file:
     # github_auth_token
@@ -33,10 +33,8 @@
     - { role: roderik.superlumic-postgresql, tags: postgres }
     - { role: ruby, tags: ruby }
     - { role: python, tags: python }
-    - { role: php, tags: php }
     - { role: golang, tags: golang }
     - { role: elixir, tags: elixir }
-    - { role: profile-caremonkey-dev, tags: caremonkey }
 
   tasks:
     - name: install personal cask applications
@@ -50,7 +48,6 @@
         - alfred
         - bettertouchtool
         - tresorit
-        - evernote
         - skitch
         - gitkraken
         - monodraw

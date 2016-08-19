@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>build</key>
-	<real>633</real>
+	<real>657</real>
 	<key>license</key>
 	<string>9558-4989-4114-1594-9177</string>
 	<key>preferences</key>
@@ -13,6 +13,8 @@
 		<key>Diagnostics_Sent_3.1</key>
 		<true/>
 		<key>Diagnostics_Sent_3.2</key>
+		<true/>
+		<key>Diagnostics_Sent_3.3</key>
 		<true/>
 		<key>DropdownTheme</key>
 		<integer>0</integer>
@@ -40,6 +42,6 @@
 		</array>
 	</dict>
 	<key>version</key>
-	<real>5.1100001335144043</real>
+	<real>5.1999998092651367</real>
 </dict>
 </plist>
