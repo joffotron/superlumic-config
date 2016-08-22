@@ -13,8 +13,7 @@
     - git_user_email: "{{ user_email }}"
     - git_signing_key: 198C913B
     - apple_id_email: joff@googlehax.com
-    # Override source dir
-    # - src_dir: "{{ home_dir }}/src/CareMonkey"
+    - src_dir: "{{ home_dir }}/src/"
     - settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
     # Set these in secrets file:
     # github_auth_token
