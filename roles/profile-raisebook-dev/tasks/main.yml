@@ -19,7 +19,7 @@
 - name: "[Raisebook] Check for subtree remotes"
   command: bash -c "git remote | grep {{ item }}"
            chdir="{{ raisebook_src }}/raisebook"
-  register: found_remote_{{ item }}
+  register: found_raisebook_remote_{{ item }}
   with_items:
     - backend
     - frontend
@@ -28,7 +28,7 @@
 - name: "[Raisebook] Add subtree remote {{ item.name }}"
   command: git remote add {{ item.name }} {{ item.remote }}
            chdir="{{ raisebook_src }}/raisebook"
-  when: found_remote_{{ item }}
+  when: found_raisebook_remote_{{ item }} is defined
   with_items:
     - { name: 'backend',  remote: 'git@github.com:raisebook/backend.git' }
     - { name: 'frontend', remote: 'git@github.com:raisebook/frontend.git' }
