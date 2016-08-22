@@ -24,7 +24,7 @@
     - backend
     - frontend
     - proxy
-`
+
 - name: "[Raisebook] Add subtree remote {{ item.name }}"
   command: git remote add {{ item.name }} {{ item.remote }}
            chdir="{{ raisebook_src }}/raisebook"
