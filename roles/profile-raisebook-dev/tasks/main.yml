@@ -17,7 +17,7 @@
               line="export PATH=$PATH:{{ raisebook_src }}/raisebook/bin"
 
 - name: "[Raisebook] Check for subtree remotes"
-  command: git remote -v | grep {{ item }}
+  command: "git remote | grep {{ item }}"
            chdir="{{ raisebook_src }}/raisebook"
   register: found_remote_{{ item }}
   with_items:
