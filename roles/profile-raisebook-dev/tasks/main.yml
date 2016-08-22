@@ -1,0 +1,34 @@
+---
+- name: "[Raisebook] Make src directory"
+  file: path="{{ src_dir }}/Raisebook" state=directory
+
+- name: "[Raisebook] Checkout repositories"
+  git: repo="ssh://git@github.com/{{ item.account }}/{{ item.repo }}.git"
+       dest="{{ src_dir }}/{{ item.repo }}"
+       update=no
+  with_items:
+    - { account: 'raisebook', repo: 'raisebook' }
+    - { account: 'raisebook', repo: 'backend' }
+    - { account: 'raisebook', repo: 'frontend' }
+    - { account: 'raisebook', repo: 'proxy' }
+
+- name: "[Raisebook] Add bin to path"
+  lineinfile: dest={{ home_dir }}/.bash_profile
+              line="export PATH=$PATH:{{ src_dir }}/Raisebook/raisebook/bin"
+
+- name: "[Raisebook] Check for subtree remotes"
+  command: git remote -v | grep {{ item }}
+  register: found_remote_{{ item }}
+  with_items:
+    - backend
+    - frontend
+    - proxy
+
+- name: "[Raisebook] Add subtree remote {{ item.name }}"
+  command: git remote add {{ item.name }} {{ item.remote }}
+  when: found_remote_{{ item }}
+  with_items:
+    - { name: backend, remote: git@github.com:raisebook/backend.git }
+    - { name: frontend, remote: git@github.com:raisebook/frontend.git }
+    - { name: proxy, remote: git@github.com:raisebook/proxy.git }
+
