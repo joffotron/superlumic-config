@@ -17,18 +17,14 @@
               line="export PATH=$PATH:{{ raisebook_src }}/raisebook/bin"
 
 - name: "[Raisebook] Check for subtree remotes"
-  command: bash -c "git remote | grep {{ item }}"
+  command: bash -c "git remote"
            chdir="{{ raisebook_src }}/raisebook"
-  register: found_raisebook_remote_{{ item }}
-  with_items:
-    - backend
-    - frontend
-    - proxy
+  register: found_raisebook_remotes
 
 - name: "[Raisebook] Add subtree remote {{ item.name }}"
   command: git remote add {{ item.name }} {{ item.remote }}
            chdir="{{ raisebook_src }}/raisebook"
-  when: found_raisebook_remote_{{ item }} is defined
+  when: {{ item.name }} in found_raisebook_remotes.stdout_lines
   with_items:
     - { name: 'backend',  remote: 'git@github.com:raisebook/backend.git' }
     - { name: 'frontend', remote: 'git@github.com:raisebook/frontend.git' }
