@@ -1,2 +1,2 @@
 ---
-raisebook_src: {{ src_dir}}/Raisebook
+raisebook_src: "{{ src_dir}}/Raisebook"
