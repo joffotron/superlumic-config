@@ -28,7 +28,7 @@
   command: git remote add {{ item.name }} {{ item.remote }}
   when: found_remote_{{ item }}
   with_items:
-    - { name: backend, remote: git@github.com:raisebook/backend.git }
-    - { name: frontend, remote: git@github.com:raisebook/frontend.git }
-    - { name: proxy, remote: git@github.com:raisebook/proxy.git }
+    - { name: 'backend',  remote: 'git@github.com:raisebook/backend.git' }
+    - { name: 'frontend', remote: 'git@github.com:raisebook/frontend.git' }
+    - { name: 'proxy',    remote: 'git@github.com:raisebook/proxy.git' }
 
