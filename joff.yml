@@ -95,6 +95,7 @@
         - packer
         - pidof
         - s3cmd
+        - exercism
 
 #    - name: Signin to the Mac App Store
 #      command: mas signin {{ apple_id_email }} "{{ apple_id_password }}"
@@ -143,9 +144,13 @@
         - osx-keybindings.plist
         - alfred-toggl.alfredworkflow
 
-    - name: Activate the Toggl Alfred workflow
-      command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
-               creates="{{ home_dir }}/.toggl-workflow-created"
+    - name: Copy Sublime Text 3 Preferences file
+      copy: src="{{ user_name }}/Preferences.sublme-settings.json"
+            dest="{{ home_dir }}/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+
+    # - name: Activate the Toggl Alfred workflow
+    #   command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
+    #            creates="{{ home_dir }}/.toggl-workflow-created"
 
     - name: killall cfprefsd so we can copy prefs
       command: killall cfprefsd
