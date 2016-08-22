@@ -39,3 +39,6 @@ sublime_packages:
   - dest: "SublimeLinter-contrib-elixirc"
     repo: "https://github.com/smanolloff/SublimeLinter-contrib-elixirc.git"
     version: "master"
+  - dest: "Babel"
+    repo: "https://github.com/babel/babel-sublime.git"
+    version: "master"
