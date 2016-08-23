@@ -24,7 +24,7 @@
 - name: "[Raisebook] Add subtree remote {{ item.name }}"
   command: git remote add {{ item.name }} {{ item.remote }}
            chdir="{{ raisebook_src }}/raisebook"
-  when: "{{ item.name }} in found_raisebook_remotes.stdout_lines"
+  when: item.name in found_raisebook_remotes.stdout_lines
   with_items:
     - { name: 'backend',  remote: 'git@github.com:raisebook/backend.git' }
     - { name: 'frontend', remote: 'git@github.com:raisebook/frontend.git' }
