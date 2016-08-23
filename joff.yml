@@ -21,25 +21,23 @@
 
   vars_files:
     - vars/osx_defaults.yml
-    - vars/sublime_text_3.yml
+    - vars/nodejs.yml
+    - vars/sublime_text_packages.yml
     - vars/{{ user_name }}-secrets.yml
 
   roles:
     - { role: profile-all, tags: base }
     - { role: profile-developer, tags: base-dev }
-    - { role: profile-raisebook-dev, tags: raisebook }
-    - { role: roderik.superlumic-sublimetext, tags: sublime }
+    - { role: sublimetext3, tags: sublime }
     - { role: roderik.superlumic-postgresql, tags: postgres }
+    - { role: roderik.superlumic-node, tags: nodejs }
     - { role: ruby, tags: ruby }
     - { role: python, tags: python }
     - { role: golang, tags: golang }
     - { role: elixir, tags: elixir }
+    - { role: profile-raisebook-dev, tags: raisebook }
 
   tasks:
-    - name: Copy Sublime Text 3 Preferences file
-      copy: src="{{ user_name }}/Preferences.sublme-settings.json"
-            dest="{{ home_dir }}/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
-
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
@@ -102,8 +100,8 @@
         - exercism
 
     - name: Sign out of the Mac App Store
-      command: mas signout 
-    
+      command: mas signout
+
     - name: Sign in to the Mac App Store
       command: mas signin {{ apple_id_email }} "{{ apple_id_password }}"
 
@@ -117,7 +115,7 @@
         - { id: "824183456", name: "Affinity Photo" }
         - { id: "824171161", name: "Affinity Designer" }
         - { id: "557168941", name: "Tweetbot" }
-#        - { id: "957734279", name: "Toggl Desktop" }
+        - { id: "957734279", name: "Toggl Desktop" }
 
     - name: Install Python pip packages
       pip: state=present name="{{ item }}"
@@ -151,9 +149,9 @@
         - osx-keybindings.plist
         - alfred-toggl.alfredworkflow
 
-    # - name: Activate the Toggl Alfred workflow
-    #   command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
-    #            creates="{{ home_dir }}/.toggl-workflow-created"
+    - name: Activate the Toggl Alfred workflow
+      command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
+               creates="{{ home_dir }}/.toggl-workflow-created"
 
     - name: killall cfprefsd so we can copy prefs
       command: killall cfprefsd
