@@ -36,6 +36,10 @@
     - { role: elixir, tags: elixir }
 
   tasks:
+    - name: Copy Sublime Text 3 Preferences file
+      copy: src="{{ user_name }}/Preferences.sublme-settings.json"
+            dest="{{ home_dir }}/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
@@ -146,10 +150,6 @@
         - com.manytricks.Moom.plist  #for safekeeping
         - osx-keybindings.plist
         - alfred-toggl.alfredworkflow
-
-    - name: Copy Sublime Text 3 Preferences file
-      copy: src="{{ user_name }}/Preferences.sublme-settings.json"
-            dest="{{ home_dir }}/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
 
     # - name: Activate the Toggl Alfred workflow
     #   command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
