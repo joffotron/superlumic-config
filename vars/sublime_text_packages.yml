@@ -24,6 +24,9 @@ sublime_packages:
   - dest: "Dictionaries"
     repo: "https://github.com/titoBouzout/Dictionaries.git"
     version: "master"
+  - dest: Elixir
+    repo: "https://github.com/elixir-lang/elixir-tmbundle"
+    version: "master"
   - dest: "ElixirSublime"
     repo: "https://github.com/vishnevskiy/ElixirSublime.git"
     version: "master"
