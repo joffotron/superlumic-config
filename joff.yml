@@ -97,7 +97,10 @@
         - s3cmd
         - exercism
 
-    - name: Signin to the Mac App Store
+    - name: Sign out of the Mac App Store
+      command: mas signout 
+    
+    - name: Sign in to the Mac App Store
       command: mas signin {{ apple_id_email }} "{{ apple_id_password }}"
 
     - name: Install Mac App Store applications
