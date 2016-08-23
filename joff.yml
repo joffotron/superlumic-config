@@ -106,14 +106,14 @@
     - name: Install Mac App Store applications
       command: mas install {{ item.id }}
       with_items:
-        - { 587512244 Kaleidoscope }
-        - { 427515976 3Hub }
-        - { 419330170 Moom }
-        - { 410628904 Wunderlist }
-        - { 824183456 Affinity Photo }
-        - { 824171161 Affinity Designer }
-        - { 557168941 Tweetbot }
-#        - { 957734279 Toggl Desktop }
+        - { id: "587512244", name: "Kaleidoscope" }
+        - { id: "427515976", name: "3Hub" }
+        - { id: "419330170", name: "Moom" }
+        - { id: "410628904", name: "Wunderlist" }
+        - { id: "824183456", name: "Affinity Photo" }
+        - { id: "824171161", name: "Affinity Designer" }
+        - { id: "557168941", name: "Tweetbot" }
+#        - { id: "957734279", name: "Toggl Desktop" }
 
     - name: Install Python pip packages
       pip: state=present name="{{ item }}"
