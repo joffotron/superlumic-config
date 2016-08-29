@@ -25,7 +25,7 @@
     - { name: 'backend',  remote: 'git@github.com:raisebook/backend.git' }
     - { name: 'frontend', remote: 'git@github.com:raisebook/frontend.git' }
     - { name: 'proxy',    remote: 'git@github.com:raisebook/proxy.git' }
-    - { name: 'raisemail', remote: 'git@github.com:raisebook/raisemail.git' }-
+    - { name: 'raisemail', remote: 'git@github.com:raisebook/raisemail.git' }
 
 - name: "[Raisebook] Add project bin dirs to path"
   lineinfile: dest={{ home_dir }}/.bash_profile
