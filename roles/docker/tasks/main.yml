@@ -18,5 +18,3 @@
 - name: "[Docker] Pull dockergc"
   docker_image:
     name: spotify/docker-gc
-    state: present
-    pull: true
