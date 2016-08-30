@@ -3,7 +3,7 @@
   file: path="{{ home_dir }}/.docker" state=directory
 
 - name: "[Docker] Garbage Collection Exclusion files"
-  copy: src="{{ item }}"" dest="{{ home_dir }}/.docker/{{ item }}"
+  copy: src="{{ item }}" dest="{{ home_dir }}/.docker/{{ item }}"
   with_items:
     - excluded-containers
     - excluded-images
