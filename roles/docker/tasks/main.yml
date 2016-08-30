@@ -17,7 +17,6 @@
 
 - name: "[Docker] Pull dockergc"
   docker_image:
-    name: registry.ansible.com/chouseknecht/sinatra
-    tag: latest
+    name: spotify/docker-gc
     state: present
-
+    pull: true
