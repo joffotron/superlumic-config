@@ -1,0 +1,5 @@
+spotify/docker-gc:latest
+airdock/fake-sqs:latest
+codeclimate/codeclimate:latest
+raisebook_.*:.*
+raisemail.*:.*

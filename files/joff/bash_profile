@@ -18,7 +18,6 @@ alias lla='ls -la '
 alias zx='zeus'
 alias be='bundle exec'
 alias d='docker'
-alias dockergc='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc spotify/docker-gc'
 alias ls='ls -G'
 
 alias mixconsole="iex -S mix run --no-start"
