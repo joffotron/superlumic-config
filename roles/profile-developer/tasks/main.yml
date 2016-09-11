@@ -21,6 +21,7 @@
     - awscli
     - pinentry
     - lastpass-cli
+    - shellcheck
 
 - name: install developer cask applications
   homebrew_cask: name={{item}} state=present
