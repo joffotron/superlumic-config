@@ -9,6 +9,9 @@
 - name: tap homebrew/completions
   homebrew_tap: tap=homebrew/completions state=present
 
+- name: tap codeclimate/formulae
+  homebrew_tap: tap=codeclimate/formulae state=present
+
 - name: install developer brew applications
   homebrew: name={{item}} state=latest
   with_items:
@@ -22,6 +25,7 @@
     - pinentry
     - lastpass-cli
     - shellcheck
+    - codeclimate
 
 - name: install developer cask applications
   homebrew_cask: name={{item}} state=present

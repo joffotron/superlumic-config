@@ -35,6 +35,7 @@ if [ -f ~/.bashrc ]; then
 fi
 
 export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:$HOME/Applications/android-sdk-macosx/platform-tools/
 
 export EDITOR=vim
 
