@@ -49,7 +49,6 @@
 - name: Install completions
   homebrew: name={{item}} state=latest
   with_items:
-    - docker-completion
     - docker-compose-completion
     - gem-completion
     - mix-completion
