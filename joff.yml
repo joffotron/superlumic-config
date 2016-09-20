@@ -122,6 +122,7 @@
         - { id: "824171161", name: "Affinity Designer" }
         - { id: "557168941", name: "Tweetbot" }
         - { id: "957734279", name: "Toggl Desktop" }
+        - { id: "975937182", name: "Fantastical 2" }
 
     - name: Install Python pip packages
       pip: state=present name="{{ item }}"
