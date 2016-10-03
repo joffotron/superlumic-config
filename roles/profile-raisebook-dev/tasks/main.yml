@@ -11,6 +11,8 @@
     - { account: 'raisebook', repo: 'backend' }
     - { account: 'raisebook', repo: 'frontend' }
     - { account: 'raisebook', repo: 'proxy' }
+    - { account: 'raisebook', repo: 'deploy' }
+    - { account: 'raisebook', repo: 'raisemail' }
 
 - name: "[Raisebook] Check for subtree remotes"
   command: bash -c "git remote"
@@ -24,8 +26,6 @@
   with_items:
     - { name: 'backend',  remote: 'git@github.com:raisebook/backend.git' }
     - { name: 'proxy',    remote: 'git@github.com:raisebook/proxy.git' }
-    - { name: 'raisemail', remote: 'git@github.com:raisebook/raisemail.git' }
-    - { name: 'deploy', remote: 'git@github.com:raisebook/deploy.git' }
 
 - name: "[Raisebook] Add project bin dirs to path"
   lineinfile: dest={{ home_dir }}/.bash_profile
