@@ -11,7 +11,7 @@
     - github_user_name: joffotron
     - git_user_name: Joseph Miller
     - git_user_email: "{{ user_email }}"
-    - git_signing_key: 198C913B
+    - git_signing_key: 24D68F57
     - apple_id_email: joff@googlehax.com
     - src_dir: "{{ home_dir }}/src/"
     - settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
