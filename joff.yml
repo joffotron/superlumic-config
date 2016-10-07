@@ -55,8 +55,8 @@
         - monodraw
         - flux
         - datagrip
-        - intellij-idea
-        - rubymine
+        # - intellij-idea
+        # - rubymine
         - sonos
         - spotify
         - libreoffice

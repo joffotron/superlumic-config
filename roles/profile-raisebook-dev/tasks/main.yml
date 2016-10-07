@@ -9,10 +9,11 @@
   with_items:
     - { account: 'raisebook', repo: 'raisebook' }
     - { account: 'raisebook', repo: 'backend' }
-    - { account: 'raisebook', repo: 'frontend' }
     - { account: 'raisebook', repo: 'proxy' }
     - { account: 'raisebook', repo: 'deploy' }
     - { account: 'raisebook', repo: 'raisemail' }
+    - { account: 'raisebook', repo: 'lambda' }
+    - { account: 'raisebook', repo: 'infrastructure' }
 
 - name: "[Raisebook] Check for subtree remotes"
   command: bash -c "git remote"
@@ -33,3 +34,6 @@
   with_items:
     - raisebook
     - raisemail
+    - infrastructure
+    - lambda
+
