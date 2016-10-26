@@ -55,13 +55,14 @@
         - monodraw
         - flux
         - datagrip
-        # - intellij-idea
-        # - rubymine
+        - jetbrains-toolbox
+        - radiant-player
         - sonos
         - spotify
         - libreoffice
         - viscosity
         - hosts
+        - veracrypt
 
     - name: Create local bin dir
       file: path="{{ home_dir }}/bin" state=directory
@@ -123,6 +124,7 @@
         - { id: "557168941", name: "Tweetbot" }
         - { id: "957734279", name: "Toggl Desktop" }
         - { id: "975937182", name: "Fantastical 2" }
+        - { id: "495152161", name: "Wizard Stats" }
 
     - name: Install Python pip packages
       pip: state=present name="{{ item }}"
@@ -207,3 +209,7 @@
     - name: Install GPGVim plugin
       get_url: url=https://raw.githubusercontent.com/jamessan/vim-gnupg/master/plugin/gnupg.vim
                dest="{{ home_dir }}/.vim/plugin/gnupg.vim"
+
+
+# Lock on Yubikey remove
+# ./install.sh 1050 0116

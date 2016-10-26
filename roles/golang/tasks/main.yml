@@ -12,6 +12,10 @@
   lineinfile: dest={{ home_dir }}/.bash_profile
               line="export GOPATH={{ home_dir}}/src/go"
 
+- name: "[Golang] Set GOBIN"
+  lineinfile: dest={{ home_dir }}/.bash_profile
+              line="export GOBIN=$GOPATH/bin"
+
 - name: "[Golang] Put Go binaries on path"
   lineinfile: dest={{ home_dir }}/.bash_profile
               line="export PATH=$PATH:$GOPATH/bin"

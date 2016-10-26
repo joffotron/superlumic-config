@@ -1,10 +1,15 @@
 spotify/docker-gc:latest
 airdock/fake-sqs:latest
+schickling/mailcatcher:latest
 codeclimate/codeclimate:latest
-raisebook_mailcatcher:.*
 raisebook_fakes3:.*
 raisebook_proxy:.*
 raisebook_backend:.*
-raisebook/raisemail:.*
+raisebook/deploy:.*
+raisebook/infrastructure_tools:.*
 raisemail:.*
+raisebook/raisemail:.*
 postgres:.*
+alpine:*
+redis:2.8.23
+docker.brutalbits.com/.*
