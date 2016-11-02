@@ -60,7 +60,7 @@
     - cap-completion
     - bundler-completion
 
-- name: "[Developer]" Ensure ~/Applications dir"
+- name: "[Developer] Ensure ~/Applications dir"
   file: path="{{ home_dir }}/Applications" state=directory
 
 - name: "[Developer] install aws-profile"
