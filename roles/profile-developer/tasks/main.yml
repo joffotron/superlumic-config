@@ -78,7 +78,7 @@
 
 - name: "[Developer] setup bash_profile for aws-profile"
   blockinfile:
-    dest: "{{home_dir}}"/.bash_profile
+    dest: "{{home_dir}}/.bash_profile"
     block: |
       complete -C aws_completer aws
       alias aws-profile="source aws-profile"
