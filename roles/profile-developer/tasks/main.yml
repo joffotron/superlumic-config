@@ -70,7 +70,7 @@
 
 - name: "[Developer] link aws-profile binaries"
   file: src="{{home_dir}}/Applications/aws-profile/{{item}}"
-        dest="/usr/local/bin/{{ item }}
+        dest="/usr/local/bin/{{ item }}"
         state=link
   with_items:
     - aws-profile
