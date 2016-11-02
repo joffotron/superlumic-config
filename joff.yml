@@ -156,7 +156,7 @@
         - DataGrip-settings.jar
         - iStatMenusSettings.ismp
         - BetterTouchTool.settings
-        - com.manytricks.Moom.plist  #for safekeeping
+        - com.manytricks.Moom.plist
         - osx-keybindings.plist
         - alfred-toggl.alfredworkflow
 
@@ -223,4 +223,3 @@
       command: install.sh {{item.vendor_id}} {{item.product_id}}
       with_items:
         - {vendor_id: 1050, product_id: 0116}
-
