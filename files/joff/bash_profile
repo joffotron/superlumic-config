@@ -12,6 +12,7 @@ alias gds='git diff --staged'
 alias gp='git push '
 alias prune='git remote prune origin'
 alias publish='git publish origin'
+alias webserver='ruby -run -ehttpd . -p8000'
 
 alias ll='ls -l '
 alias la='ls -a '

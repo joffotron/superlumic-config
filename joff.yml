@@ -55,7 +55,8 @@
         - monodraw
         - flux
         - datagrip
-        - jetbrains-toolbox
+        - rubymine
+        - intellij-idea
         - radiant-player
         - sonos
         - spotify
@@ -72,7 +73,7 @@
             dest="{{ home_dir }}/bin/"
 
     - name: Powerline Shell Prompt
-      git: repo=https://github.com/milkbikis/powerline-shell
+      git: repo=git@github.com:joffotron/powerline-shell.git
            dest="{{ home_dir }}/bin/powerline-shell"
            version="master"
 
@@ -210,6 +211,16 @@
       get_url: url=https://raw.githubusercontent.com/jamessan/vim-gnupg/master/plugin/gnupg.vim
                dest="{{ home_dir }}/.vim/plugin/gnupg.vim"
 
+    - name: "Ensure ~/Applications dir"
+      file: path="{{ home_dir }}/Applications" state=directory
 
-# Lock on Yubikey remove
-# ./install.sh 1050 0116
+    - name: Download Lock-On-USB tool
+      git: repo=https://github.com/nfirvine/osx-lock-on-remove-usb.git
+           dest="{{ home_dir }}/Applications/osx-lock-on-remove-usb"
+           update=no
+
+    - name: Install Lock-On-USB tool for Yubikey
+      command: install.sh {{item.vendor_id}} {{item.product_id}}
+      with_items:
+        - {vendor_id: 1050, product_id: 0116}
+

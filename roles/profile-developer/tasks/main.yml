@@ -1,18 +1,18 @@
 ---
 
-- name: tap caskroom/versions
+- name: "[Developer] tap caskroom/versions"
   homebrew_tap: tap=caskroom/versions state=present
 
-- name: tap homebrew/dupes
+- name: "[Developer] tap homebrew/dupes"
   homebrew_tap: tap=homebrew/dupes state=present
 
-- name: tap homebrew/completions
+- name: "[Developer] Tap homebrew/completions"
   homebrew_tap: tap=homebrew/completions state=present
 
-- name: tap codeclimate/formulae
+- name: "[Developer] tap codeclimate/formulae"
   homebrew_tap: tap=codeclimate/formulae state=present
 
-- name: install developer brew applications
+- name: "[Developer] Install developer brew applications"
   homebrew: name={{item}} state=latest
   with_items:
     - wget
@@ -27,7 +27,7 @@
     - shellcheck
     - codeclimate
 
-- name: install developer cask applications
+- name: "[Developer] Install developer cask applications"
   homebrew_cask: name={{item}} state=present
   with_items:
     - java
@@ -36,7 +36,7 @@
     - iterm2
     - ngrok
 
-- name: Copy dotfiles
+- name: "[Developer] Copy dotfiles"
   copy: src=files/{{ user_name }}/{{ item }} dest={{ home_dir }}/.{{ item }}
   with_items:
     - bashrc
@@ -47,7 +47,7 @@
 - name: Write out gitconfig
   template: src=gitconfig.j2 dest={{ home_dir }}/.gitconfig
 
-- name: Install completions
+- name: "[Developer] Install completions"
   homebrew: name={{item}} state=latest
   with_items:
     - docker-compose-completion
@@ -59,3 +59,28 @@
     - ruby-completion
     - cap-completion
     - bundler-completion
+
+- name: "[Developer]" Ensure ~/Applications dir"
+  file: path="{{ home_dir }}/Applications" state=directory
+
+- name: "[Developer] install aws-profile"
+  git: repo=https://github.com/jaymecd/aws-profile.git
+       dest="{{ home_dir }}/Applications/aws-profile"
+       update=no
+
+- name: "[Developer] link aws-profile binaries"
+  file: src="{{home_dir}}/Applications/aws-profile/{{item}}"
+        dest="/usr/local/bin/{{ item }}
+        state=link
+  with_items:
+    - aws-profile
+    - aws-wrapper
+
+- name: "[Developer] setup bash_profile for aws-profile"
+  blockinfile:
+    dest: "{{home_dir}}"/.bash_profile
+    block: |
+      complete -C aws_completer aws
+      alias aws-profile="source aws-profile"
+      alias aws="aws-wrapper"
+
