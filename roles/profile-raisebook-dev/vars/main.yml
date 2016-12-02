@@ -1,2 +1,28 @@
 ---
 raisebook_src: "{{ src_dir}}/Raisebook"
+
+projects:
+  raisebook:
+    account: raisebook
+    repo: raisebook
+  backend:
+    account: raisebook
+    repo: backend
+  proxy:
+    account: raisebook
+    repo: proxy
+  deploy:
+    account: raisebook
+    repo: deploy
+  raisemail:
+    account: raisebook
+    repo: raisemail
+  lambda:
+    account: raisebook
+    repo: lambda
+  infrastructure:
+    account: raisebook
+    repo: infrastructure
+  stockroom:
+    account: raisebook
+    repo: stockroom

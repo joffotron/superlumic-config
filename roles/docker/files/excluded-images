@@ -3,12 +3,15 @@ airdock/fake-sqs:latest
 schickling/mailcatcher:latest
 codeclimate/codeclimate:latest
 raisebook_fakes3:.*
+raisebook/fake-s3:.*
 raisebook_proxy:.*
 raisebook_backend:.*
 raisebook/deploy:.*
 raisebook/infrastructure_tools:.*
 raisemail:.*
 raisebook/raisemail:.*
+stockroom:.*
+raisebook/stockroom:.*
 postgres:.*
 alpine:*
 redis:2.8.23
