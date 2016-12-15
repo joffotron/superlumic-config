@@ -15,6 +15,10 @@
 - name: "[Docker] Install Docker for Mac"
   homebrew_cask: name=docker state=present
 
+- name: "[Docker] Check for First run"
+  command: open /Applications/Docker.app
+          creates=/usr/local/bin/docker
+
 - name: "[Docker] Pull dockergc"
   docker_image:
     name: spotify/docker-gc
