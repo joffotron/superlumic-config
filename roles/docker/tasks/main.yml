@@ -22,6 +22,9 @@
 - name: "[Docker] Waiting for first run setup to complete"
   wait_for: path=/usr/local/bin/docker
 
+- name: "[Docker] ensure docker-py"
+  pip: name=docker-py
+
 - name: "[Docker] Pull dockergc"
   docker_image:
     name: spotify/docker-gc
