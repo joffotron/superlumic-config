@@ -35,11 +35,8 @@
     - git-extras
 
 - name: Generate SSH keypair
-  user: name={{ user_name }}
-        generate_ssh_key=yes
-        ssh_key_type=ed25519
-        ssh_key_bits=100
-        ssh_key_file=.ssh/id_ed25519
+  command: ssh-keygen -N "" -o -a 100 -t ed25519 -f {{ home_dir }}/.ssh/id_ed25519
+           creates={{ home_dir }}/.ssh/id_ed25519
 
 - name: Disable Guest User
   command: defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool NO

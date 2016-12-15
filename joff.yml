@@ -5,7 +5,7 @@
   vars:
     - superlimic_config_repo: https://github.com/joffotron/superlumic-config.git
     - user_name: joff
-    - computername: jeb
+    - computername: gordo
     - home_dir: "/Users/{{ user_name }}/"
     - user_email: joff@joff.codes
     - github_user_name: joffotron
