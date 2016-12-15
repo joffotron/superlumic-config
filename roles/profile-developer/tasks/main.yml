@@ -26,7 +26,7 @@
     - pinentry
     - lastpass-cli
     - shellcheck
-    - codeclimate
+    # - codeclimate
 
 - name: "[Developer] Install developer cask applications"
   homebrew_cask: name={{item}} state=present

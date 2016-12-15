@@ -13,4 +13,3 @@ galaxy_info:
 dependencies:
   - roderik.superlumic-vim
   - profile-all
-  - docker
