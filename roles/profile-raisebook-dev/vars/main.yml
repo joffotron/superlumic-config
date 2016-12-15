@@ -1,5 +1,5 @@
 ---
-raisebook_src: "{{ src_dir}}/Raisebook"
+raisebook_src: "{{ src_dir }}/Raisebook"
 
 projects:
   raisebook:
@@ -26,3 +26,6 @@ projects:
   stockroom:
     account: raisebook
     repo: stockroom
+  qbot:
+    account: raisebook
+    repo: qbot
