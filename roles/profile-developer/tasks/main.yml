@@ -88,6 +88,5 @@
 
 - name: "[Developer] Activate direnv"
   lineinfile:
-    dest="{{home_dir}}/.bash_profile"
-    line=eval "$(direnv hook bash)"
-
+    dest: "{{home_dir}}/.bash_profile"
+    line: eval "$(direnv hook bash)"
