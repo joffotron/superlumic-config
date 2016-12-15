@@ -19,6 +19,9 @@
   command: open /Applications/Docker.app
           creates=/usr/local/bin/docker
 
+- name: "[Docker] Waiting for first run setup to complete"
+  wait_for: path=/usr/local/bin/docker
+
 - name: "[Docker] Pull dockergc"
   docker_image:
     name: spotify/docker-gc
