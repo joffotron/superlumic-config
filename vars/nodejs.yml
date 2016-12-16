@@ -1,5 +1,6 @@
 ---
 node_versions:
-    - 6
+  - 4.3.2
+  - 7.2.1
 
-default_node_version: 6
+default_node_version: 7.2.1
