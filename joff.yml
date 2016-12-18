@@ -64,6 +64,16 @@
         - viscosity
         - hosts
         - veracrypt
+        - android-file-transfer
+        - filezilla
+        - sleepyhead
+        - adobe-photoshop-lightroom
+        - yubico-authenticator
+        - yubikey-personalization-gui
+        - yubiswitch
+        - yubikey-neo-manager
+        - yubikey-piv-manager
+
 
     - name: Create local bin dir
       file: path="{{ home_dir }}/bin" state=directory
@@ -126,6 +136,8 @@
         - { id: "957734279", name: "Toggl Desktop" }
         - { id: "975937182", name: "Fantastical 2" }
         - { id: "495152161", name: "Wizard Stats" }
+        - { id: "784801555", name: "Microsoft OneNote" }
+        - { id: "926036361", name: "Lastpass Desktop" }
 
     - name: Install Python pip packages
       pip: state=present name="{{ item }}"
