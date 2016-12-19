@@ -85,6 +85,7 @@
       complete -C aws_completer aws
       alias aws-profile="source aws-profile"
       alias aws="aws-wrapper"
+      aws-profile default
 
 - name: "[Developer] Activate direnv"
   lineinfile:
