@@ -47,9 +47,10 @@
         - xee
         - bartender
         - chicken
+        - coconutbattery
         - alfred
         - bettertouchtool
-        - tresorit
+        - mega
         - skitch
         - gitkraken
         - monodraw
@@ -60,6 +61,7 @@
         - radiant-player
         - sonos
         - spotify
+        - steam
         - libreoffice
         - viscosity
         - hosts
@@ -73,6 +75,7 @@
         - yubiswitch
         - yubikey-neo-manager
         - yubikey-piv-manager
+        - xbox360-controller-driver
 
 
     - name: Create local bin dir
@@ -204,7 +207,7 @@
 
     - name: Link GPG directory from Tresors
       file: path={{ home_dir }}/.gnupg
-            src={{ home_dir }}/Tresors/TheCrypt/GPG/gnupg
+            src={{ home_dir }}/MEGAsync/TheCrypt/GPG/gnupg
             mode=0600
             state=link
 
