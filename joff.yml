@@ -176,6 +176,7 @@
         - osx-keybindings.plist
         - alfred-toggl.alfredworkflow
         - Github.Jump.alfredworkflow
+        - Buildlkite.Jump.alfredworkflow
 
     - name: Activate the Toggl Alfred workflow
       command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
@@ -185,6 +186,9 @@
       command: open "{{ settings_export_dir }}/Github.Jump.alfredworkflow"
                creates="{{ home_dir }}/.ghjump-workflow-created"
 
+    - name: Activate the Buildkite Jump Alfred workflow
+      command: open "{{ settings_export_dir }}/Buildkite.Jump.alfredworkflow"
+               creates="{{ home_dir }}/.bkjump-workflow-created"
 
     - name: killall cfprefsd so we can copy prefs
       command: killall cfprefsd
