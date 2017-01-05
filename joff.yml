@@ -53,6 +53,7 @@
         - mega
         - skitch
         - gitkraken
+        - google-featured-photos
         - monodraw
         - flux
         - datagrip
@@ -174,10 +175,16 @@
         - com.manytricks.Moom.plist
         - osx-keybindings.plist
         - alfred-toggl.alfredworkflow
+        - Github.Jump.alfredworkflow
 
     - name: Activate the Toggl Alfred workflow
       command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
                creates="{{ home_dir }}/.toggl-workflow-created"
+
+    - name: Activate the Github Jump Alfred workflow
+      command: open "{{ settings_export_dir }}/Github.Jump.alfredworkflow"
+               creates="{{ home_dir }}/.ghjump-workflow-created"
+
 
     - name: killall cfprefsd so we can copy prefs
       command: killall cfprefsd

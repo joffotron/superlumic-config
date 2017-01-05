@@ -4,6 +4,7 @@
   with_items:
     - go
     - gobject-introspection
+    - glide
 
 - name: "[Golang] Make go src directory"
   file: path={{ home_dir }}/src/go state=directory
