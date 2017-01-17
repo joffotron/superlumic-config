@@ -52,7 +52,7 @@
         - bettertouchtool
         - mega
         - skitch
-        - gitkraken
+        - sourcetree
         - google-featured-photos
         - monodraw
         - flux
@@ -71,7 +71,6 @@
         - filezilla
         - sleepyhead
         - adobe-photoshop-lightroom
-        - yubico-authenticator
         - yubikey-personalization-gui
         - yubiswitch
         - yubikey-neo-manager
@@ -142,6 +141,7 @@
         - { id: "495152161", name: "Wizard Stats" }
         - { id: "784801555", name: "Microsoft OneNote" }
         - { id: "926036361", name: "Lastpass Desktop" }
+        - { id: "402433482", name: "Token Lock" }
 
     - name: Install Python pip packages
       pip: state=present name="{{ item }}"

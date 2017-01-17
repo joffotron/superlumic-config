@@ -20,3 +20,8 @@
 - name: "[Golang] Put Go binaries on path"
   lineinfile: dest={{ home_dir }}/.bash_profile
               line="export PATH=$PATH:$GOPATH/bin"
+
+- name: "[Golang] Install Helpful Go Packages"
+  command: go get "{{ item }}"
+  with_items:
+    - golang.org/x/tools/cmd/goimports
