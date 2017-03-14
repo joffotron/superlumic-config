@@ -1,9 +1,14 @@
+shopt -s histappend
+HISTFILESIZE=1000000
+HISTSIZE=1000000
+
+
 PATH=$PATH:$HOME/bin
 
 function _update_ps1() {
   export PS1="$(~/bin/powerline-shell/powerline-shell.py --colorize-hostname --mode flat --cwd-only  $? 2> /dev/null)"
 }
-export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+export PROMPT_COMMAND="_update_ps1; history -a; $PROMPT_COMMAND"
 
 man() {
     env \

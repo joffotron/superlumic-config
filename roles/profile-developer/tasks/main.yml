@@ -6,9 +6,6 @@
 - name: "[Developer] tap homebrew/dupes"
   homebrew_tap: tap=homebrew/dupes state=present
 
-- name: "[Developer] Tap homebrew/completions"
-  homebrew_tap: tap=homebrew/completions state=present
-
 - name: "[Developer] tap codeclimate/formulae"
   homebrew_tap: tap=codeclimate/formulae state=present
 

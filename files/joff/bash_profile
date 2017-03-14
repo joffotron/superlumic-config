@@ -29,6 +29,8 @@ alias bundlestubs="bundle install --binstubs .bundle/bin"
 
 alias ffs="sudo !!"
 
+alias fix_docker_clock="docker run --rm --privileged alpine hwclock -s"
+
 alias ne="PATH=$(npm bin):$PATH "
 
 eval "$(rbenv init -)"

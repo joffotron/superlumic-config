@@ -25,3 +25,5 @@
   command: go get "{{ item }}"
   with_items:
     - golang.org/x/tools/cmd/goimports
+    - github.com/motemen/gore
+    - github.com/onsi/ginkgo/ginkgo

@@ -8,6 +8,9 @@ projects:
   backend:
     account: raisebook
     repo: backend
+  bookbuild:
+    account: raisebook
+    repo: bookbuild
   proxy:
     account: raisebook
     repo: proxy

@@ -1,4 +1,6 @@
 ---
+# TODO install yarn :p
+
 - hosts: localhost
   connection: local
 
@@ -47,6 +49,7 @@
         - xee
         - bartender
         - chicken
+        - controlplane
         - coconutbattery
         - alfred
         - bettertouchtool
@@ -149,6 +152,7 @@
       pip: state=present name="{{ item }}"
       with_items:
         - awslogs
+        - csvkit
         - wharfee
         - yamllint
 

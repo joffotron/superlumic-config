@@ -3,11 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>build</key>
-	<real>657</real>
+	<real>705</real>
 	<key>license</key>
 	<string>9558-4989-4114-1594-9177</string>
 	<key>preferences</key>
 	<dict>
+		<key>Battery_MenubarMode</key>
+		<string>2,1</string>
 		<key>Diagnostics_Enabled</key>
 		<integer>1</integer>
 		<key>Diagnostics_Sent_3.1</key>
@@ -16,6 +18,14 @@
 		<true/>
 		<key>Diagnostics_Sent_3.3</key>
 		<true/>
+		<key>Disks_ActivityGraphMode</key>
+		<integer>1</integer>
+		<key>Disks_DropdownCombineActivity</key>
+		<integer>0</integer>
+		<key>Disks_DropdownDisplayMode</key>
+		<integer>2</integer>
+		<key>Disks_MenubarMode</key>
+		<string>100,0,6</string>
 		<key>DropdownTheme</key>
 		<integer>0</integer>
 		<key>FanControl_Enabled</key>
@@ -34,14 +44,56 @@
 		<true/>
 		<key>StatusItems-Order</key>
 		<array>
+			<integer>7</integer>
+			<integer>6</integer>
+			<integer>3</integer>
 			<integer>5</integer>
 			<integer>4</integer>
 			<integer>2</integer>
 			<integer>1</integer>
-			<integer>6</integer>
 		</array>
+		<key>Time_CalendarEnabled</key>
+		<integer>0</integer>
+		<key>Time_CalendarShowEvents</key>
+		<integer>0</integer>
+		<key>Time_Cities</key>
+		<array>
+			<real>2158177</real>
+			<real>5391959</real>
+			<real>909137</real>
+			<real>2643743</real>
+			<real>-5</real>
+		</array>
+		<key>Time_DropdownFormat</key>
+		<array>
+			<string>EE</string>
+			<string>' '</string>
+			<string>hh</string>
+			<string>':'</string>
+			<string>mm</string>
+			<string>' '</string>
+			<string>a</string>
+			<string>' ('</string>
+			<string>ZZZ</string>
+			<string>' '</string>
+			<string>zzz</string>
+			<string>')'</string>
+		</array>
+		<key>Time_MenubarFlashSeperators</key>
+		<integer>0</integer>
+		<key>Time_MenubarFormat</key>
+		<array>
+			<string>EE</string>
+			<string>' '</string>
+			<string>hh</string>
+			<string>':'</string>
+			<string>mm</string>
+			<string>a</string>
+		</array>
+		<key>Time_TextSize</key>
+		<integer>13</integer>
 	</dict>
 	<key>version</key>
-	<real>5.1999998092651367</real>
+	<real>5.309999942779541</real>
 </dict>
 </plist>
