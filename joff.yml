@@ -53,7 +53,7 @@
         - coconutbattery
         - alfred
         - bettertouchtool
-        - mega
+        # - mega
         - skitch
         - sourcetree
         - gitup
@@ -68,14 +68,14 @@
         - spotify
         - steam
         - libreoffice
+        - private-internet-access
         - viscosity
         - hosts
         - veracrypt
         - android-file-transfer
         - filezilla
         - sleepyhead
-        - adobe-photoshop-lightroom
-        - vyprvpn
+        # - adobe-photoshop-lightroom
         - yubikey-personalization-gui
         - yubiswitch
         - yubikey-neo-manager
@@ -182,7 +182,7 @@
         - osx-keybindings.plist
         - alfred-toggl.alfredworkflow
         - Github.Jump.alfredworkflow
-        - Buildlkite.Jump.alfredworkflow
+        - Buildkite.Jump.alfredworkflow
 
     - name: Activate the Toggl Alfred workflow
       command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
