@@ -6,7 +6,7 @@
 
   vars:
     - superlimic_config_repo: https://github.com/joffotron/superlumic-config.git
-    - user_name: joff
+    - user_name: raisebook
     - computername: words
     - home_dir: "/Users/{{ user_name }}/"
     - apple_id_email: joff@googlehax.com
