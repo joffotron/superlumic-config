@@ -20,14 +20,12 @@
     - google-drive
     - google-chrome
     - vlc
-    - lastpass
     - slack
 
 - name: install general brew applications
   homebrew: name={{item}} state=latest
   with_items:
     - bash-completion
-    - lastpass-cli
     - the_silver_searcher
     - ack
     - gnu-tar

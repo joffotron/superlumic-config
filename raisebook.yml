@@ -1,0 +1,79 @@
+---
+# TODO install yarn :p
+
+- hosts: localhost
+  connection: local
+
+  vars:
+    - superlimic_config_repo: https://github.com/joffotron/superlumic-config.git
+    - user_name: joff
+    - computername: words
+    - home_dir: "/Users/{{ user_name }}/"
+    - apple_id_email: joff@googlehax.com
+    - src_dir: "{{ home_dir }}/src/"
+    - settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
+    # Set these in secrets file:
+    # github_auth_token
+    # apple_id_password
+
+  vars_files:
+    - vars/osx_defaults.yml
+    - vars/{{ user_name }}-secrets.yml
+
+  roles:
+    - { role: profile-all, tags: base }
+
+  tasks:
+    - name: install personal cask applications
+      homebrew_cask: name={{item}} state=present
+      with_items:
+        - dropbox
+        - xee
+        - alfred
+        - google-featured-photos
+        - flux
+        - spotify
+        - libreoffice
+        - private-internet-access
+
+    - name: Create local bin dir
+      file: path="{{ home_dir }}/bin" state=directory
+
+    - name: homebrew taps
+      homebrew_tap: tap={{ item }} state=present
+      with_items:
+        - homebrew/fuse
+        - Caskroom/cask
+
+    - name: install personal brew applications
+      homebrew: name={{item}} state=latest
+      with_items:
+        - mas
+        - moreutils
+
+    - name: "[App Store] Sign out of the Mac App Store"
+      command: mas signout
+
+    - name: "[App Store] Sign in to the Mac App Store"
+      command: mas signin {{ apple_id_email }} "{{ apple_id_password }}"
+
+    - name: "[App Store] See which apps are already installed"
+      command: bash -c "mas list | cut -f 1 -d ' '"
+      register: mas_list
+
+    - name: "[App Store] Install Mac App Store applications"
+      command: mas install {{ item.id }}
+      when: item.id not in mas_list.stdout_lines
+      with_items:
+        - { id: "824183456", name: "Affinity Photo" }
+        - { id: "824171161", name: "Affinity Designer" }
+        - { id: "975937182", name: "Fantastical 2" }
+        - { id: "784801555", name: "Microsoft OneNote" }
+
+    - name: OSX Keyboard shortcuts
+      command: defaults import com.apple.symbolichotkeys {{ settings_export_dir }}/osx-keybindings.plist
+      tags: osxshortcuts
+
+    - name: Kill Moom
+      command: kill `pidof Moom`
+      ignore_errors: true
