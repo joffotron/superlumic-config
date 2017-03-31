@@ -44,4 +44,4 @@ sublime_packages:
     version: "master"
   - dest: "ElixirSublime"
     repo: "https://github.com/vishnevskiy/ElixirSublime.git"
-    version: "v1.0.4"
+    version: "master"

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-defaults write -g AmbientDisplayAgent 1
+osascript /Users/joff/bin/AdaptiveBrightnessOn.scpt
