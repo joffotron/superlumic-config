@@ -28,5 +28,5 @@
 
 - name: "[Raisebook] Add init for subcommands to bash_profile"
   lineinfile: dest={{ home_dir }}/.bash_profile
-              line="eval \"$(/Users/joff/src/Raisebook/{{ item.key }}/bin/sub/bin/{{ item.key }} init -)\""
+              line="eval \"$(/Users/joff/src/Raisebook/{{ item.key }}/bin/sub/bin/{{ item.helper }} init -)\""
   with_dict: "{{ projects }}"

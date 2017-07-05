@@ -51,6 +51,7 @@
         - chicken
         - controlplane
         - coconutbattery
+        - disk-inventory-x
         - alfred
         - bettertouchtool
         # - mega
@@ -67,6 +68,7 @@
         - sonos
         - spotify
         - steam
+        - ksdiff
         - libreoffice
         - linear
         - private-internet-access
@@ -138,6 +140,7 @@
         - { id: "587512244", name: "Kaleidoscope" }
         - { id: "427515976", name: "3Hub" }
         - { id: "419330170", name: "Moom" }
+        - { id: "585829637", name: "Todoist" }
         - { id: "410628904", name: "Wunderlist" }
         - { id: "824183456", name: "Affinity Photo" }
         - { id: "824171161", name: "Affinity Designer" }

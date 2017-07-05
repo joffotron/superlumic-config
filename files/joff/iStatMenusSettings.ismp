@@ -10,6 +10,24 @@
 	<dict>
 		<key>Battery_MenubarMode</key>
 		<string>2,1</string>
+		<key>CPU_AppFormat</key>
+		<integer>1</integer>
+		<key>CPU_CombineLogicalCores</key>
+		<integer>0</integer>
+		<key>CPU_MenubarCombineCores</key>
+		<integer>0</integer>
+		<key>CPU_MenubarGraphBreakdowns</key>
+		<integer>1</integer>
+		<key>CPU_MenubarGraphCustomColors</key>
+		<integer>1</integer>
+		<key>CPU_MenubarGraphSystem</key>
+		<string>0.59 0.10 0.10 1.00</string>
+		<key>CPU_MenubarGraphUser</key>
+		<string>0.07 0.60 0.12 1.00</string>
+		<key>CPU_MenubarGraphWidth</key>
+		<real>19</real>
+		<key>CPU_MenubarGroupItems</key>
+		<integer>0</integer>
 		<key>Diagnostics_Enabled</key>
 		<integer>1</integer>
 		<key>Diagnostics_Sent_3.1</key>
@@ -40,8 +58,6 @@
 		<integer>3</integer>
 		<key>MenubarTheme</key>
 		<integer>0</integer>
-		<key>Sensors-Limits-Updated</key>
-		<true/>
 		<key>StatusItems-Order</key>
 		<array>
 			<integer>7</integer>
@@ -59,6 +75,7 @@
 		<key>Time_Cities</key>
 		<array>
 			<real>2158177</real>
+			<real>2063523</real>
 			<real>5391959</real>
 			<real>909137</real>
 			<real>2643743</real>

@@ -5,30 +5,36 @@ projects:
   raisebook:
     account: raisebook
     repo: raisebook
-  backend:
-    account: raisebook
-    repo: backend
+    helper: raisebook
   bookbuild:
     account: raisebook
     repo: bookbuild
-  proxy:
-    account: raisebook
-    repo: proxy
+    helper: bookbuild
   deploy:
     account: raisebook
     repo: deploy
+    helper: deploy
   raisemail:
     account: raisebook
     repo: raisemail
+    helper: raisemail
+ raisebook-email:
+    account: raisebook
+    repo: raisebook-email
+    helper: email
   lambda:
     account: raisebook
     repo: lambda
+    helper: lambda
   infrastructure:
     account: raisebook
     repo: infrastructure
+    helper: infrastructure
   stockroom:
     account: raisebook
     repo: stockroom
+    helper: stockroom
   qbot:
     account: raisebook
     repo: qbot
+    helper: qbot
