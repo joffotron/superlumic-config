@@ -1,0 +1,9 @@
+---
+- name: "[zsh] Install developer brew applications"
+  homebrew: name={{item}} state=latest
+  with_items:
+    - zsh
+    - zsh-completions
+
+- name: "[zsh] Install Oh-My-Zsh"
+  command: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

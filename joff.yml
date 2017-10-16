@@ -13,7 +13,7 @@
     - github_user_name: joffotron
     - git_user_name: Joseph Miller
     - git_user_email: "{{ user_email }}"
-    - git_signing_key: 24D68F57
+    - git_signing_key: D7CD7195
     - apple_id_email: joff@googlehax.com
     - src_dir: "{{ home_dir }}/src/"
     - settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
@@ -44,6 +44,8 @@
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
+        - 1password
+        - 1password-cli
         - istat-menus
         - dropbox
         - xee
