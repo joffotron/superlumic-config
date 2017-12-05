@@ -44,49 +44,56 @@
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
+        # - adobe-photoshop-lightroom
         - 1password
         - 1password-cli
-        - istat-menus
-        - dropbox
-        - xee
-        - bartender
-        - chicken
-        - controlplane
-        - coconutbattery
-        - disk-inventory-x
         - alfred
+        - android-file-transfer
+        - bartender
         - bettertouchtool
-        # - mega
-        - skitch
-        - sourcetree
+        - bitbar
+        - chicken
+        - coconutbattery
+        - controlplane
+        - datagrip
+        - discord
+        - disk-inventory-x
+        - dropbox
+        - electrum
+        - filezilla
+        - flux
+        - gitkraken
         - gitup
         - google-featured-photos
-        - monodraw
-        - flux
-        - datagrip
-        - rubymine
+        - hosts
+        - insync
         - intellij-idea
-        - radiant-player
-        - sonos
-        - spotify
-        - steam
+        - istat-menus
+        - keybase
         - ksdiff
         - libreoffice
         - linear
+        #- mega
+        - monodraw
         - private-internet-access
-        - viscosity
-        - hosts
-        - veracrypt
-        - android-file-transfer
-        - filezilla
+        - radiant-player
+        - rocket
+        - rubymine
+        - signal
+        - skitch
         - sleepyhead
-        # - adobe-photoshop-lightroom
-        - yubikey-personalization-gui
-        - yubiswitch
-        - yubikey-neo-manager
-        - yubikey-piv-manager
+        - sonos
+        - sourcetree
+        - spotify
+        - steam
+        - veracrypt
+        - viscosity
         - xbox360-controller-driver
-
+        - xee
+        - yubikey-neo-manager
+        - yubikey-personalization-gui
+        - yubikey-piv-manager
+        - yubiswitch
 
     - name: Create local bin dir
       file: path="{{ home_dir }}/bin" state=directory
@@ -114,16 +121,19 @@
     - name: install personal brew applications
       homebrew: name={{item}} state=latest
       with_items:
-        - mas
         - certbot
-        - z
+        - exercism
         - ipcalc
         - jq
+        - lame
+        - mas
         - moreutils
         - packer
         - pidof
         - s3cmd
-        - exercism
+        - ykpers
+        - youtube-dl
+        - z
 
     # - name: "[App Store] Sign out of the Mac App Store"
     #   command: mas signout
