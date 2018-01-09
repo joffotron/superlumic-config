@@ -13,7 +13,16 @@ alias gp='git push '
 alias prune='git remote prune origin'
 alias publish='git publish origin'
 alias webserver='ruby -run -ehttpd . -p8000'
-alias pr-done="git co master && gu && git delete-merged-branches"
+alias pr-done="git co master && gu && git delete-merged-branches; gu"
+alias jsonformat="pbpaste | jq . | pbcopy"
+alias jsonunformat="pbpaste | jq . -c | pbcopy"
+
+
+alias rb='cd $HOME/src/Raisebook/raisebook'
+alias bb='cd $HOME/src/Raisebook/bookbuild'
+alias lm='cd $HOME/src/Raisebook/lambda'
+alias lm='cd $HOME/src/Raisebook/qbot'
+
 
 alias ll='ls -l '
 alias la='ls -a '

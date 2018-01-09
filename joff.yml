@@ -132,6 +132,7 @@
         - pidof
         - s3cmd
         - ykpers
+        - ykman
         - youtube-dl
         - z
 
