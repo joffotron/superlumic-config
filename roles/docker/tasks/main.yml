@@ -13,7 +13,7 @@
               line="alias dockergc='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc -v "{{ home_dir }}/.docker/:/excludes/" -e EXCLUDE_FROM_GC=/excludes/excluded-images -e EXCLUDE_CONTAINERS_FROM_GC=/excludes/excluded-containers  spotify/docker-gc'"
 
 - name: "[Docker] Install Docker for Mac"
-  homebrew_cask: name=docker state=present
+  homebrew_cask: name=docker-edge state=present
 
 - name: "[Docker] Check for First run"
   command: open /Applications/Docker.app
