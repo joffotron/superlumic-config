@@ -109,7 +109,6 @@
       homebrew_tap: tap={{ item }} state=present
       with_items:
         - homebrew/fuse
-        - Caskroom/cask
 
     - name: install personal brew applications
       homebrew: name={{item}} state=latest

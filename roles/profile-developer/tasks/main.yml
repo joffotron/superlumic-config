@@ -1,18 +1,14 @@
 ---
-
-- name: "[Developer] tap caskroom/versions"
-  homebrew_tap: tap=caskroom/versions state=present
-
-- name: "[Developer] tap homebrew/dupes"
-  homebrew_tap: tap=homebrew/dupes state=present
-
-- name: "[Developer] tap codeclimate/formulae"
-  homebrew_tap: tap=codeclimate/formulae state=present
+- name: "[Developer] Homebrew developer taps"
+  homebrew_tap: tap={{ item }} state=present
+  with_items:
+  - wallix/awless
 
 - name: "[Developer] Install developer brew applications"
   homebrew: name={{item}} state=latest
   with_items:
     - awscli
+    - awless
     - direnv
     - htop
     - httpie
@@ -23,16 +19,9 @@
     - wget
     - yarn
 
-- name: "[Developer] Homebrew developer taps"
-  homebrew_tap: tap={{ item }} state=present
-  with_items:
-    - Caskroom/cask
-    - wallix/awless
-
 - name: "[Developer] Install developer cask applications"
   homebrew_cask: name={{item}} state=present
   with_items:
-    - awless
     - aws-vault
     - dash
     - datagrip

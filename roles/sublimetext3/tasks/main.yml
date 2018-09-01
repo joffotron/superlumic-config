@@ -1,7 +1,4 @@
 ---
-- name: "[Sublime Text 3] tap caskroom/versions"
-  homebrew_tap: tap=caskroom/versions state=present
-
 - name: "[Sublime Text 3] Install"
   homebrew_cask: name=sublime-text state=present
 
