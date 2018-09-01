@@ -21,7 +21,8 @@ alias jsonunformat="pbpaste | jq . -c | pbcopy"
 alias rb='cd $HOME/src/Raisebook/raisebook'
 alias bb='cd $HOME/src/Raisebook/bookbuild'
 alias lm='cd $HOME/src/Raisebook/lambda'
-alias lm='cd $HOME/src/Raisebook/qbot'
+alias qb='cd $HOME/src/Raisebook/qbot'
+alias dm='cd $HOME/src/Raisebook/dealmaker'
 
 
 alias ll='ls -l '
@@ -61,3 +62,32 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 complete -C aws_completer aws
+# BEGIN ANSIBLE MANAGED BLOCK
+complete -C aws_completer aws
+alias aws="aws-wrapper"
+alias aws-profile="source aws-profile"
+ aws-profile default
+# END ANSIBLE MANAGED BLOCK
+eval "$(direnv hook bash)"
+alias dockergc='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc -v "/Users/joff//.docker/:/excludes/" -e EXCLUDE_FROM_GC=/excludes/excluded-images -e EXCLUDE_CONTAINERS_FROM_GC=/excludes/excluded-containers  spotify/docker-gc'
+export GOPATH=/Users/joff//src/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
+
+export PATH=$PATH:/Users/joff//src//Raisebook/proxy/bin
+export PATH=$PATH:/Users/joff//src//Raisebook/deploy/bin
+
+eval "$(/Users/joff/src/Raisebook/qbot/bin/sub/bin/qbot init -)"
+eval "$(/Users/joff/src/Raisebook/bookbuild/bin/sub/bin/bookbuild init -)"
+eval "$(/Users/joff/src/Raisebook/backdock/bin/sub/bin/backdock init -)"
+eval "$(/Users/joff/src/Raisebook/raisemail/bin/sub/bin/raisemail init -)"
+eval "$(/Users/joff/src/Raisebook/stockroom/bin/sub/bin/stockroom init -)"
+eval "$(/Users/joff/src/Raisebook/raisebook/bin/sub/bin/raisebook init -)"
+eval "$(/Users/joff/src/Raisebook/infrastructure/bin/sub/bin/infrastructure init -)"
+eval "$(/Users/joff/src/Raisebook/lambda/bin/sub/bin/lambda init -)"
+eval "$(/Users/joff/src/Raisebook/raisebook-email/bin/sub/bin/email init -)"
+eval "$(/Users/joff/src/Raisebook/dealmaker/bin/sub/bin/dealmaker init -)"
+
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
+

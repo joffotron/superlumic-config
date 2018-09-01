@@ -1,0 +1,5 @@
+#!/bin/bash
+
+grep -l "RSA PRIVATE KEY" ~/.ssh/* | xargs ssh-add
+grep -l "BEGIN OPENSSH PRIVATE KEY" ~/.ssh/* | xargs ssh-add
+

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker run --rm redis:2.8.23 redis-cli $@

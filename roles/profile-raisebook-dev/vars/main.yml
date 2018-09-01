@@ -34,6 +34,10 @@ projects:
     account: raisebook
     repo: stockroom
     helper: stockroom
+  dealmaker:
+    account: raisebook
+    repo: dealmaker
+    helper: dealmaker
   qbot:
     account: raisebook
     repo: qbot

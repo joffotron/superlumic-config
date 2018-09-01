@@ -9,7 +9,7 @@ osx_defaults:
   - { domain: "com.apple.driver.AppleBluetoothMultitouch.trackpad", key: "Clicking", type: "boolean", value: true }
 
   - { domain: "NSGlobalDomain", type: "integer", key: "com.apple.mouse.tapBehavior",         value: 1 }
-  - { domain: "NSGlobalDomain", type: "float",   key: "com.apple.mouse.scaling",             value: 4.5 }
+  - { domain: "NSGlobalDomain", type: "float",   key: "com.apple.mouse.scaling",             value: 5.0 }
   - { domain: "NSGlobalDomain", type: "boolean", key: "ApplePressAndHoldEnabled",            value: false }
   - { domain: "NSGlobalDomain", type: "integer", key: "InitialKeyRepeat",                    value: 15 }
   - { domain: "NSGlobalDomain", type: "string",  key: "AppleShowScrollBars",                 value: "Always" }

@@ -38,15 +38,14 @@
     - { role: python, tags: python }
     - { role: golang, tags: golang }
     - { role: elixir, tags: elixir }
-    - { role: profile-raisebook-dev, tags: raisebook }
 
   tasks:
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
-        # - adobe-photoshop-lightroom
         - 1password
         - 1password-cli
+        - adobe-photoshop-lightroom
         - alfred
         - android-file-transfer
         - bartender
@@ -55,7 +54,6 @@
         - chicken
         - coconutbattery
         - controlplane
-        - datagrip
         - discord
         - disk-inventory-x
         - dropbox
@@ -63,31 +61,28 @@
         - filezilla
         - flux
         - gitkraken
-        - gitup
         - google-featured-photos
-        - hosts
         - insync
-        - intellij-idea
         - istat-menus
         - keybase
         - ksdiff
         - libreoffice
         - linear
-        #- mega
+        - mega
         - monodraw
         - private-internet-access
         - radiant-player
         - rocket
-        - rubymine
         - signal
         - skitch
         - sleepyhead
+        - smcfancontrol
         - sonos
-        - sourcetree
         - spotify
         - steam
         - veracrypt
         - viscosity
+        - whalebird
         - xbox360-controller-driver
         - xee
         - yubikey-neo-manager
@@ -105,7 +100,7 @@
     - name: Powerline Shell Prompt
       git: repo=git@github.com:joffotron/powerline-shell.git
            dest="{{ home_dir }}/bin/powerline-shell"
-           version="master"
+           version="awsp"
 
     - name: Run install for powerline shell prompt
       command: "python install.py"
@@ -126,6 +121,7 @@
         - ipcalc
         - jq
         - lame
+        - ffmpeg
         - mas
         - moreutils
         - packer
@@ -135,6 +131,8 @@
         - ykman
         - youtube-dl
         - z
+        - zsh
+        - speedtest-cli
 
     # - name: "[App Store] Sign out of the Mac App Store"
     #   command: mas signout
@@ -150,28 +148,31 @@
       command: mas install {{ item.id }}
       when: item.id not in mas_list.stdout_lines
       with_items:
-        - { id: "587512244", name: "Kaleidoscope" }
-        - { id: "427515976", name: "3Hub" }
-        - { id: "419330170", name: "Moom" }
-        - { id: "585829637", name: "Todoist" }
+        - { id: "408981434", name: "iMovie" }
+        - { id: "409183694", name: "Keynote" }
+        - { id: "409201541", name: "Pages" }
+        - { id: "409203825", name: "Numbers" }
         - { id: "410628904", name: "Wunderlist" }
-        - { id: "824183456", name: "Affinity Photo" }
-        - { id: "824171161", name: "Affinity Designer" }
+        - { id: "419330170", name: "Moom" }
+        - { id: "495152161", name: "Wizard" }
+        - { id: "497799835", name: "Xcode" }
         - { id: "557168941", name: "Tweetbot" }
-        - { id: "957734279", name: "Toggl Desktop" }
-        - { id: "975937182", name: "Fantastical 2" }
-        - { id: "495152161", name: "Wizard Stats" }
+        - { id: "571213070", name: "DaVinci Resolve" }
+        - { id: "585829637", name: "Todoist" }
+        - { id: "587512244", name: "Kaleidoscope" }
+        - { id: "682658836", name: "GarageBand" }
+        - { id: "715768417", name: "Microsoft Remote Desktop" }
         - { id: "784801555", name: "Microsoft OneNote" }
-        - { id: "926036361", name: "Lastpass Desktop" }
-        - { id: "402433482", name: "Token Lock" }
-
-    - name: Install Python pip packages
-      pip: state=present name="{{ item }}"
-      with_items:
-        - awslogs
-        - csvkit
-        - wharfee
-        - yamllint
+        - { id: "824171161", name: "Affinity Designer" }
+        - { id: "824183456", name: "Affinity Photo" }
+        - { id: "957734279", name: "Toggl Desktop" }
+        - { id: "964860276", name: "Folder Designer" }
+        - { id: "975937182", name: "Fantastical 2" }
+        - { id: "1082171383", name: "Direct Message for Instagram" }
+        - { id: "1278508951", name: "Trello" }
+        - { id: "1333542190", name: "1Password 7" }
+        - { id: "1357379892", name: "Menu Bar Controller for Sonos" }
+        - { id: "1384080005", name: "Tweetbot" }
 
     - name: create .ssh directory
       file:
@@ -239,7 +240,7 @@
             state=absent
       when: gnupg_dir_stat.stat.exists == True and gnupg_dir_stat.stat.islnk == False
 
-    - name: Link GPG directory from Tresors
+    - name: Link GPG directory from MEGA
       file: path={{ home_dir }}/.gnupg
             src={{ home_dir }}/MEGAsync/TheCrypt/GPG/gnupg
             mode=0600
@@ -271,4 +272,4 @@
     - name: Install Lock-On-USB tool for Yubikey
       command: install.sh {{item.vendor_id}} {{item.product_id}}
       with_items:
-        - {vendor_id: 1050, product_id: 0116}
+        - {vendor_id: 1050, product_id: 0407}

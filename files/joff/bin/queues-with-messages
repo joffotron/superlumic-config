@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Querying SQS..."
+diff -u <(awless list queues --sort URL) <(awless list queues --filter ApproximateMessageCount=0 --sort URL) | sed -n 's/^-//p'

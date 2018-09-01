@@ -12,34 +12,53 @@
 - name: "[Developer] Install developer brew applications"
   homebrew: name={{item}} state=latest
   with_items:
+    - awscli
     - direnv
-    - wget
-    - pwgen
     - htop
     - httpie
-    - watch
+    - pwgen
     - rsync
-    - awscli
-    - pinentry
-    - lastpass-cli
     - shellcheck
-    # - codeclimate
+    - watch
+    - wget
+    - yarn
+
+- name: "[Developer] Homebrew developer taps"
+  homebrew_tap: tap={{ item }} state=present
+  with_items:
+    - Caskroom/cask
+    - wallix/awless
 
 - name: "[Developer] Install developer cask applications"
   homebrew_cask: name={{item}} state=present
   with_items:
-    - java
-    - gpgtools
+    - awless
+    - aws-vault
     - dash
+    - datagrip
+    - drawio
+    - google-cloud-sdk
+    - gpgtools
+    - hosts
+    - imageoptim
+    - intellij-idea
     - iterm2
+    - java
     - ngrok
-    - graphiql
+    - wireshark
+
+- name: Install Python pip packages
+  pip: state=present name="{{ item }}"
+  with_items:
+  - awslogs
+  - csvkit
+  - yamllint
 
 - name: "[Developer] Copy dotfiles"
   copy: src=files/{{ user_name }}/{{ item }} dest={{ home_dir }}/.{{ item }}
   with_items:
-    - bashrc
     - bash_profile
+    - bashrc
     - npmrc
     - vimrc
 
@@ -49,6 +68,8 @@
 - name: "[Developer] Install completions"
   homebrew: name={{item}} state=latest
   with_items:
+    - bundler-completion
+    - cap-completion
     - docker-compose-completion
     - gem-completion
     - mix-completion
@@ -56,11 +77,23 @@
     - rails-completion
     - rake-completion
     - ruby-completion
-    - cap-completion
-    - bundler-completion
+    - yarn-completion
 
 - name: "[Developer] Ensure ~/Applications dir"
   file: path="{{ home_dir }}/Applications" state=directory
+
+# - name: "[Developer] Install 'awsp' aws node.js package globally."
+#   npm:
+#     name: awsp
+#     global: yes
+
+# - name: "[Developer] setup bash_profile for aws stuff"
+#   blockinfile:
+#     dest: "{{home_dir}}/.bash_profile"
+#     block: |
+#       complete -C aws_completer aws
+#       alias aws="aws-wrapper"
+#       alias awsp="source _awsp"
 
 - name: "[Developer] install aws-profile"
   git: repo=https://github.com/jaymecd/aws-profile.git
