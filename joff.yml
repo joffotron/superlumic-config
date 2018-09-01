@@ -1,6 +1,4 @@
 ---
-# TODO install yarn :p
-
 - hosts: localhost
   connection: local
 
