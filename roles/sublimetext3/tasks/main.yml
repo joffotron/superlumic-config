@@ -24,3 +24,4 @@
 
 - name: "[Sublime Text 3] render the sublime config file"
   template: src=config.j2 dest="~/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+

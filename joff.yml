@@ -15,6 +15,7 @@
     - apple_id_email: joff@googlehax.com
     - src_dir: "{{ home_dir }}/src/"
     - settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
+    - mega_gnupg_dir: "{{ home_dir }}/MEGAsync/The Crypt/GPG/gnupg"
     # Set these in secrets file:
     # github_auth_token
     # apple_id_password
@@ -149,7 +150,6 @@
         - { id: "409183694", name: "Keynote" }
         - { id: "409201541", name: "Pages" }
         - { id: "409203825", name: "Numbers" }
-        - { id: "410628904", name: "Wunderlist" }
         - { id: "419330170", name: "Moom" }
         - { id: "495152161", name: "Wizard" }
         - { id: "497799835", name: "Xcode" }
@@ -167,7 +167,6 @@
         - { id: "975937182", name: "Fantastical 2" }
         - { id: "1082171383", name: "Direct Message for Instagram" }
         - { id: "1278508951", name: "Trello" }
-        - { id: "1333542190", name: "1Password 7" }
         - { id: "1357379892", name: "Menu Bar Controller for Sonos" }
         - { id: "1384080005", name: "Tweetbot" }
 
@@ -199,9 +198,9 @@
         - Github.Jump.alfredworkflow
         - Buildkite.Jump.alfredworkflow
 
-    - name: Activate the Toggl Alfred workflow
-      command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
-               creates="{{ home_dir }}/.toggl-workflow-created"
+#    - name: Activate the Toggl Alfred workflow
+#      command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
+#               creates="{{ home_dir }}/.toggl-workflow-created"
 
     - name: Activate the Github Jump Alfred workflow
       command: open "{{ settings_export_dir }}/Github.Jump.alfredworkflow"
@@ -239,9 +238,15 @@
 
     - name: Link GPG directory from MEGA
       file: path={{ home_dir }}/.gnupg
-            src={{ home_dir }}/MEGAsync/TheCrypt/GPG/gnupg
+            src="{{ mega_gnupg_dir }}"
             mode=0600
             state=link
+
+    - name: Permissions on gnupg dir
+      file: path={{ mega_gnupg_dir }}
+            owner={{ user_name }}
+            group=staff
+            mode=0700
 
     - name: Download custom fonts
       get_url: url=https://github.com/tonsky/FiraCode/releases/download/1.102/FiraCode_1.102.zip
@@ -266,7 +271,7 @@
            dest="{{ home_dir }}/Applications/osx-lock-on-remove-usb"
            update=no
 
-    - name: Install Lock-On-USB tool for Yubikey
-      command: install.sh {{item.vendor_id}} {{item.product_id}}
-      with_items:
-        - {vendor_id: 1050, product_id: 0407}
+#    - name: Install Lock-On-USB tool for Yubikey
+#      command: install.sh {{item.vendor_id}} {{item.product_id}}
+#      with_items:
+#        - {vendor_id: 1050, product_id: 0407}
