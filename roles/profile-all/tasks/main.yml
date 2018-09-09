@@ -31,6 +31,12 @@
     - git
     - git-extras
 
+- name: create .ssh directory
+  file:
+    path: "{{ home_dir }}/.ssh/"
+    state: directory
+    mode: 0700
+
 - name: Generate SSH keypair
   command: ssh-keygen -N "" -o -a 100 -t ed25519 -f {{ home_dir }}/.ssh/id_ed25519
            creates={{ home_dir }}/.ssh/id_ed25519
