@@ -197,21 +197,19 @@
         - BetterTouchTool.settings
         - com.manytricks.Moom.plist
         - osx-keybindings.plist
+        - AppSwitching.alfredworkflow
         - alfred-toggl.alfredworkflow
         - Github.Jump.alfredworkflow
         - Buildkite.Jump.alfredworkflow
 
-#    - name: Activate the Toggl Alfred workflow
-#      command: open "{{ settings_export_dir }}/alfred-toggl.alfredworkflow"
-#               creates="{{ home_dir }}/.toggl-workflow-created"
-
-    - name: Activate the Github Jump Alfred workflow
-      command: open "{{ settings_export_dir }}/Github.Jump.alfredworkflow"
-               creates="{{ home_dir }}/.ghjump-workflow-created"
-
-    - name: Activate the Buildkite Jump Alfred workflow
-      command: open "{{ settings_export_dir }}/Buildkite.Jump.alfredworkflow"
-               creates="{{ home_dir }}/.bkjump-workflow-created"
+    - name: Alfred Workflows
+      command: open "{{ settings_export_dir }}/{{ item }}"
+               creates="{{ settings_export_dir }}/{{ item }}-workflow-created"
+      with_items:
+        - AppSwitching.alfredworkflow
+        - alfred-toggl.alfredworkflow
+        - Github.Jump.alfredworkflow
+        - Buildkite.Jump.alfredworkflow
 
     - name: killall cfprefsd so we can copy prefs
       command: killall cfprefsd
