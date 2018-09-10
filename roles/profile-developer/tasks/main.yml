@@ -39,6 +39,7 @@
 
 - name: Install Python pip packages
   pip: state=present name="{{ item }}"
+    executable: pip3
   with_items:
   - awslogs
   - csvkit
