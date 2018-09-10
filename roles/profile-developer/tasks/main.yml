@@ -29,6 +29,7 @@
     - drawio
     - google-cloud-sdk
     - gpgtools
+    - gpg-suite
     - hosts
     - imageoptim
     - intellij-idea
