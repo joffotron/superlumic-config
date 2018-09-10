@@ -41,7 +41,10 @@
 
   tasks:
     - name: install personal cask applications
-      homebrew_cask: name={{item}} state=present
+      homebrew_cask:
+        name: {{item}}
+        state: present
+        install_options: --appdir=/Applications
       with_items:
         - 1password
         - 1password-cli
@@ -68,7 +71,7 @@
         - ksdiff
         - libreoffice
         - linear
-        - mega
+        - megasync
         - monodraw
         - private-internet-access
         - radiant-player
@@ -76,7 +79,6 @@
         - signal
         - skitch
         - sleepyhead
-        - smcfancontrol
         - sonos
         - spotify
         - steam
