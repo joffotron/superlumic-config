@@ -12,6 +12,11 @@
   lineinfile: dest={{ home_dir }}/.bash_profile
               line="alias dockergc='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc -v "{{ home_dir }}/.docker/:/excludes/" -e EXCLUDE_FROM_GC=/excludes/excluded-images -e EXCLUDE_CONTAINERS_FROM_GC=/excludes/excluded-containers  spotify/docker-gc'"
 
+- name: "[Doker] Tap homebrew versions"
+  homebrew_tap: tap={{ item }} state=present
+  with_items:
+  - homebrew/cask-versions
+
 - name: "[Docker] Install Docker for Mac"
   homebrew_cask: name=docker-edge state=present
 
