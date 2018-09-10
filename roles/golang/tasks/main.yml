@@ -3,8 +3,8 @@
   homebrew: name={{item}} state=latest
   with_items:
     - go
-    - gobject-introspection
     - glide
+    - dep
 
 - name: "[Golang] Make go src directory"
   file: path={{ home_dir }}/src/go state=directory
@@ -26,4 +26,3 @@
   with_items:
     - golang.org/x/tools/cmd/goimports
     - github.com/motemen/gore
-    - github.com/onsi/ginkgo/ginkgo

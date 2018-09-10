@@ -38,8 +38,7 @@
     - wireshark
 
 - name: Install Python pip packages
-  pip: state=present name="{{ item }}"
-    executable: pip3
+  pip: state=present executable=pip3 name="{{ item }}"
   with_items:
   - awslogs
   - csvkit
