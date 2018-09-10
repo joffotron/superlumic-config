@@ -42,7 +42,7 @@
   tasks:
     - name: install personal cask applications
       homebrew_cask:
-        name: {{item}}
+        name: "{{item}}"
         state: present
         install_options: --appdir=/Applications
       with_items:
