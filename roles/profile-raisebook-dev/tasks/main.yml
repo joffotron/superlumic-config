@@ -30,3 +30,15 @@
   lineinfile: dest={{ home_dir }}/.bash_profile
               line="eval \"$(/Users/joff/src/Raisebook/{{ item.key }}/bin/sub/bin/{{ item.helper }} init -)\""
   with_dict: "{{ projects }}"
+
+- name: "[Raisebook] Install Google Cloud SDK"
+  homebrew_cask: name={{item}} state=present
+  with_items:
+    - google-cloud-sdk
+
+- name: "[Raisebook] Google Cloud install to bash_profile"
+  blockinfile:
+    path: "{{ home_dir }}/.bash_profile"
+    block: |
+      source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+      source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
