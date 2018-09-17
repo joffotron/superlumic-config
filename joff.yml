@@ -89,10 +89,9 @@
         - whalebird
         - xbox360-controller-driver
         - xee
-        - yubikey-neo-manager
-        - yubikey-personalization-gui
-        - yubikey-piv-manager
-        - yubiswitch
+        - yubico-yubikey-manager
+        - yubico-yubikey-personalization-gui
+        - yubico-yubikey-piv-manager
 
     - name: Create local bin dir
       file: path="{{ home_dir }}/bin" state=directory
