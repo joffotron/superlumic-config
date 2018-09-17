@@ -1,0 +1,30 @@
+---
+oculo_src: "{{ src_dir }}"
+
+projects:
+  oculo:
+    account: CERATechnologies
+    repo: Oculo
+    dest: monolith
+    helper: false
+  build-agents:
+    account: CERATechnologies
+    repo: build-agents
+    dest: build-agents
+    helper: false
+  oculo-datapipeline:
+    account: CERATechnologies
+    repo: oculo-datapipeline
+    dest: oculo-datapipeline
+    helper: false
+  provider-directory:
+    account: CERATechnologies
+    repo: provider-directory
+    dest: provider-directory
+    helper: false
+  referral-exchange:
+    account: CERATechnologies
+    repo: referral-exchange
+    dest: referral-exchange
+    helper: false
+

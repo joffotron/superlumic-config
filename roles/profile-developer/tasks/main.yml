@@ -72,19 +72,6 @@
 - name: "[Developer] Ensure ~/Applications dir"
   file: path="{{ home_dir }}/Applications" state=directory
 
-# - name: "[Developer] Install 'awsp' aws node.js package globally."
-#   npm:
-#     name: awsp
-#     global: yes
-
-# - name: "[Developer] setup bash_profile for aws stuff"
-#   blockinfile:
-#     dest: "{{home_dir}}/.bash_profile"
-#     block: |
-#       complete -C aws_completer aws
-#       alias aws="aws-wrapper"
-#       alias awsp="source _awsp"
-
 - name: "[Developer] install aws-profile"
   git: repo=https://github.com/jaymecd/aws-profile.git
        dest="{{ home_dir }}/Applications/aws-profile"
@@ -111,3 +98,15 @@
   lineinfile:
     dest: "{{home_dir}}/.bash_profile"
     line: eval "$(direnv hook bash)"
+
+- name: "[Developer] Ensure .aws directory"
+  file: path="{{ home_dir }}/.aws" state=directory
+
+- name: "[Developer] AWS Base config file"
+  blockinfile:
+    dest: "{{ home_dir }}/.aws/config"
+    create: yes
+    block: |
+      [default]
+      output=json
+      region=ap-southeast-2

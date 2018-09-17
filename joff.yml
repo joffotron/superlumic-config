@@ -25,11 +25,13 @@
     - vars/nodejs.yml
     - vars/sublime_text_packages.yml
     - vars/{{ user_name }}-secrets.yml
+    - vars/oculo-secrets.yml
 
   roles:
     - { role: profile-all, tags: base }
     - { role: zsh, tags: zsh }
     - { role: profile-developer, tags: base-dev }
+    - { role: profile-oculo-dev, tags: oculo }
     - { role: docker, tags: docker }
     - { role: sublimetext3, tags: sublime }
       #    - { role: roderik.superlumic-postgresql, tags: postgres }

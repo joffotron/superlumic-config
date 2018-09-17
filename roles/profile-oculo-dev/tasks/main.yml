@@ -1,0 +1,52 @@
+---
+- name: "[Oculo] Make src directory"
+  file: path="{{ oculo_src }}/" state=directory
+
+- name: "[Oculo] Checkout repositories"
+  git:
+    repo: ssh://git@github.com/{{ item.value.account }}/{{ item.value.repo }}.git
+    dest: "{{ oculo_src }}/{{ item.value.dest }}"
+    update: no
+  with_dict: "{{ projects }}"
+
+#- name: "[Oculo] Add project bin dirs to path"
+#  lineinfile: dest={{ home_dir }}/.bash_profile
+#              line="export PATH=$PATH:{{ raisebook_src }}/{{ item.key }}/bin"
+#  with_dict: "{{ projects }}"
+
+#- name: "[Oculo] Add init for subcommands to bash_profile"
+#  lineinfile: dest={{ home_dir }}/.bash_profile
+#              line="eval \"$(/Users/joff/src/{{ item.key }}/bin/sub/bin/{{ item.helper }} init -)\""
+#  with_dict: "{{ projects }}"
+
+- name: "[Oculo] Ensure .aws directory"
+  file: path="{{ home_dir }}/.aws" state=directory
+
+- name: "[Oculo] AWS Base config file"
+  blockinfile:
+    dest: "{{ home_dir }}/.aws/config"
+    create: yes
+    block: |
+
+      [profile oculo]
+      output=json
+      region=ap-southeast-2
+
+      [profile oculo-production]
+      output=json
+      region=ap-southeast-2
+
+- name: "[Oculo] AWS Credentials file"
+  blockinfile:
+    dest: "{{ home_dir }}/.aws/credentials"
+    create: yes
+    mode: 0600
+    block: |
+      [oculo]
+      aws_access_key_id={{ oculo_dev_aws_key }}
+      aws_secret_access_key={{ oculo_dev_aws_secret }}
+
+      [oculo-production]
+      aws_access_key_id={{ oculo_prod_aws_key }}
+      aws_secret_access_key={{ oculo_prod_aws_secret }}
+
