@@ -50,19 +50,15 @@
       with_items:
         - 1password
         - 1password-cli
-        - adobe-photoshop-lightroom
         - alfred
         - android-file-transfer
         - bartender
         - bettertouchtool
-        - bitbar
         - chicken
-        - coconutbattery
         - controlplane
         - discord
         - disk-inventory-x
         - dropbox
-        - electrum
         - filezilla
         - flux
         - gitkraken
@@ -80,14 +76,10 @@
         - rocket
         - signal
         - skitch
-        - sleepyhead
         - sonos
         - spotify
-        - steam
-        - veracrypt
         - viscosity
         - whalebird
-        - xbox360-controller-driver
         - xee
         - yubico-yubikey-manager
         - yubico-yubikey-personalization-gui
@@ -114,11 +106,8 @@
       homebrew: name={{item}} state=latest
       with_items:
         - certbot
-        - exercism
         - ipcalc
         - jq
-        - lame
-        - ffmpeg
         - mas
         - moreutils
         - packer
@@ -126,7 +115,6 @@
         - s3cmd
         - ykpers
         - ykman
-        - youtube-dl
         - z
         - zsh
         - speedtest-cli
@@ -164,7 +152,6 @@
         - { id: "957734279", name: "Toggl Desktop" }
         - { id: "964860276", name: "Folder Designer" }
         - { id: "975937182", name: "Fantastical 2" }
-        - { id: "1082171383", name: "Direct Message for Instagram" }
         - { id: "1278508951", name: "Trello" }
         - { id: "1357379892", name: "Menu Bar Controller for Sonos" }
         - { id: "1384080005", name: "Tweetbot" }

@@ -1,0 +1,25 @@
+---
+
+- name: install personal cask applications
+  homebrew_cask:
+    name: "{{item}}"
+    state: present
+    install_options: --appdir=/Applications
+  with_items:
+  - adobe-photoshop-lightroom
+  - bitbar
+  - coconutbattery
+  - electrum
+  - sleepyhead
+  - steam
+  - veracrypt
+  - xbox360-controller-driver
+
+- name: install personal brew applications
+  homebrew: name={{item}} state=latest
+  with_items:
+  - exercism
+  - lame
+  - ffmpeg
+  - youtube-dl
+  - speedtest-cli

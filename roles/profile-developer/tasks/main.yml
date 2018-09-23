@@ -27,14 +27,15 @@
     - dash
     - datagrip
     - drawio
-    - gpgtools
     - gpg-suite
+    - gpgtools
     - hosts
     - imageoptim
     - intellij-idea
     - iterm2
     - java
     - ngrok
+    - postman
     - wireshark
 
 - name: Install Python pip packages
