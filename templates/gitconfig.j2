@@ -17,7 +17,7 @@
   user = {{ github_user_name }}
 
 [alias]
-  up = !git remote update -p; git rebase -p @{u}
+  up = "!git remote update -p && git merge --ff-only @{u}"
   co = checkout
   ci = commit
   st = status
