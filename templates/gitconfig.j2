@@ -17,7 +17,7 @@
   user = {{ github_user_name }}
 
 [alias]
-  up = !git fetch && git rebase -p origin/`git symbolic-ref HEAD | sed 's|.*/||'`
+  up = !git remote update -p; git rebase -p @{u}
   co = checkout
   ci = commit
   st = status
