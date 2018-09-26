@@ -26,5 +26,5 @@ projects:
     account: CERATechnologies
     repo: referral-exchange
     dest: referral-exchange
-    helper: false
+    helper: rex
 

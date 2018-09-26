@@ -14,10 +14,10 @@
 #              line="export PATH=$PATH:{{ raisebook_src }}/{{ item.key }}/bin"
 #  with_dict: "{{ projects }}"
 
-#- name: "[Oculo] Add init for subcommands to bash_profile"
-#  lineinfile: dest={{ home_dir }}/.bash_profile
-#              line="eval \"$(/Users/joff/src/{{ item.key }}/bin/sub/bin/{{ item.helper }} init -)\""
-#  with_dict: "{{ projects }}"
+- name: "[Oculo] Add init for subcommands to bash_profile"
+  lineinfile: dest={{ home_dir }}/.bash_profile
+              line="eval \"$(/Users/joff/src/{{ item.key }}/scripts/sub/bin/{{ item.helper }} init -)\""
+  with_dict: "{{ projects }}"
 
 - name: "[Oculo] Ensure .aws directory"
   file: path="{{ home_dir }}/.aws" state=directory
