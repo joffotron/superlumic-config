@@ -140,7 +140,6 @@
         - { id: "419330170", name: "Moom" }
         - { id: "495152161", name: "Wizard" }
         - { id: "497799835", name: "Xcode" }
-        - { id: "557168941", name: "Tweetbot" }
         - { id: "571213070", name: "DaVinci Resolve" }
         - { id: "585829637", name: "Todoist" }
         - { id: "587512244", name: "Kaleidoscope" }
@@ -154,7 +153,7 @@
         - { id: "975937182", name: "Fantastical 2" }
         - { id: "1278508951", name: "Trello" }
         - { id: "1357379892", name: "Menu Bar Controller for Sonos" }
-        - { id: "1384080005", name: "Tweetbot" }
+        - { id: "1384080005", name: "Tweetbot 3" }
 
     - name: create .ssh directory
       file:
