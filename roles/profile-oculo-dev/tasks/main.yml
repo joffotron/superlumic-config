@@ -28,11 +28,11 @@
     create: yes
     block: |
 
-      [profile oculo]
+      [profile dev]
       output=json
       region=ap-southeast-2
 
-      [profile oculo-production]
+      [profile prod]
       output=json
       region=ap-southeast-2
 
@@ -42,11 +42,11 @@
     create: yes
     mode: 0600
     block: |
-      [oculo]
+      [dev]
       aws_access_key_id={{ oculo_dev_aws_key }}
       aws_secret_access_key={{ oculo_dev_aws_secret }}
 
-      [oculo-production]
+      [prod]
       aws_access_key_id={{ oculo_prod_aws_key }}
       aws_secret_access_key={{ oculo_prod_aws_secret }}
 
