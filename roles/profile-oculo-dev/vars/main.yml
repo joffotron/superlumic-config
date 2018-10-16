@@ -6,7 +6,7 @@ projects:
     account: CERATechnologies
     repo: Oculo
     dest: monolith
-    helper: false
+    helper: oculo
   build-agents:
     account: CERATechnologies
     repo: build-agents
@@ -21,9 +21,14 @@ projects:
     account: CERATechnologies
     repo: provider-directory
     dest: provider-directory
-    helper: false
+    helper: provider-directory
   referral-exchange:
     account: CERATechnologies
     repo: referral-exchange
     dest: referral-exchange
     helper: rex
+  infrastructure:
+    account: CERATechnologies
+    repo: infrastructure
+    dest: infrastructure
+    helper: infrastructure
