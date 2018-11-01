@@ -1,4 +1,14 @@
 ---
+- name: "[Oculo] Tap brews"
+  homebrew_tap: tap={{ item }} state=present
+  with_items:
+  - heroku/brew
+
+- name: "[Oculo] Install required tools"
+  homebrew: name={{item}} state=latest
+  with_items:
+  - heroku
+
 - name: "[Oculo] Make src directory"
   file: path="{{ oculo_src }}/" state=directory
 
@@ -8,11 +18,6 @@
     dest: "{{ oculo_src }}/{{ item.value.dest }}"
     update: no
   with_dict: "{{ projects }}"
-
-#- name: "[Oculo] Add project bin dirs to path"
-#  lineinfile: dest={{ home_dir }}/.bash_profile
-#              line="export PATH=$PATH:{{ raisebook_src }}/{{ item.key }}/bin"
-#  with_dict: "{{ projects }}"
 
 - name: "[Oculo] Add init for subcommands to bash_profile"
   lineinfile: dest={{ home_dir }}/.bash_profile
