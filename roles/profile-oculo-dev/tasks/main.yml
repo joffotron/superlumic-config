@@ -41,6 +41,10 @@
       output=json
       region=ap-southeast-2
 
+      [profile ks-prod]
+      output=json
+      region=ap-southeast-2
+
 - name: "[Oculo] AWS Credentials file"
   blockinfile:
     dest: "{{ home_dir }}/.aws/credentials"
@@ -55,3 +59,6 @@
       aws_access_key_id={{ oculo_prod_aws_key }}
       aws_secret_access_key={{ oculo_prod_aws_secret }}
 
+      [ks-prod]
+      aws_access_key_id={{ keepsight_aws_key }}
+      aws_secret_access_key={{ keepsight_aws_secret }}
