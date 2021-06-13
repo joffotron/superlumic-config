@@ -18,7 +18,7 @@
   - homebrew/cask-versions
 
 - name: "[Docker] Install Docker for Mac"
-  homebrew_cask: name=docker-edge state=present
+  homebrew_cask: name=docker state=present
 
 - name: "[Docker] Check for First run"
   command: open /Applications/Docker.app

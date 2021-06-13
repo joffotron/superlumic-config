@@ -10,3 +10,21 @@
 - name: "[zsh] Install Oh-My-Zsh"
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git
        dest="{{ home_dir }}/.oh-my-zsh"
+
+- name: "[zsh] Zsh config"
+  template:
+    src: zshrc.j2
+    dest: "{{ home_dir }}/.zshrc"
+
+- name: "[zsh] Zsh env"
+  template:
+    src: zshenv.j2
+    dest: "{{ home_dir }}/.zshenv"
+
+- name: "[zsh] Install Powerlevel10k"
+  command: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+- name: "[zsh] p10k config"
+  template:
+    src: p10k.zsh.j2
+    dest: "{{ home_dir }}/.p10k.zsh"

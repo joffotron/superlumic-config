@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -eo pipefail
+
+if [ -z "${INOFFICE}" ]; then
+  SSH_CMD='ssh'
+else
+  SSH_CMD='ssh -p 2222'
+fi
+
+rsync -e "${SSH_CMD}" -rlptD -W --numeric-ids --delete --delete-after --stats --usermap=1000:501 --groupmap=1000:20 --exclude-from=${HOME}/bin/sync-excludes.txt devsteez.brutalbits.com:/home/joff/src/ $HOME/src/
+

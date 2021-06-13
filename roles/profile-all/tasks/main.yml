@@ -27,7 +27,6 @@
 - name: install general brew applications
   homebrew: name={{item}} state=latest
   with_items:
-    - bash-completion
     - the_silver_searcher
     - ack
     - gnu-tar

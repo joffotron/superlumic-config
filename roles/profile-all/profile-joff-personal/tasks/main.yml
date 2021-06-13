@@ -6,20 +6,16 @@
     state: present
     install_options: --appdir=/Applications
   with_items:
-  - adobe-photoshop-lightroom
-  - bitbar
+  - joplin
   - coconutbattery
-  - electrum
-  - sleepyhead
-  - steam
+#  - sleepyhead # replaced by ...
   - veracrypt
-  - xbox360-controller-driver
 
 - name: install personal brew applications
   homebrew: name={{item}} state=latest
   with_items:
-  - exercism
   - lame
   - ffmpeg
   - youtube-dl
   - speedtest-cli
+  - karabiner-elements

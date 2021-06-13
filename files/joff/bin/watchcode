@@ -1,0 +1,5 @@
+#!/bin/bash
+
+run_rsync=/Users/joff/bin/codesync
+
+${run_rsync}; fswatch -o $HOME/src/ | while read f; do sleep 0.2 || break; ${run_rsync} || break; done

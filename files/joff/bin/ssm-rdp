@@ -1,0 +1,5 @@
+#!/bin/bash
+
+TARGET=${1:?Supply the instance id}
+
+aws ssm start-session --target "${TARGET}" --document-name AWS-StartPortForwardingSession --parameters "localPortNumber=3389,portNumber=3389"

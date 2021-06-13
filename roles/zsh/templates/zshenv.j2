@@ -1,0 +1,39 @@
+eval "$({{ home_dir }}/src/oculo/scripts/sub/bin/oculo init -)"
+eval "$({{ home_dir }}/src/infrastructure/scripts/sub/bin/infrastructure init -)"
+eval "$({{ home_dir }}/src/keepsight/scripts/sub/bin/keepsight init -)"
+eval "$({{ home_dir }}/src/buildkite-ci/scripts/sub/bin/buildkite init -)"
+eval "$({{ home_dir }}/src/cohorts/scripts/sub/bin/cohorts init -)"
+eval "$({{ home_dir }}/src/marketing-site/scripts/sub/bin/marketing init -)"
+eval "$({{ home_dir }}/src/doc-renderer/scripts/sub/bin/drender init -)"
+
+export HOMEBREW_CASK_OPTS="--no-quarantine"
+export LESS="-erX"
+export PATH=$PATH:/usr/local/sbin
+{#export PATH=$PATH:$HOME/Applications/android-sdk-macosx/platform-tools/#}
+export EDITOR=vim
+export NVM_DIR=~/.nvm
+export GOPATH={{ home_dir }}/src/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
+
+alias a='aws-vault exec --no-session'
+alias mixconsole="iex -S mix run --no-start"
+alias bundlestubs="bundle install --binstubs .bundle/bin"
+alias ffs="sudo !!"
+alias fix_docker_clock="docker run --rm --privileged alpine hwclock -s"
+alias webserver='ruby -run -ehttpd . -p8000'
+
+alias gu='git up'
+alias gs='git status'
+alias gds='git diff --staged'
+alias gdt='git difftool'
+
+alias prune='git remote prune origin'
+alias publish='git publish origin'
+alias prdone="git co main && gu && git delete-merged-branches; gu"
+alias prold-done="git co master && gu && git delete-merged-branches; gu"
+alias jsonformat="pbpaste | jq . | pbcopy"
+alias jsonunformat="pbpaste | jq . -c | pbcopy"
+alias be='bundle exec'
+alias yeet='git push --force-with-lease'
+{#alias zoomies='open "zoommtg://zoom.us/join?confno=4049522151&pwd=MzY0U2JEbWFaMU5vUmJHZjduSlBLdz09"'#}

@@ -8,18 +8,23 @@ while [ 1 -ne $code ]; do
     sleep 1
 done
 
-echo "kill ssh"
-killall ssh
+echo "kill scdaemon"
+killall scdaemon
 
-echo "kill ssh muxers"
-for pid in `ps -ef | grep ssh | grep -v grep | awk '{print $2}'`; do
-    kill $pid
-done
+#echo "kill ssh"
+#killall ssh
+
+#echo "kill ssh muxers"
+#for pid in `ps -ef | grep ssh | grep -v grep | awk '{print $2}'`; do
+#    kill $pid
+#done
 
 echo "restart gpg-agent"
 eval $(gpg-agent --daemon)
 
-echo
-echo "All done. Now unplug / replug the token."
-echo
+gpg2 --card-status
+
+#echo
+#echo "All done. Now unplug / replug the token."
+#echo
 
