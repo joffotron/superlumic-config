@@ -78,28 +78,6 @@
 - name: "[Developer] Ensure ~/Applications dir"
   file: path="{{ home_dir }}/Applications" state=directory
 
-#- name: "[Developer] install aws-profile"
-#  git: repo=https://github.com/jaymecd/aws-profile.git
-#       dest="{{ home_dir }}/Applications/aws-profile"
-#       update=no
-#
-#- name: "[Developer] link aws-profile binaries"
-#  file: src="{{home_dir}}/Applications/aws-profile/{{item}}"
-#        dest="/usr/local/bin/{{ item }}"
-#        state=link
-#  with_items:
-#    - aws-profile
-#    - aws-wrapper
-#
-#- name: "[Developer] setup bash_profile for aws-profile"
-#  blockinfile:
-#    dest: "{{home_dir}}/.bash_profile"
-#    block: |
-#      complete -C aws_completer aws
-#      alias aws-profile="source aws-profile"
-#      alias aws="aws-wrapper"
-#      aws-profile default
-
 - name: "[Developer] Activate direnv"
   lineinfile:
     dest: "{{home_dir}}/.bash_profile"

@@ -27,10 +27,9 @@
 #    - vars/sublime_text_packages.yml
 
   roles:
-    - { role: profile-all, tags: base }
     - { role: zsh, tags: zsh }
+    - { role: profile-all, tags: base }
     - { role: profile-developer, tags: base-dev }
-    - { role: profile-oculo-dev, tags: oculo }
     - { role: docker, tags: docker }
     - { role: roderik.superlumic-node, tags: nodejs }
     - { role: ruby, tags: ruby }
@@ -86,16 +85,6 @@
     - name: Copy local 'binaries'
       copy: src=files/joff/bin/
             dest="{{ home_dir }}/bin/"
-
-#    - name: Powerline Shell Prompt
-#      git: repo=git@github.com:joffotron/powerline-shell.git
-#           dest="{{ home_dir }}/bin/powerline-shell"
-#           version="awsp"
-
-#    - name: Run install for powerline shell prompt
-#      command: "python install.py"
-#      args:
-#        chdir: "{{ home_dir }}/bin/powerline-shell/"
 
     - name: install personal brew applications
       homebrew: name={{item}} state=latest
@@ -244,13 +233,3 @@
 
     - name: "Ensure ~/Applications dir"
       file: path="{{ home_dir }}/Applications" state=directory
-
-#    - name: Download Lock-On-USB tool
-#      git: repo=https://github.com/nfirvine/osx-lock-on-remove-usb.git
-#           dest="{{ home_dir }}/Applications/osx-lock-on-remove-usb"
-#           update=no
-#
-#    - name: Install Lock-On-USB tool for Yubikey
-#      command: install.sh {{item.vendor_id}} {{item.product_id}}
-#      with_items:
-#        - {vendor_id: 1050, product_id: 0407}
