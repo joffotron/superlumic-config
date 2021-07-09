@@ -16,10 +16,10 @@
     mode: "0775"
 
 - name: Ensure /usr/local/bin/
+  become: yes
   file:
     path: /usr/local/bin
     state: directory
-    become: yes
 
 - name: Move superlumic script into place
   command: mv {{ home_dir }}/superlumic /usr/local/bin
