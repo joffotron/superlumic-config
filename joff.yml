@@ -41,6 +41,11 @@
   # - { role: roderik.superlumic-postgresql, tags: postgres }
 
   tasks:
+    - name: "Homebrew Taps"
+      homebrew_tap: tap={{ item }} state=present
+      with_items:
+      - homebrew/cask-drivers  # Has Sonos and yubikey casks
+
     - name: install personal cask applications
       homebrew_cask:
         name: "{{item}}"
