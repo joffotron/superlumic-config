@@ -22,7 +22,10 @@
     dest: "{{ home_dir }}/.zshenv"
 
 - name: "[zsh] Install Powerlevel10k"
-  command: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    dest: "{{ home_dir }}/.oh-my-zsh/custom}/themes/powerlevel10k"
+    depth: 1
 
 - name: "[zsh] p10k config"
   copy:
