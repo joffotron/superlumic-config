@@ -25,6 +25,6 @@
   command: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 - name: "[zsh] p10k config"
-  template:
-    src: p10k.zsh.j2
+  copy:
+    src: p10k.zsh
     dest: "{{ home_dir }}/.p10k.zsh"
