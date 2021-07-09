@@ -117,8 +117,12 @@
       output=json
       region=ap-southeast-2
 
+- name: "[Developer] Ensure home bin directory"
+  file:
+    path: "{{ home_dir }}/bin"
+    state: directory
 
-- name: Install aws-kms
+- name: "[Developer] Install aws-kms"
   get_url:
     url: https://github.com/joffotron/aws-kms/releases/download/v0.1.0/aws-kms-linux-amd64
     dest: "{{ home_dir }}/bin/aws-kms"
