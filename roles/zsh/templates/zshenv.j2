@@ -1,13 +1,14 @@
-eval "$({{ home_dir }}/src/oculo/scripts/sub/bin/oculo init -)"
-eval "$({{ home_dir }}/src/infrastructure/scripts/sub/bin/infrastructure init -)"
-eval "$({{ home_dir }}/src/keepsight/scripts/sub/bin/keepsight init -)"
-eval "$({{ home_dir }}/src/buildkite-ci/scripts/sub/bin/buildkite init -)"
-eval "$({{ home_dir }}/src/cohorts/scripts/sub/bin/cohorts init -)"
-eval "$({{ home_dir }}/src/marketing-site/scripts/sub/bin/marketing init -)"
-eval "$({{ home_dir }}/src/doc-renderer/scripts/sub/bin/drender init -)"
+{#eval "$({{ home_dir }}/src/oculo/scripts/sub/bin/oculo init -)"#}
+{#eval "$({{ home_dir }}/src/infrastructure/scripts/sub/bin/infrastructure init -)"#}
+{#eval "$({{ home_dir }}/src/keepsight/scripts/sub/bin/keepsight init -)"#}
+{#eval "$({{ home_dir }}/src/buildkite-ci/scripts/sub/bin/buildkite init -)"#}
+{#eval "$({{ home_dir }}/src/cohorts/scripts/sub/bin/cohorts init -)"#}
+{#eval "$({{ home_dir }}/src/marketing-site/scripts/sub/bin/marketing init -)"#}
+{#eval "$({{ home_dir }}/src/doc-renderer/scripts/sub/bin/drender init -)"#}
 
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 export LESS="-erX"
+export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
 {#export PATH=$PATH:$HOME/Applications/android-sdk-macosx/platform-tools/#}
 export EDITOR=vim
@@ -30,8 +31,8 @@ alias gdt='git difftool'
 
 alias prune='git remote prune origin'
 alias publish='git publish origin'
-alias prdone="git co main && gu && git delete-merged-branches; gu"
-alias prold-done="git co master && gu && git delete-merged-branches; gu"
+alias prdone="git co master && gu && git delete-merged-branches; gu"
+alias prmaindone="git co main && gu && git delete-merged-branches; gu"
 alias jsonformat="pbpaste | jq . | pbcopy"
 alias jsonunformat="pbpaste | jq . -c | pbcopy"
 alias be='bundle exec'

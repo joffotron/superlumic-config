@@ -1,14 +1,8 @@
 ---
-- name: "[Developer] Homebrew developer taps"
-  homebrew_tap: tap={{ item }} state=present
-  with_items:
-  - wallix/awless
-
 - name: "[Developer] Install developer brew applications"
   homebrew: name={{item}} state=latest
   with_items:
     - awscli
-    - awless
     - bat
     - direnv
     - htop
@@ -42,6 +36,23 @@
     - pop
     - postman
     - wireshark
+
+- name: "[Developer] Fetch awless installer content"
+  uri:
+    url: https://raw.githubusercontent.com/wallix/awless/master/getawless.sh
+    return_content: yes
+  register: awless_installer
+
+- name: "[Developer] Run awless installer"
+  shell:
+    chdir: "{{ home_dir }}"
+    cmd: bash -
+    warn: no
+    stdin: "{{ awless_installer.content }}"
+
+- name: "[Developer] Put awless in /usr/local/bin"
+  become: yes
+  command: mv "{{ home_dir }}/awless" /usr/local/bin/
 
 - name: Install Python pip packages
   pip: state=present executable=pip3 name="{{ item }}"
