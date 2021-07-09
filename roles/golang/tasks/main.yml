@@ -4,7 +4,7 @@
   with_items:
     - go
     - glide
-    - dep
+#    - dep
 
 - name: "[Golang] Make go src directory"
   file: path={{ home_dir }}/src/go state=directory
