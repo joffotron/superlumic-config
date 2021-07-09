@@ -22,6 +22,7 @@
     state: directory
 
 - name: Move superlumic script into place
+  become: yes
   command: mv {{ home_dir }}/superlumic /usr/local/bin
 
 - name: install brew cask upgrade tool
