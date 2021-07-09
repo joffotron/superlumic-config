@@ -35,22 +35,23 @@
     - postman
     - wireshark
 
-- name: "[Developer] Fetch awless installer content"
-  uri:
-    url: https://raw.githubusercontent.com/wallix/awless/master/getawless.sh
-    return_content: yes
-  register: awless_installer
-
-- name: "[Developer] Run awless installer"
-  shell:
-    chdir: "{{ home_dir }}"
-    cmd: bash -
-    warn: no
-    stdin: "{{ awless_installer.content }}"
-
-- name: "[Developer] Put awless in /usr/local/bin"
-  become: yes
-  command: mv "{{ home_dir }}/awless" /usr/local/bin/
+# TODO: Install using `go get` for MacOS ARM
+#- name: "[Developer] Fetch awless installer content"
+#  uri:
+#    url: https://raw.githubusercontent.com/wallix/awless/master/getawless.sh
+#    return_content: yes
+#  register: awless_installer
+#
+#- name: "[Developer] Run awless installer"
+#  shell:
+#    chdir: "{{ home_dir }}"
+#    cmd: bash -
+#    warn: no
+#    stdin: "{{ awless_installer.content }}"
+#
+#- name: "[Developer] Put awless in /usr/local/bin"
+#  become: yes
+#  command: mv "{{ home_dir }}/awless" /usr/local/bin/
 
 - name: "[Developer] Download Hosts App"
   get_url:
