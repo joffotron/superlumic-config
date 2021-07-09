@@ -4,6 +4,11 @@
   with_items:
   - homebrew/cask-fonts
 
+- name: "[zsh] Install svn"
+  homebrew:
+    with_items:
+    - svn
+
 - name: "[zsh] Install powerline fonts"
   homebrew_cask: name={{item}} state=present
   with_items:
