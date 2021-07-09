@@ -108,12 +108,12 @@
         - packer
         - pidof
         - s3cmd
-        - sshfs
         - ykpers
         - ykman
         - zsh
         - speedtest-cli
 #        - z
+#        - sshfs
 
     # - name: "[App Store] Sign out of the Mac App Store"
     #   command: mas signout
