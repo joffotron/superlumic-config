@@ -7,6 +7,7 @@
     - direnv
     - htop
     - httpie
+    - java
     - pwgen
     - rsync
     - shellcheck
@@ -28,7 +29,6 @@
     - intellij-idea
     - iterm2
     - insomnia
-    - java
     - ksdiff
     - ngrok
     - pop
