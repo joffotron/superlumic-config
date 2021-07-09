@@ -35,7 +35,7 @@
     - { role: roderik.superlumic-node, tags: nodejs }
     - { role: ruby, tags: ruby }
     - { role: golang, tags: golang }
-    - { role: elixir, tags: elixir }
+#    - { role: elixir, tags: elixir }
 #    - { role: python, tags: python }
   # - { role: sublimetext3, tags: sublime }
   # - { role: roderik.superlumic-postgresql, tags: postgres }
