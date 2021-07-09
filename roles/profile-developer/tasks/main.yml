@@ -55,7 +55,7 @@
 
 - name: "[Developer] Download Hosts App"
   get_url:
-    src: https://www.dirk-froehling.de/resources/Software/Hosts-App-1.4.5.zip
+    url: https://www.dirk-froehling.de/resources/Software/Hosts-App-1.4.5.zip
     dest: "{{ home_dir }}/Downloads"
 
 - name: "[Developer] Unpack Hosts App"
@@ -64,8 +64,6 @@
     remote_src: yes
     src: "{{ home_dir }}/Downloads/Hosts-App-1.4.5.zip"
     dest: "/Applications"
-
-# Rosetta 2
 
 - name: Install Python pip packages
   pip: state=present executable=pip3 name="{{ item }}"
