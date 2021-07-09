@@ -45,7 +45,7 @@
       homebrew_cask:
         name: "{{item}}"
         state: present
-        install_options: --appdir=/Applications
+        install_options: --cask --appdir=/Applications --no-quarantine
       with_items:
         - 1password
         - 1password-cli
