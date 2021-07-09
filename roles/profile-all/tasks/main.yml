@@ -10,9 +10,19 @@
   when: fde_status.stdout != "FileVault is On."
 
 - name: Copy superlumic script into /usr/local/bin
-  template: src=superlumic.sh.j2
-            dest=/usr/local/bin/superlumic
-            mode=0775
+  template:
+    src: superlumic.sh.j2
+    dest: "{{ home_dir }}/superlumic"
+    mode: "0775"
+
+- name: Ensure /usr/local/bin/
+  file:
+    path: /usr/local/bin
+    state: directory
+    become: yes
+
+- name: Move superlumic script into place
+  command: mv {{ home_dir }}/superlumic /usr/local/bin
 
 - name: install brew cask upgrade tool
   homebrew_tap: tap=buo/cask-upgrade state=present
