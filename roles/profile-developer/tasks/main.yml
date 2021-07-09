@@ -59,8 +59,8 @@
     dest: "{{ home_dir }}/Downloads"
 
 - name: "[Developer] Unpack Hosts App"
+  become: yes
   unarchive:
-    become: yes
     remote_src: yes
     src: "{{ home_dir }}/Downloads/Hosts-App-1.4.5.zip"
     dest: "/Applications"
