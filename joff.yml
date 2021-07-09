@@ -28,6 +28,7 @@
 
   roles:
     - { role: zsh, tags: zsh }
+    - { role: apple-silicon, tags: m1chip }
     - { role: profile-all, tags: base }
     - { role: profile-developer, tags: base-dev }
     - { role: docker, tags: docker }
