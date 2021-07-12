@@ -21,6 +21,12 @@
     src: zshenv.j2
     dest: "{{ home_dir }}/.zshenv"
 
+- name: "[zsh] Install zsh-z"
+  git:
+    repo: https://github.com/agkozak/zsh-z
+    dest: "{{ home_dir }}/.oh-my-zsh/custom}/plugins/zsh-z"
+    depth: 1
+
 - name: "[zsh] Install Powerlevel10k"
   git:
     repo: https://github.com/romkatv/powerlevel10k.git
