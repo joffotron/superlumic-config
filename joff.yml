@@ -171,8 +171,11 @@
 #        - RubyMine-settings.jar
 #        - IntelliJ-settings.jar
 #        - DataGrip-settings.jar
+        - com.apple.symbolichotkeys.plist
+        - pbs.plist
+        - dot-GlobalPreferences.plist
         - iStatMenusSettings.ismp
-        - BetterTouchTool.settings
+        - BetterTouchTool.settings.bttpreset
         - com.manytricks.Moom.plist
         - osx-keybindings.plist
         - AppSwitching.alfredworkflow
