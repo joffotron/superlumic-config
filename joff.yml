@@ -32,7 +32,7 @@
     - { role: profile-all, tags: base }
     - { role: profile-developer, tags: base-dev }
     - { role: docker, tags: docker }
-    - { role: roderik.superlumic-node, tags: nodejs }
+    - { role: nodejs, tags: nodejs }
     - { role: ruby, tags: ruby }
     - { role: golang, tags: golang }
 #    - { role: elixir, tags: elixir }
