@@ -6,7 +6,6 @@
     state: present
     install_options: --appdir=/Applications
   with_items:
-  - joplin
   - coconutbattery
 #  - sleepyhead # replaced by ...
   - veracrypt
