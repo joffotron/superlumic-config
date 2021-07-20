@@ -16,6 +16,7 @@ export NVM_DIR=~/.nvm
 export GOPATH={{ home_dir }}/src/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH/bin
+export HUSKY_SKIP_HOOKS=true
 
 alias a='aws-vault exec --no-session'
 alias mixconsole="iex -S mix run --no-start"
@@ -36,5 +37,12 @@ alias prmaindone="git co main && gu && git delete-merged-branches; gu"
 alias jsonformat="pbpaste | jq . | pbcopy"
 alias jsonunformat="pbpaste | jq . -c | pbcopy"
 alias be='bundle exec'
+alias nr='npm run'
 alias yeet='git push --force-with-lease'
 {#alias zoomies='open "zoommtg://zoom.us/join?confno=4049522151&pwd=MzY0U2JEbWFaMU5vUmJHZjduSlBLdz09"'#}
+
+admin-cli() {
+  vault_env=${1}
+  shift
+  (cd ~/src/amber/core/packages/admin-cli && aws-vault exec ${vault_env} -- npm run start -- ${@})
+}
