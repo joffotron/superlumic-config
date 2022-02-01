@@ -7,7 +7,7 @@
     - direnv
     - htop
     - httpie
-    - java
+    - temurin
     - pwgen
     - rsync
     - shellcheck
