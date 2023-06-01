@@ -1,0 +1,116 @@
+
+export HOMEBREW_CASK_OPTS="--no-quarantine"
+export LESS="-erX"
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/sbin
+export EDITOR=vim
+export NVM_DIR=~/.nvm
+export GOPATH=/Users/joff//src/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/.docker/bin
+
+export HUSKY_SKIP_HOOKS=true
+export HUSKY=0
+
+alias a='aws-vault exec'
+alias ans='aws-vault exec --no-session'
+alias mixconsole="iex -S mix run --no-start"
+alias bundlestubs="bundle install --binstubs .bundle/bin"
+alias ffs="sudo !!"
+alias fix_docker_clock="docker run --rm --privileged alpine hwclock -s"
+alias webserver='ruby -run -ehttpd . -p8000'
+alias droid="~/Library/Android/sdk/emulator/emulator -avd \"Pixel_3_API_R\""
+
+alias gu='git up'
+alias gs='git status'
+alias gds='git diff --staged'
+alias gdt='git difftool'
+
+alias prune='git remote prune origin'
+alias publish='git publish origin'
+alias prdone="git co main && gu && git delete-merged-branches; gu"
+alias prmasterdone="git co master && gu && git delete-merged-branches; gu"
+alias jsonformat="pbpaste | jq . | pbcopy"
+alias jsonunformat="pbpaste | jq . -c | pbcopy"
+alias be='bundle exec'
+alias nr='npm run'
+alias check='npm run test:jest -- --watch --coverage=false'
+alias yeet='git push --force-with-lease'
+
+admin-cli() {
+  vault_env=${1}
+  shift  
+  (
+    if [[ ${vault_env} == 'production' ]]
+    then
+      echo "-----------------------------"
+      echo "✨🌈🔥 PROD MODE #YOLO 🔥🌈✨"
+      echo "-----------------------------"
+      export REALM=prod
+      export TALLY_V2_ORG_ID=ba7c3185-4949-4aff-9844-8eeb5f669458
+      export TALLY_V2_PRIMARY_KEY=b2876ca801214d118a6f190a6355197e
+      export PRICE_API_ACTUALS_5_MINS_TABLE=prices-five-minutes-actual
+      export PRICE_API_FORECAST_5_MINS_TABLE=prices-five-minutes-forecast
+      export PRICE_FORECAST_TABLE_NAME=prices-api-prod-PRICE_API_FORECASTS_TABLE
+      export PRICE_ACTUALS_TABLE_NAME=prices-api-prod-PRICE_API_ACTUALS_TABLE
+      export PRICE_API_LAMBDA_NAME=prices-api-prod-list-prices
+      export USAGE_TABLE_NAME=usage-api-prod-USAGE_TABLE
+      export PROMO_EVENT_QUEUE_NAME=promo-event-prod
+      export SMARTSHIFT_SITE_CLOSED_EVENT_QUEUE_NAME=smartshift-site-closed-notification-prod
+      export UPDATE_DIRECT_DEBIT_VIA_WEB=true
+      export TALLY_CHARGE_QUEUE_NAME=ops-tally-charge-prod
+      export USAGE_DATA_S3_BUCKET_NAME=amber-usage-data-production
+      export USAGE_DATA_S3_WRITER_ARN=arn:aws:lambda:ap-southeast-2:428566834868:function:amber-backend-telemetry-prod-usage-s3-writer
+
+      export TALLY_REGISTRATION_QUEUE_URL=https://sqs.ap-southeast-2.amazonaws.com/428566834868/tally-registration-queue-prod
+      export EXTERNAL_REGISTRATION_NOTIFICATION_QUEUE_NAME=external-registration-prod
+      export ZENDESK_REGISTRATION_QUEUE_URL=https://sqs.ap-southeast-2.amazonaws.com/428566834868/zendesk-registration-queue-prod
+      export ZAPIER_TOPIC_ARN=arn:aws:sns:ap-southeast-2:428566834868:CustomerDetailsToZapier
+      export BANK_DETAILS_KMS_KEY_ID=arn:aws:kms:ap-southeast-2:428566834868:alias/bank-details
+      export MAILCHIMP_REGISTRATION_QUEUE_URL=https://sqs.ap-southeast-2.amazonaws.com/428566834868/mailchimp-registration-queue-prod
+      export COGNITO_POOL_ID=ap-southeast-2_vPQVymJLn
+      export ANALYTICS_EVENT_QUEUE_URL=https://sqs.ap-southeast-2.amazonaws.com/428566834868/analytics-event-queue-prod
+    fi      
+    cd ~/src/amber/core/packages/admin-cli && aws-vault --prompt=terminal exec --duration=4h ${vault_env} -- npm run start -- ${@}
+  )
+}
+
+
+admin-cli-main() {
+  vault_env=${1}
+  shift  
+  (
+    if [[ ${vault_env} == 'production' ]]
+    then
+      echo "-----------------------------"
+      echo "✨🌈🔥 PROD MODE #YOLO 🔥🌈✨"
+      echo "-----------------------------"
+      export REALM=prod
+      export TALLY_V2_ORG_ID=ba7c3185-4949-4aff-9844-8eeb5f669458
+      export TALLY_V2_PRIMARY_KEY=b2876ca801214d118a6f190a6355197e
+      export PRICE_API_ACTUALS_5_MINS_TABLE=prices-five-minutes-actual
+      export PRICE_API_FORECAST_5_MINS_TABLE=prices-five-minutes-forecast
+      export PRICE_FORECAST_TABLE_NAME=prices-api-prod-PRICE_API_FORECASTS_TABLE
+      export PRICE_ACTUALS_TABLE_NAME=prices-api-prod-PRICE_API_ACTUALS_TABLE
+      export PRICE_API_LAMBDA_NAME=prices-api-prod-list-prices
+      export USAGE_TABLE_NAME=usage-api-prod-USAGE_TABLE
+      export PROMO_EVENT_QUEUE_NAME=promo-event-prod
+      export SMARTSHIFT_SITE_CLOSED_EVENT_QUEUE_NAME=smartshift-site-closed-notification-prod
+      export UPDATE_DIRECT_DEBIT_VIA_WEB=true
+      export TALLY_CHARGE_QUEUE_NAME=ops-tally-charge-prod
+      export USAGE_DATA_S3_BUCKET_NAME=amber-usage-data-production
+      export USAGE_DATA_S3_WRITER_ARN=arn:aws:lambda:ap-southeast-2:428566834868:function:amber-backend-telemetry-prod-usage-s3-writer
+
+      export TALLY_REGISTRATION_QUEUE_URL=https://sqs.ap-southeast-2.amazonaws.com/428566834868/tally-registration-queue-prod
+      export EXTERNAL_REGISTRATION_NOTIFICATION_QUEUE_NAME=external-registration-prod
+      export ZENDESK_REGISTRATION_QUEUE_URL=https://sqs.ap-southeast-2.amazonaws.com/428566834868/zendesk-registration-queue-prod
+      export ZAPIER_TOPIC_ARN=arn:aws:sns:ap-southeast-2:428566834868:CustomerDetailsToZapier
+      export BANK_DETAILS_KMS_KEY_ID=arn:aws:kms:ap-southeast-2:428566834868:alias/bank-details
+      export MAILCHIMP_REGISTRATION_QUEUE_URL=https://sqs.ap-southeast-2.amazonaws.com/428566834868/mailchimp-registration-queue-prod
+      export COGNITO_POOL_ID=ap-southeast-2_vPQVymJLn
+      export ANALYTICS_EVENT_QUEUE_URL=https://sqs.ap-southeast-2.amazonaws.com/428566834868/analytics-event-queue-prod
+    fi      
+    cd ~/src/amber/core-main/packages/admin-cli && aws-vault --prompt=terminal exec --duration=8h --no-session ${vault_env} -- npm run start -- ${@}
+  )
+}

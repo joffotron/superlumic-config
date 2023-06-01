@@ -1,0 +1,5 @@
+#!/bin/bash
+
+SITEID=$1
+
+open "https://ap-southeast-2.console.aws.amazon.com/dynamodbv2/home?region=ap-southeast-2#edit-item?table=accounts&itemMode=2&pk=SITE%23${SITEID}&sk=SITE%23${SITEID}&itemMode=2"

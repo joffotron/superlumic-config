@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ssh -i ~/.ssh/aemo_cisco.sec.pem -oKexAlgorithms=+diffie-hellman-group14-sha1 ec2-user@13.238.47.5
+
+

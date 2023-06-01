@@ -32,7 +32,7 @@
     - { role: profile-all, tags: base }
     - { role: profile-developer, tags: base-dev }
     - { role: docker, tags: docker }
-    - { role: nodejs, tags: nodejs }
+      #    - { role: nodejs, tags: nodejs } # write something to use fnm instead
     - { role: ruby, tags: ruby }
     - { role: golang, tags: golang }
 #    - { role: elixir, tags: elixir }
@@ -63,9 +63,11 @@
         - bartender
         - bettertouchtool
         - controlplane
+        - choosy
         - discord
         - disk-inventory-x
         - firefox
+        - fluent-reader
         - dropbox
         - flux
         - gitkraken
@@ -73,11 +75,10 @@
         - google-backup-and-sync
         - istat-menus
         - joplin
-        - keybase
+          #- keybase
         - nextcloud
-        - nordvpn
-        - linear
-        - little-snitch
+          #- linear
+          #- little-snitch
         - signal
         - skitch
         - sonos
@@ -143,12 +144,13 @@
         - { id: "497799835", name: "Xcode" }
         - { id: "585829637", name: "Todoist" }
         - { id: "587512244", name: "Kaleidoscope" }
-        - { id: "715768417", name: "Microsoft Remote Desktop" }
+#        - { id: "715768417", name: "Microsoft Remote Desktop" }
         - { id: "824171161", name: "Affinity Designer" }
         - { id: "824183456", name: "Affinity Photo" }
         - { id: "964860276", name: "Folder Designer" }
         - { id: "975937182", name: "Fantastical" }
         - { id: "1357379892", name: "Menu Bar Controller for Sonos" }
+        - { id: "1507782672", name: "Pixea" }
 #        - { id: "408981434", name: "iMovie" }
 #        - { id: "571213070", name: "DaVinci Resolve" }
 #        - { id: "682658836", name: "GarageBand" }

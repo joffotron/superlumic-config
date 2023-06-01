@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ID=$1
+
+open "https://ap-southeast-2.console.aws.amazon.com/dynamodbv2/home?region=ap-southeast-2#edit-item?table=accounts&itemMode=2&pk=COGNITO%23${ID}&sk=COGNITO%23${ID}&itemMode=2"
+
