@@ -11,7 +11,6 @@
     - htop
     - httpie
     - granted
-    - temurin
     - pwgen
     - rsync
     - shellcheck
@@ -19,6 +18,7 @@
     - wget
     - yarn
     - tmux
+#    - temurin
 
 - name: "[Developer] Install developer cask applications"
   homebrew_cask: 
