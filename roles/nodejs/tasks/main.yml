@@ -1,24 +1,15 @@
 ---
 
-- name: install node
+- name: "install node"
   homebrew: name={{item}} state=latest
   with_items:
   - node
+  - fnm
 
-- name: create nvm directory
-  file:
-    path: "{{ home_dir }}/.nvm"
-    state: directory
-
-- name: copy nvm-exec to NVM's working directory
-  shell: cp $(brew --prefix nvm)/nvm-exec ~/.nvm/ creates=~/.nvm/nvm-exec
-
-- name: Install nvm in the recommended way
-  command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-
-- name: install other node versions via nvm
-  shell: ". {{ home_dir }}/.nvm/nvm.sh; nvm install {{item}}"
-  with_items: "{{node_versions}}"
-
-- name: st the default node version
-  shell: ". {{ home_dir }}/.nvm/nvm.sh; nvm alias default {{default_node_version}}"
+- name: "FNM in zshrc"
+  lineinfile:
+    path: "{{ home_dir }}/.zshrc"
+    present: true
+    create: false
+    insertbefore: '^source $ZSH_CUSTOM.+'
+    line: eval "$(fnm env --use-on-cd)"

@@ -24,13 +24,13 @@
 - name: "[zsh] Install zsh-z"
   git:
     repo: https://github.com/agkozak/zsh-z
-    dest: "{{ home_dir }}/.oh-my-zsh/custom}/plugins/zsh-z"
+    dest: "{{ home_dir }}/.oh-my-zsh/custom/plugins/zsh-z"
     depth: 1
 
 - name: "[zsh] Install Powerlevel10k"
   git:
     repo: https://github.com/romkatv/powerlevel10k.git
-    dest: "{{ home_dir }}/.oh-my-zsh/custom}/themes/powerlevel10k"
+    dest: "{{ home_dir }}/.oh-my-zsh/custom/themes/powerlevel10k"
     depth: 1
 
 - name: "[zsh] p10k config"

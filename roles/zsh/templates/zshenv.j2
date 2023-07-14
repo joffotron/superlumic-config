@@ -12,13 +12,13 @@ export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
 {#export PATH=$PATH:$HOME/Applications/android-sdk-macosx/platform-tools/#}
 export EDITOR=vim
-export NVM_DIR=~/.nvm
 export GOPATH={{ home_dir }}/src/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH/bin
 export HUSKY_SKIP_HOOKS=true
 
-alias a='aws-vault exec --no-session'
+alias a='aws-vault exec'
+alias ans='aws-vault exec --no-session'
 alias mixconsole="iex -S mix run --no-start"
 alias bundlestubs="bundle install --binstubs .bundle/bin"
 alias ffs="sudo !!"
@@ -32,17 +32,27 @@ alias gdt='git difftool'
 
 alias prune='git remote prune origin'
 alias publish='git publish origin'
-alias prdone="git co master && gu && git delete-merged-branches; gu"
-alias prmaindone="git co main && gu && git delete-merged-branches; gu"
+alias prdone="git co main && gu && git delete-merged-branches; gu"
+alias prmasterdone="git co master && gu && git delete-merged-branches; gu"
 alias jsonformat="pbpaste | jq . | pbcopy"
 alias jsonunformat="pbpaste | jq . -c | pbcopy"
 alias be='bundle exec'
 alias nr='npm run'
+alias check='npm run test:jest -- --watch --coverage=false'
 alias yeet='git push --force-with-lease'
 {#alias zoomies='open "zoommtg://zoom.us/join?confno=4049522151&pwd=MzY0U2JEbWFaMU5vUmJHZjduSlBLdz09"'#}
 
 admin-cli() {
   vault_env=${1}
   shift
-  (cd ~/src/amber/core/packages/admin-cli && aws-vault exec ${vault_env} -- npm run start -- ${@})
+  (
+    if [[ ${vault_env} == 'production' ]]
+    then
+      echo "-----------------------------"
+      echo "✨🌈🔥 PROD MODE #YOLO 🔥🌈✨"
+      echo "-----------------------------"
+      export REALM=prod
+    fi  
+    cd ~/src/amber/core/packages/admin-cli && aws-vault exec ${vault_env} -- npm run start -- ${@}
+  )
 }

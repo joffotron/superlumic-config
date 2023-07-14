@@ -1,0 +1,20 @@
+---
+
+- name: "Copy Alfred Workflow Files"
+  copy: src="{{ user_name }}/{{ item }}" dest="{{ settings_export_dir }}/{{ item }}/alfred"
+  with_items:
+  - 1password.alfredworkflow
+  - AppSwitching.alfredworkflow
+  - alfred-toggl.alfredworkflow
+  - Github.Jump.alfredworkflow
+  - Buildkite.Jump.alfredworkflow
+  - system-settings.alfredworkflow
+
+- name: "Install Alfred Workflows"
+  command: open "{{ settings_export_dir }}/{{ item }}"
+           creates="{{ settings_export_dir }}/{{ item }}-workflow-created"
+  with_items:
+    - AppSwitching.alfredworkflow
+    - alfred-toggl.alfredworkflow
+    - Github.Jump.alfredworkflow
+    - Buildkite.Jump.alfredworkflow

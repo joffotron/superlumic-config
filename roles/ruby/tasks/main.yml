@@ -6,6 +6,7 @@
     - rbenv-binstubs
     - rbenv-default-gems
     - ruby-build
+    - overmind
 
 - name: "[Ruby] Get rbenv root"
   command: rbenv root
@@ -20,4 +21,15 @@
 - name: "[Ruby] install ruby versions"
   command: rbenv install -s {{ item }}
   with_items:
-    - 2.7.3
+    - 3.0.6
+
+- name: "init rbenv in zsh"
+  blockinfile:
+    path: "{{ home_dir }}/.zshrc"
+    present: true
+    create: false
+    insertbefore: '^source $ZSH_CUSTOM.+'
+    block: |
+      # For Rails Spring
+      export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+      eval "$(rbenv init -)"

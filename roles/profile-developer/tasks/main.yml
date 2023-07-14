@@ -1,4 +1,7 @@
 ---
+- name: Add Homebrew tap for Granted
+  homebrew_tap: tap=common-fate/granted state=present
+
 - name: "[Developer] Install developer brew applications"
   homebrew: name={{item}} state=latest
   with_items:
@@ -7,6 +10,7 @@
     - direnv
     - htop
     - httpie
+    - granted
     - temurin
     - pwgen
     - rsync
@@ -14,9 +18,16 @@
     - watch
     - wget
     - yarn
+    - tmux
 
 - name: "[Developer] Install developer cask applications"
-  homebrew_cask: name={{item}} state=present
+  homebrew_cask: 
+    name: "{{item}}"
+    state: present
+    install_options:
+    - cask
+    - appdir=/Applications
+    - no-quarantine
   with_items:
     - aws-vault
     - boop
@@ -33,25 +44,8 @@
     - ngrok
     - pop
     - postman
+    - orbstack
     - wireshark
-
-# TODO: Install using `go get` for MacOS ARM
-#- name: "[Developer] Fetch awless installer content"
-#  uri:
-#    url: https://raw.githubusercontent.com/wallix/awless/master/getawless.sh
-#    return_content: yes
-#  register: awless_installer
-#
-#- name: "[Developer] Run awless installer"
-#  shell:
-#    chdir: "{{ home_dir }}"
-#    cmd: bash -
-#    warn: no
-#    stdin: "{{ awless_installer.content }}"
-#
-#- name: "[Developer] Put awless in /usr/local/bin"
-#  become: yes
-#  command: mv "{{ home_dir }}/awless" /usr/local/bin/
 
 - name: "[Developer] Download Hosts App"
   get_url:
@@ -75,10 +69,7 @@
 - name: "[Developer] Copy dotfiles"
   copy: src=files/{{ user_name }}/{{ item }} dest={{ home_dir }}/.{{ item }}
   with_items:
-    - bash_profile
-    - bashrc
-    - npmrc
-    - vimrc
+  - vimrc
 
 - name: Write out gitconfig
   template: src=gitconfig.j2 dest={{ home_dir }}/.gitconfig
