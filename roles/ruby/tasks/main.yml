@@ -26,7 +26,6 @@
 - name: "init rbenv in zsh"
   blockinfile:
     path: "{{ home_dir }}/.zshrc"
-    present: true
     create: false
     insertbefore: '^source $ZSH_CUSTOM.+'
     block: |

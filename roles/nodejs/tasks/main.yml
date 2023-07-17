@@ -9,7 +9,6 @@
 - name: "FNM in zshrc"
   lineinfile:
     path: "{{ home_dir }}/.zshrc"
-    present: true
     create: false
     insertbefore: '^source $ZSH_CUSTOM.+'
     line: eval "$(fnm env --use-on-cd)"
