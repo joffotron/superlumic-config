@@ -10,5 +10,5 @@
   lineinfile:
     path: "{{ home_dir }}/.zshrc"
     create: false
-    insertbefore: '^source $ZSH_CUSTOM.+'
+    insertbefore: '^# To customise prompt.*'
     line: eval "$(fnm env --use-on-cd)"

@@ -16,9 +16,13 @@
     - shellcheck
     - watch
     - wget
-    - yarn
+#    - yarn # Use corepack now
     - tmux
+    - libpq
 #    - temurin
+
+- name: "Link libpq so we get client executables without needing full PG"
+  command: "brew link --force libpq"
 
 - name: "[Developer] Install developer cask applications"
   homebrew_cask: 
@@ -85,7 +89,6 @@
     - rails-completion
     - rake-completion
     - ruby-completion
-    - yarn-completion
 
 - name: "[Developer] Ensure ~/Applications dir"
   file: path="{{ home_dir }}/Applications" state=directory

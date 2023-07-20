@@ -27,7 +27,7 @@
   blockinfile:
     path: "{{ home_dir }}/.zshrc"
     create: false
-    insertbefore: '^source $ZSH_CUSTOM.+'
+    insertbefore: '^# To customise prompt.*'
     block: |
       # For Rails Spring
       export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
