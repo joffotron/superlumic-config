@@ -1,10 +1,22 @@
 ---
 
+- name: install brew versions tap
+  homebrew_tap: tap=homebrew/cask-versions state=present
+
 - name: "install watchman"
   homebrew: name={{item}} state=latest
   with_items:
   - watchman
 
+- name: Install Zulu v11 JDK
+  homebrew_cask:
+    name: "{{item}}"
+    state: present
+    install_options:
+    - cask
+    - no-quarantine
+  with_items:
+    - zulu11
 
 - name: "Android SDK PATHS in zshenv"
   blockinfile:
