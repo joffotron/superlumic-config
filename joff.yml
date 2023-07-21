@@ -33,6 +33,7 @@
     - { role: profile-developer, tags: base-dev }
     - { role: ruby, tags: ruby }
     - { role: nodejs, tags: nodejs }
+    - { role: mobile-dev, tags: mobile-dev }
 #    - { role: golang, tags: golang }
 #    - { role: elixir, tags: elixir }
 #    - { role: python, tags: python }

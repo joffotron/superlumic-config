@@ -1,0 +1,16 @@
+---
+
+- name: "install watchman"
+  homebrew: name={{item}} state=latest
+  with_items:
+  - watchman
+
+
+- name: "Android SDK PATHS in zshenv"
+  blockinfile:
+    path: "{{ home_dir }}/.zshenv"
+    create: false
+    block: |
+      export ANDROID_HOME=$HOME/Library/Android/sdk
+      export PATH=$PATH:$ANDROID_HOME/emulator
+      export PATH=$PATH:$ANDROID_HOME/platform-tools
