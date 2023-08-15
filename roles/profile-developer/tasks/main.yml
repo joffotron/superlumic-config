@@ -34,6 +34,7 @@
     - no-quarantine
   with_items:
     - aws-vault
+    - session-manager-plugin
     - boop
     - dash
     - datagrip
