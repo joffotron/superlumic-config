@@ -122,3 +122,9 @@
     dest: "{{ home_dir }}/bin/aws-kms"
     mode: '0755'
 
+- name: "[Developer] Install Pre-enhittification version of GitKraken (1)"
+  copy: src="gitkraken@9.7.0.rb" dest="{{ home_dir }}/Applications/"
+
+- name: "[Developer] Install Pre-enhittification version of GitKraken (2)"
+  command: brew install --cask "{{ home_dir}}/Applications/gitkraken@9.7.0.rb"
+  
