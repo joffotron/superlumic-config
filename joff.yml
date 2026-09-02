@@ -3,23 +3,23 @@
   connection: local
 
   vars:
-    # Set these in secrets file:
-    # github_auth_token
-    # apple_id_password
+  # Set these in secrets file:
+  # github_auth_token
+  # apple_id_password
 
-    - superlimic_config_repo: https://github.com/joffotron/superlumic-config.git
-    - user_name: joff
-    - computername: ams-mac-020
-    - home_dir: "/Users/{{ user_name }}/"
-    - user_email: joff@joff.codes
-    - github_user_name: joffotron
-    - git_user_name: Joseph Miller
-    - git_user_email: "{{ user_email }}"
-    - git_signing_key: FAEF0DE3
-    - apple_id_email: joff@googlehax.com
-    - src_dir: "{{ home_dir }}/src/"
-    - settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
-    - nextcloud_gnupg_dir: "{{ home_dir }}/Nextcloud/TheCrypt/GPG/gnupg"
+  - superlimic_config_repo: https://github.com/joffotron/superlumic-config.git
+  - user_name: joff
+  - computername: fog
+  - home_dir: "/Users/{{ user_name }}/"
+  - user_email: joff@joff.codes
+  - github_user_name: joffotron
+  - git_user_name: Joseph Miller
+  - git_user_email: "{{ user_email }}"
+  - git_signing_key: 688DFA37
+  - apple_id_email: joff@googlehax.com
+  - src_dir: "{{ home_dir }}/src/"
+  - settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
+  - nextcloud_gnupg_dir: "{{ home_dir }}/Nextcloud/TheCrypt/GPG/gnupg"
 
   vars_files:
     - vars/osx_defaults.yml
@@ -27,13 +27,13 @@
     - vars/{{ user_name }}-secrets.yml
 
   roles:
-    - { role: zsh, tags: zsh }
-    - { role: apple-silicon, tags: applechip }
-    - { role: profile-all, tags: base }
-    - { role: profile-developer, tags: base-dev }
-    - { role: ruby, tags: ruby }
-    - { role: nodejs, tags: nodejs }
-    - { role: mobile-dev, tags: mobile-dev }
+  - { role: zsh, tags: zsh }
+  - { role: apple-silicon, tags: applechip }
+  - { role: profile-all, tags: base }
+  - { role: profile-developer, tags: base-dev }
+  - { role: ruby, tags: ruby }
+  - { role: nodejs, tags: nodejs }
+  - { role: mobile-dev, tags: mobile-dev }
 #    - { role: golang, tags: golang }
 #    - { role: elixir, tags: elixir }
 #    - { role: python, tags: python }
@@ -52,31 +52,62 @@
         - 1password
         - 1password-cli
         - alfred
-        - android-file-transfer
         - balenaetcher
+        - betterdiscord-installer
         - bettertouchtool
-        - controlplane
+        - boop
+        - bruno
         - choosy
+        - claude-code
+        - dash@6
+        - datagrip
         - discord
         - disk-inventory-x
         - firefox
         - fluent-reader
-        - dropbox
         - flux
-        - jordanbaird-ice
+        - flux-app
+        - fork
+        - ghostty
+        - google-chrome
+        - gpg-suite
+        - imageoptim
+        - intellij-idea
         - istat-menus
         - joplin
+        - jordanbaird-ice
+        - keka
+        - kekaexternalhelper
+        - ksdiff
+        - loom
+        - mockoon
+        - modern-csv
+        - monodraw
+        - mos
         - nextcloud
-        - signal
-        - skitch
-        - sonos
+        - ngrok
+        - openmtp
+        - orbstack
+        - postman
+        - protonvpn
+        - rar
+        - rectangle
+        - session-manager-plugin
         - shortcat
+        - signal
+        - slack
+        - sonos
         - spotify
+        - tailscale
+        - tailscale-app
         - transmit
+        - tuple
+        - visual-studio-code
+        - vlc
         - whatsapp
-        - yt-music
+        - wireshark
+        - wireshark-app
         - yubico-yubikey-manager
-        #- viscosity
 
     - name: Create local bin dir
       file: path="{{ home_dir }}/bin" state=directory
@@ -88,21 +119,41 @@
     - name: install personal brew applications
       homebrew: name={{item}} state=latest
       with_items:
+        - bat
         - certbot
-        - ipcalc
+        - coreutils
+        - direnv
+        - fnm
         - fzf
+        - gh
+        - gnupg
+        - granted
+        - htop
+        - httpie
+        - ipcalc
+        - jj
         - jq
         - mas
         - moreutils
+        - overmind
         - packer
         - pidof
+        - portaudio
+        - pwgen
+        - ripgrep
+        - rsync
         - s3cmd
-        - ykpers
-        - ykman
-        - zsh
+        - shellcheck
+        - sloccount
         - speedtest-cli
-        - yubikey-personalization
+        - uv
+        - watch
+        - wget
+        - ykman
+        - ykpers
         - yubico-piv-tool
+        - zsh
+        - zsh-completions
 
     - name: install fzf
       command: /opt/homebrew/opt/fzf/install
@@ -125,8 +176,6 @@
         - { id: "409183694", name: "Keynote" }
         - { id: "409201541", name: "Pages" }
         - { id: "409203825", name: "Numbers" }
-        - { id: "419330170", name: "Moom" }
-        - { id: "495152161", name: "Wizard" }
         - { id: "585829637", name: "Todoist" }
         - { id: "587512244", name: "Kaleidoscope" }
         - { id: "824171161", name: "Affinity Designer" }
@@ -135,6 +184,8 @@
         - { id: "975937182", name: "Fantastical" }
         - { id: "1357379892", name: "Menu Bar Controller for Sonos" }
         - { id: "1507782672", name: "Pixea" }
+        - { id: "6469021132", name: "PDFgear" }
+        - { id: "1545870783", name: "Color Picker" }
 #        - { id: "715768417", name: "Microsoft Remote Desktop" }
 #        - { id: "408981434", name: "iMovie" }
 #        - { id: "571213070", name: "DaVinci Resolve" }
@@ -164,7 +215,6 @@
         - dot-GlobalPreferences.plist
         - iStatMenusSettings.ismp
         - BetterTouchTool.settings.bttpreset
-        - com.manytricks.Moom.plist
 
 #    - name: killall cfprefsd so we can copy prefs
 #      command: killall cfprefsd
@@ -172,16 +222,6 @@
     #    - name: OSX Keyboard shortcuts
     #command: defaults import com.apple.symbolichotkeys {{ settings_export_dir }}/osx-keybindings.plist
     #tags: osxshortcuts
-
-    - name: Kill Moom
-      command: kill `pidof Moom`
-      ignore_errors: true
-
-    - name: Copy moom config
-      copy: src={{ user_name }}/com.manytricks.Moom.plist dest="{{ home_dir }}/Library/Preferences/com.manytricks.Moom.plist"
-#
-    - name: Start Moom again
-      command: open /Applications/Moom.app
 
     - name: Check stat of .gnupg dir
       stat: path={{ home_dir }}/.gnupg
