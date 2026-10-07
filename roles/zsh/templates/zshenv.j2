@@ -37,26 +37,13 @@ alias rake='spring rake'
 alias yeet='git push --force-with-lease'
 alias tree_of_focus='cbonsai -l -i -t 0.5'
 
-admin-cli() {
-  vault_env=${1}
-  shift
-  (
-    if [[ ${vault_env} == 'production' ]]
-    then
-      echo "-----------------------------"
-      echo "✨🌈🔥 PROD MODE #YOLO 🔥🌈✨"
-      echo "-----------------------------"
-      export REALM=prod
-    fi  
-    cd ~/src/amber/core/packages/admin-cli && aws-vault exec ${vault_env} -- npm run start -- ${@}
-  )
-}
-
 fpath=(/Users/joff/.granted/zsh_autocomplete/assume/ $fpath)
 fpath=(/Users/joff/.granted/zsh_autocomplete/granted/ $fpath)
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export GPG_TTY=$(tty)
 
 alias assume=". assume"

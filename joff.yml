@@ -123,6 +123,7 @@
         - fzf
         - gh
         - gnupg
+        - pinentry-mac        
         - granted
         - htop
         - httpie
@@ -195,10 +196,6 @@
     - name: Copy Settings Files
       copy: src="{{ user_name }}/{{ item }}" dest="{{ settings_export_dir }}/{{ item }}"
       with_items:
-        - com.apple.symbolichotkeys.plist
-        - pbs.plist
-        - dot-GlobalPreferences.plist
-        - iStatMenusSettings.ismp
         - BetterTouchTool.settings.bttpreset
         - RectangleConfig.json
         - AppSwitching.alfredworkflow
@@ -253,3 +250,7 @@
         src: "files/{{ user_name }}/vimrc" 
         dest: "{{ home_dir }}/.vimrc"
 
+    - name: "[ripgrep] config file"
+      ansible.builtin.copy:
+        src: "files/{{ user_name }}/ripgreprc" 
+        dest: "{{ home_dir }}/.ripgreprc"
