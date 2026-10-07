@@ -1,12 +1,16 @@
 ---
 - name: Add Homebrew tap for Granted
-  homebrew_tap: tap=common-fate/granted state=present
+  homebrew_tap: tap=common-fate/granted state=present trust=true
+
+- name: Add Homebrew tap for Packer
+  homebrew_tap: tap=hashicorp/tap state=present trust=true
 
 - name: "[Developer] Install developer brew applications"
   homebrew: name={{item}} state=latest
   with_items:
     - awscli
     - bat
+    - csvkit
     - direnv
     - htop
     - httpie
@@ -19,6 +23,9 @@
 #    - yarn # Use corepack now
     - tmux
     - libpq
+    - yamllint
+    # hashicorp/tap
+    - packer
 #    - temurin
 
 - name: "Link libpq so we get client executables without needing full PG"
@@ -31,12 +38,9 @@
     install_options:
     - cask
     - appdir=/Applications
-    - no-quarantine
   with_items:
     - aws-vault
-    - session-manager-plugin
     - boop
-    - dash
     - datagrip
     - drawio
     - monodraw
@@ -45,10 +49,22 @@
     - intellij-idea
     - iterm2
     - insomnia
-    - ksdiff
+    # - ksdiff
     - ngrok
     - pop
     - postman
+    - orbstack
+
+- name: "[Developer] Install developer cask applications with root"
+  homebrew_cask: 
+    name: "{{item}}"
+    state: present
+    sudo_password: "{{ansible_become_password}}"
+    install_options:
+    - cask
+    - appdir=/Applications
+  with_items:
+    - session-manager-plugin
     - orbstack
     - wireshark
 
@@ -64,13 +80,6 @@
     src: "{{ home_dir }}/Downloads/Hosts-App-1.4.5.zip"
     dest: "/Applications"
 
-- name: Install Python pip packages
-  pip: state=present executable=pip3 name="{{ item }}"
-  with_items:
-  - awslogs
-  - csvkit
-  - yamllint
-
 - name: "[Developer] Copy dotfiles"
   copy: src=files/{{ user_name }}/{{ item }} dest={{ home_dir }}/.{{ item }}
   with_items:
@@ -83,20 +92,20 @@
   homebrew: name={{item}} state=latest
   with_items:
     - bundler-completion
-    - cap-completion
     - gem-completion
-    - mix-completion
     - pip-completion
     - rails-completion
     - rake-completion
     - ruby-completion
+    - yarn-completion
+    - zsh-completions
 
 - name: "[Developer] Ensure ~/Applications dir"
   file: path="{{ home_dir }}/Applications" state=directory
 
 - name: "[Developer] Activate direnv"
   lineinfile:
-    dest: "{{home_dir}}/.bash_profile"
+    dest: "{{home_dir}}/.zshrc"
     line: eval "$(direnv hook bash)"
 
 - name: "[Developer] Ensure .aws directory"
@@ -115,16 +124,3 @@
   file:
     path: "{{ home_dir }}/bin"
     state: directory
-
-- name: "[Developer] Install aws-kms"
-  get_url:
-    url: https://github.com/joffotron/aws-kms/releases/download/v0.1.0/aws-kms-linux-amd64
-    dest: "{{ home_dir }}/bin/aws-kms"
-    mode: '0755'
-
-- name: "[Developer] Install Pre-enhittification version of GitKraken (1)"
-  copy: src="gitkraken@9.7.0.rb" dest="{{ home_dir }}/Applications/"
-
-- name: "[Developer] Install Pre-enhittification version of GitKraken (2)"
-  command: brew install --cask "{{ home_dir}}/Applications/gitkraken@9.7.0.rb"
-  

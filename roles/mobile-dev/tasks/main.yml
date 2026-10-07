@@ -1,7 +1,7 @@
 ---
 
 - name: install brew versions tap
-  homebrew_tap: tap=homebrew/cask-versions state=present
+  homebrew_tap: tap=homebrew/cask-versions state=present trust=true
 
 - name: "install watchman"
   homebrew: name={{item}} state=latest
@@ -14,7 +14,6 @@
     state: present
     install_options:
     - cask
-    - no-quarantine
   with_items:
     - zulu11
 

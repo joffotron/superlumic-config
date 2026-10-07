@@ -1,6 +1,6 @@
 ---
 - name: "[zsh] Tap homebrew fonts"
-  homebrew_tap: tap={{ item }} state=present
+  homebrew_tap: tap={{ item }} state=present trust=true
   with_items:
   - homebrew/cask-fonts
 

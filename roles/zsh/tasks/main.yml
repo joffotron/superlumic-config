@@ -1,5 +1,5 @@
 ---
-- include: powerline-fonts.yml
+#- include_tasks: powerline-fonts.yml
 
 - name: "[zsh] Install zsh"
   homebrew: name={{item}} state=latest

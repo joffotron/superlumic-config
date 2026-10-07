@@ -1,0 +1,10 @@
+font-family = "MesloLGS NF"
+theme = "Horizon" 
+working-directory = home
+window-inherit-working-directory = false
+tab-inherit-working-directory = false
+unfocused-split-fill = 444444
+keybind = cmd+right=next_tab
+keybind = cmd+left=previous_tab
+adjust-cursor-thickness = 200%
+adjust-box-thickness = 100%

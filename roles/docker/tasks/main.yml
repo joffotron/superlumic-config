@@ -13,7 +13,7 @@
               line="alias dockergc='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc -v "{{ home_dir }}/.docker/:/excludes/" -e EXCLUDE_FROM_GC=/excludes/excluded-images -e EXCLUDE_CONTAINERS_FROM_GC=/excludes/excluded-containers  spotify/docker-gc'"
 
 - name: "[Docker] Tap homebrew versions"
-  homebrew_tap: tap={{ item }} state=present
+  homebrew_tap: tap={{ item }} state=present trust=true
   with_items:
   - homebrew/cask-versions
 

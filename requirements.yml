@@ -1,16 +1,17 @@
 ---
-
-- src: https://github.com/superlumic/ansible-role-homebrew.git
-  name: roderik.superlumic-homebrew
-
+roles:
 - src: https://github.com/superlumic/ansible-role-osx-defaults.git
   name: roderik.superlumic-osx-defaults
 
 - src: https://github.com/superlumic/ansible-role-computername.git
   name: roderik.superlumic-computername
 
-- src: https://github.com/superlumic/ansible-role-postgresql.git
-  name: roderik.superlumic-postgresql
-
 - src: https://github.com/superlumic/ansible-role-vim.git
   name: roderik.superlumic-vim
+
+collections:
+- name: community.general 
+  version: ">=13.5.0"
+  source: https://galaxy.ansible.com
+
+  

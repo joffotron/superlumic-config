@@ -2,39 +2,38 @@
 - hosts: localhost
   connection: local
 
-  vars:
   # Set these in secrets file:
   # github_auth_token
-  # apple_id_password
-
-  - superlimic_config_repo: https://github.com/joffotron/superlumic-config.git
-  - user_name: joff
-  - computername: fog
-  - home_dir: "/Users/{{ user_name }}/"
-  - user_email: joff@joff.codes
-  - github_user_name: joffotron
-  - git_user_name: Joseph Miller
-  - git_user_email: "{{ user_email }}"
-  - git_signing_key: 688DFA37
-  - apple_id_email: joff@googlehax.com
-  - src_dir: "{{ home_dir }}/src/"
-  - settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
-  - nextcloud_gnupg_dir: "{{ home_dir }}/Nextcloud/TheCrypt/GPG/gnupg"
+  vars:
+    superlimic_config_repo: https://github.com/joffotron/superlumic-config.git
+    user_name: joff
+    computername: fog
+    home_dir: "/Users/{{ user_name }}/"
+    user_email: joff@joff.codes
+    github_user_name: joffotron
+    git_user_name: Joseph Miller
+    git_user_email: "{{ user_email }}"
+    git_signing_key: 688DFA37
+    apple_id_email: joff@googlehax.com
+    src_dir: "{{ home_dir }}/src/"
+    settings_export_dir: "{{ home_dir }}/tmp/SettingsExports"
+    nextcloud_gnupg_dir: "{{ home_dir }}/Nextcloud/TheCrypt/GPG/gnupg"
 
   vars_files:
     - vars/osx_defaults.yml
     - vars/nodejs.yml
     - vars/{{ user_name }}-secrets.yml
+    - vars/{{ user_name }}-sudopass.yml
 
   roles:
   - { role: zsh, tags: zsh }
   - { role: apple-silicon, tags: applechip }
   - { role: profile-all, tags: base }
   - { role: profile-developer, tags: base-dev }
-  - { role: ruby, tags: ruby }
-  - { role: nodejs, tags: nodejs }
-  - { role: mobile-dev, tags: mobile-dev }
-#    - { role: golang, tags: golang }
+  #- { role: nodejs, tags: nodejs }
+  #- { role: golang, tags: golang }
+#  - { role: ruby, tags: ruby }
+#  - { role: mobile-dev, tags: mobile-dev }
 #    - { role: elixir, tags: elixir }
 #    - { role: python, tags: python }
 #    - { role: roderik.superlumic-postgresql, tags: postgres }
@@ -44,16 +43,16 @@
       homebrew_cask:
         name: "{{item}}"
         state: present
+        sudo_password: "{{ansible_become_password}}"
         install_options:
         - cask
         - appdir=/Applications
-        - no-quarantine
       with_items:
         - 1password
         - 1password-cli
         - alfred
-        - balenaetcher
-        - betterdiscord-installer
+        - affinity
+        # - balenaetcher
         - bettertouchtool
         - boop
         - bruno
@@ -62,7 +61,6 @@
         - dash@6
         - datagrip
         - discord
-        - disk-inventory-x
         - firefox
         - fluent-reader
         - flux
@@ -78,7 +76,6 @@
         - jordanbaird-ice
         - keka
         - kekaexternalhelper
-        - ksdiff
         - loom
         - mockoon
         - modern-csv
@@ -90,7 +87,6 @@
         - orbstack
         - postman
         - protonvpn
-        - rar
         - rectangle
         - session-manager-plugin
         - shortcat
@@ -100,14 +96,14 @@
         - spotify
         - tailscale
         - tailscale-app
+        - todoist-app
         - transmit
         - tuple
         - visual-studio-code
         - vlc
         - whatsapp
-        - wireshark
+        - yubico-authenticator
         - wireshark-app
-        - yubico-yubikey-manager
 
     - name: Create local bin dir
       file: path="{{ home_dir }}/bin" state=directory
@@ -136,7 +132,6 @@
         - mas
         - moreutils
         - overmind
-        - packer
         - pidof
         - portaudio
         - pwgen
@@ -156,36 +151,26 @@
         - zsh-completions
 
     - name: install fzf
-      command: /opt/homebrew/opt/fzf/install
-      when: "'FZF_DEFAULT_COMMAND' not in ansible_env"
-
-    # - name: "[App Store] Sign out of the Mac App Store"
-    #   command: mas signout
-
-    # - name: "[App Store] Sign in to the Mac App Store"
-    #   command: mas signin {{ apple_id_email }} "{{ apple_id_password }}"
-
-    - name: "[App Store] See which apps are already installed"
-      command: bash -c "mas list | cut -f 1 -d ' '"
-      register: mas_list
+      command: /opt/homebrew/opt/fzf/install --all
+      when: "'FZF_DEFAULT_COMMAND' not in ansible_facts['env']"
 
     - name: "[App Store] Install Mac App Store applications"
-      command: mas install {{ item.id }}
-      when: item.id not in mas_list.stdout_lines
-      with_items:
-        - { id: "409183694", name: "Keynote" }
-        - { id: "409201541", name: "Pages" }
-        - { id: "409203825", name: "Numbers" }
-        - { id: "585829637", name: "Todoist" }
-        - { id: "587512244", name: "Kaleidoscope" }
-        - { id: "824171161", name: "Affinity Designer" }
-        - { id: "824183456", name: "Affinity Photo" }
-        - { id: "964860276", name: "Folder Designer" }
-        - { id: "975937182", name: "Fantastical" }
-        - { id: "1357379892", name: "Menu Bar Controller for Sonos" }
-        - { id: "1507782672", name: "Pixea" }
-        - { id: "6469021132", name: "PDFgear" }
-        - { id: "1545870783", name: "Color Picker" }
+      become: true
+      community.general.mas:
+        id:
+        - 964860276 # Folder Designer
+        - 975937182 # Fantastical
+        - 1357379892 # Menu Bar Controller for Sonos
+        - 1507782672 # Pixea
+        - 6469021132 # PDFgear
+        - 1545870783 # Color Picker
+        - 361285480 # Keynote
+        - 361309726 # Pages
+        - 361304891 # Numbers
+        state: present
+        upgrade_all: true
+
+# These might be out-of-date
 #        - { id: "715768417", name: "Microsoft Remote Desktop" }
 #        - { id: "408981434", name: "iMovie" }
 #        - { id: "571213070", name: "DaVinci Resolve" }
@@ -215,10 +200,14 @@
         - dot-GlobalPreferences.plist
         - iStatMenusSettings.ismp
         - BetterTouchTool.settings.bttpreset
+        - RectangleConfig.json
+        - AppSwitching.alfredworkflow
+        - Github.Jump.alfredworkflow        
+        - system-settings.alfredworkflow
+        - ghostty-settings.txt
 
 #    - name: killall cfprefsd so we can copy prefs
 #      command: killall cfprefsd
-
     #    - name: OSX Keyboard shortcuts
     #command: defaults import com.apple.symbolichotkeys {{ settings_export_dir }}/osx-keybindings.plist
     #tags: osxshortcuts
@@ -252,12 +241,15 @@
       unarchive: src="{{ home_dir }}/tmp/FiraCode_1.102.zip"
                  dest="{{ home_dir }}/Library/Fonts/"
 
-    - name: Create vim plugin dir
+    - name: "[vim] Create vim plugin dir"
       file: path="{{ home_dir }}/.vim/plugin" state=directory
 
-    - name: Install GPGVim plugin
+    - name: "[vim] Install GPGVim plugin"
       get_url: url=https://raw.githubusercontent.com/jamessan/vim-gnupg/master/plugin/gnupg.vim
                dest="{{ home_dir }}/.vim/plugin/gnupg.vim"
 
-    - name: "Ensure ~/Applications dir"
-      file: path="{{ home_dir }}/Applications" state=directory
+    - name: "[vim] config file"
+      ansible.builtin.copy:
+        src: "files/{{ user_name }}/vimrc" 
+        dest: "{{ home_dir }}/.vimrc"
+

@@ -25,16 +25,6 @@
   become: yes
   command: mv {{ home_dir }}/superlumic /usr/local/bin
 
-- name: install brew cask upgrade tool
-  homebrew_tap: tap=buo/cask-upgrade state=present
-
-- name: install cask applications for all users
-  homebrew_cask: name={{item}} state=present
-  with_items:
-    - google-chrome
-    - vlc
-    - slack
-
 - name: install general brew applications
   homebrew: name={{item}} state=latest
   with_items:

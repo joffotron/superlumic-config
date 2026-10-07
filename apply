@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export ANSIBLE_ASK_BECOME_PASS=True
+
+ansible-playbook -K -i "localhost," joff.yml 
