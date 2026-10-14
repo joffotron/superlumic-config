@@ -44,3 +44,6 @@ osx_defaults:
 
   # Don’t automatically rearrange Spaces based on most recent use
   - { domain: "com.apple.dock", key: "mru-spaces", type: bool, value: false }
+
+  # It defines a setting on the Dock to make sure the App Switcher doesn't change displays/monitors.
+  - { domain: "com.apple.dock", type: bool, key: "appswitcher-dock-display", value: true }

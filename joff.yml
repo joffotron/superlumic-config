@@ -74,7 +74,7 @@
         - intellij-idea
         - istat-menus
         - joplin
-        - jordanbaird-ice
+        - jordanbaird-ice@beta
         - keka
         - kekaexternalhelper
         - loom
@@ -137,6 +137,7 @@
         - pidof
         - portaudio
         - pwgen
+        - imagemagick
         - ripgrep
         - rsync
         - s3cmd
